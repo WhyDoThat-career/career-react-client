@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# WhyDoThat-career/front
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+프로그래머스, 원티드, 잡플래닛 등 웹페이지에 흩어져있는 개발자 구인구직 정보를 한 곳에 모아줄 수 있는 사이트 프론트엔드.
 
-## Available Scripts
+## 🛠️스택
 
-In the project directory, you can run:
+- front
+  - ReactJS
+  - typescript
+  -
+- backend
+  - python flask
+  - docker
+  - MySQL
+  -
 
-### `yarn start`
+## 🚧프로젝트 구조
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+CDD(Component-Driven Development) 기반의 프로젝트 Components 구조화.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- tools : Storybook, Figma
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+📦src
+ ┣ 📂api // rest api 관련
+ ┣ 📂app
+ ┃ ┣ 📂components // 컴포넌트
+ ┃ ┣ 📂contents // 조합 컴포넌트
+ ┃ ┣ 📂page // 컴포넌트 레이아웃 주입
+ ┃ ┣ 📂template // 프론트엔드 레이아웃
+ ┃ ┣ 📂units // 가장 작은 컴포넌트 구성 단위
+ ┃ ┗ 📜App.tsx // 어플리케이션 컴포넌트 집합체
+ ┣ 📂interface
+ ┣ 📂shared //공통 파일
+ ┃ ┣ 📂lib // 비즈니스 로직 폴더
+ ┃ ┃ ┣ 📂hooks // 커스텀 훅
+ ┃ ┃ ┗ 📂util // 공용 로직
+ ┃ ┗ 📂store // 상태관리 저장소
+ ┣ 📜index.tsx
+```
