@@ -38,7 +38,7 @@ function App() {
   // console.log(post_json);
   return (
     <div className="App">
-      <h1>hello</h1>
+      <h1>hi</h1>
       <button onClick={() => console.log(get_json)}>button</button>
     </div>
   );
