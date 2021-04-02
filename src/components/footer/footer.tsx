@@ -5,16 +5,28 @@ const Footer = () => {
   return (
     <Cover>
       <div className="footer">
-        <p>©WhyDoThat</p>
-        <p>제작자 : 정근영, 김태훈, 나두원</p>
-        <p>Email : whydothat.studio@gmail.com</p>
+        <div className="footerInfo">
+          ©WhyDoThat 제작자 : 정근영, 김태훈, 나두원<br></br>
+          Email : whydothat.studio@gmail.com
+        </div>
       </div>
     </Cover>
   );
 };
 
 const Cover = styled.div`
-  background-color: #3498db;
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #bdc3c7;
+    border-top: 1px solid black;
+  }
+  .footerInfo {
+    display: flex;
+    margin: 3rem 0;
+    float: left;
+  }
 `;
 
 export default Footer;
