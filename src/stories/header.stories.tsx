@@ -1,5 +1,6 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
+import { MemoryRouter } from 'react-router-dom';
 
 import { Story, Meta } from '@storybook/react/types-6-0';
 
@@ -10,7 +11,11 @@ export default {
   component: HeaderBar,
 } as Meta;
 
-const Template: Story<HeaderBarProps> = (args) => <HeaderBar {...args} />;
+const Template: Story<HeaderBarProps> = (args) => (
+  <MemoryRouter>
+    <HeaderBar {...args} />
+  </MemoryRouter>
+);
 
 export const Header = Template.bind({});
 Header.args = { isLogin: false };

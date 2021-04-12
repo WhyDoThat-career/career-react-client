@@ -5,6 +5,7 @@ import { Search } from '@styled-icons/bootstrap';
 import { useRecoilValue } from 'recoil';
 import { userState } from 'shared/store';
 import { useHistory, Link } from 'react-router-dom';
+import { NavItem } from 'components/nav/navItem';
 
 export interface HeaderBarProps {
   isLogin: boolean;
@@ -22,7 +23,7 @@ export function HeaderBar({ isLogin }: HeaderBarProps) {
       <nav>
         <ul>
           <li>
-            <Link to="/big">대기업</Link>
+            <NavItem name="대기업" route="/대기업"/>
           </li>
         </ul>
       </nav>
@@ -45,6 +46,12 @@ const Cover = styled.header`
   align-items: center;
   padding: 0 2rem;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  ul {
+    li {
+      list-style: none;
+    }
+  }
 `;
 
 const Logo = styled.div`
@@ -59,4 +66,6 @@ const ButtonContainer = styled.span`
   display: flex;
   width: fit-content;
   align-items: center;
+
+
 `;

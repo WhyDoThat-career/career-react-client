@@ -30,4 +30,10 @@ const Primary = styled.button<{ size: 'large' | 'normal' | 'small' }>`
   border: none;
   cursor: pointer;
   text-overflow: ellipsis;
+
+  &:hover {
+    border: 1px solid #304ffe;
+    color: #304ffe;
+    background-color: white;
+  }
 `;
