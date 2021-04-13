@@ -1,7 +1,6 @@
 {
   "name": "career-react-client",
   "version": "0.1.0",
-  "proxy": "http://13.209.215.210",
   "private": true,
   "dependencies": {
     "@styled-icons/bootstrap": "^10.29.0",
@@ -16,6 +15,7 @@
     "axios": "^0.21.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-hook-form": "^7.0.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "recoil": "^0.2.0",
@@ -64,5 +64,6 @@
     "babel-loader": "8.1.0",
     "chromatic": "^5.6.2",
     "storybook-react-router": "^1.0.8"
-  }
+  },
+  "proxy": "http://13.209.215.210"
 }

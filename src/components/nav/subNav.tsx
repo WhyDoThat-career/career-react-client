@@ -1,7 +1,7 @@
-import React from "react";
-import { SubNavInfo } from "shared/subNavInfo";
-import SubNavItem from "./subNavItem";
-import styled from "styled-components";
+import React from 'react';
+import { SubNavInfo } from 'shared/subNavInfo';
+import SubNavItem from './subNavItem';
+import styled from 'styled-components';
 
 function SubNav() {
   return (
@@ -15,12 +15,13 @@ function SubNav() {
 
 const Cover = styled.div`
   display: flex;
-  width: 80vw;
+  width: 70vw;
   height: 3rem;
   background-color: #efefef;
   justify-content: space-around;
   align-items: center;
   border-radius: 5px;
+  margin: 3rem 0;
 `;
 
 export default SubNav;

@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosError } from 'axios';
 
 export const AxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  // baseURL: process.env.REACT_APP_API_URL,
   withCredentials: true,
 });
 
@@ -46,6 +46,8 @@ AxiosInstance.interceptors.response.use(
       return Promise.reject(error);
     } else {
       alert(`예기치 못한 에러 ${error.message}`);
+      console.log(error);
+
       return Promise.reject(error);
     }
     /*

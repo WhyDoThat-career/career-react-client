@@ -5,15 +5,17 @@ export interface PrimaryBtnProps {
   label: string;
   size?: 'large' | 'normal' | 'small';
   onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export function PrimaryBtn({
   label,
   size = 'normal',
   onClick,
+  type = 'submit',
 }: PrimaryBtnProps) {
   return (
-    <Primary size={size} onClick={onClick}>
+    <Primary type={type} size={size} onClick={onClick}>
       {label}
     </Primary>
   );
@@ -24,6 +26,7 @@ const Primary = styled.button<{ size: 'large' | 'normal' | 'small' }>`
     size === 'large' ? '200px' : size === 'small' ? '80px' : '152px'};
   height: ${({ size }) =>
     size === 'large' ? '48px' : size === 'small' ? '24px' : '40px'};
+  min-height: 24px;
   background-color: #304ffe;
   color: white;
   border-radius: 5px;
