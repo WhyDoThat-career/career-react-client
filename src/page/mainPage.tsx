@@ -12,6 +12,10 @@ function MainPage() {
   );
 }
 
-const Cover = styled.article``;
+const Cover = styled.article`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
 
 export default MainPage;
