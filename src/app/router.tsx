@@ -1,8 +1,10 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import styled from "styled-components";
 
-import { BigCompanyPage, MainPage } from 'page';
+import { BigCompanyPage, MainPage } from "page";
+import { userState } from "shared/store";
+import LoginPage from "page/loginPage";
 
 function Router() {
   return (

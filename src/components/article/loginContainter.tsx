@@ -1,17 +1,26 @@
-import React from 'react';
-import styled from 'styled-components';
-import GoogleLogo from 'assets/g-normal.png';
+import React from "react";
+import styled from "styled-components";
+import GoogleLogo from "assets/g-normal.png";
+import { useRecoilState } from "recoil";
 
-import { PrimaryBtn } from 'components/button';
-import { PrimeInput } from 'components/input';
+import { PrimaryBtn } from "components/button";
+import { PrimeInput } from "components/input";
+import { userState } from "../../shared/store";
 
 function LoginContainter() {
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
   return (
     <Cover>
       <Title>로그인</Title>
       <PrimeInput label="email" id="email" />
       <PrimeInput label="pw" id="pw" />
-      <PrimaryBtn label="로그인" onClick={() => console.log('무야호')} />
+      <PrimaryBtn
+        label="로그인"
+        onClick={() => setUserInfo({ isLogin: true })}
+      />
+
+      <hr></hr>
 
       <GoogleBtn>
         <img
@@ -39,6 +48,10 @@ const Cover = styled.article`
   border-radius: 10px;
   gap: 1rem;
   padding: 2rem;
+
+  hr {
+    width: 80%;
+  }
 `;
 
 const Title = styled.h1`

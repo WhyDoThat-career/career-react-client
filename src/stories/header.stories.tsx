@@ -1,13 +1,12 @@
-import React from 'react';
-import { RecoilRoot } from 'recoil';
-import { MemoryRouter } from 'react-router-dom';
+import React from "react";
+import { MemoryRouter } from "react-router-dom";
 
-import { Story, Meta } from '@storybook/react/types-6-0';
+import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { HeaderBar, HeaderBarProps } from 'components/article';
+import { HeaderBar, HeaderBarProps } from "components/article";
 
 export default {
-  title: '아티클/header',
+  title: "아티클/header",
   component: HeaderBar,
 } as Meta;
 

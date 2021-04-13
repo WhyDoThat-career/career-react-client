@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 export interface PrimeInputProps {
   id: string;
@@ -18,6 +18,7 @@ export function PrimeInput({ id, label }: PrimeInputProps) {
 const InputCover = styled.span`
   display: flex;
   width: fit-content;
+  min-width: 200px;
   flex-direction: column;
 
   label {
