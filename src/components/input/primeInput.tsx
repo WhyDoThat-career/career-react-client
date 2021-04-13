@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 export interface PrimeInputProps {
-  id: string;
-  label: string;
+  id?: string;
+  label?: string;
 }
 
 export function PrimeInput({ id, label }: PrimeInputProps) {

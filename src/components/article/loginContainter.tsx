@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 
 import { PrimaryBtn } from "components/button";
 import { PrimeInput } from "components/input";
-import { userState } from "../../shared/store";
+import { userState } from "shared/store";
 
 function LoginContainter() {
   const [userInfo, setUserInfo] = useRecoilState(userState);

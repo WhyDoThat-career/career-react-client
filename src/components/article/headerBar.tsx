@@ -6,6 +6,7 @@ import { useRecoilValue } from "recoil";
 import { userState } from "shared/store";
 import { useHistory, Link } from "react-router-dom";
 import { NavItem } from "components/nav/navItem";
+import { PrimeInput } from "components/input";
 
 export interface HeaderBarProps {
   isLogin: boolean;
@@ -14,6 +15,7 @@ export interface HeaderBarProps {
 export function HeaderBar({ isLogin }: HeaderBarProps) {
   // const user = useRecoilValue(userState);
   const history = useHistory();
+  const [enableEdit, setEdit] = useState(false);
   return (
     <Cover>
       <Logo onClick={() => history.push("/")}>
@@ -29,7 +31,13 @@ export function HeaderBar({ isLogin }: HeaderBarProps) {
       </CustomNav>
 
       <ButtonContainer>
-        <Search size="24" style={{ margin: "0 1rem ", cursor: "pointer" }} />
+        <Search
+          size="24"
+          style={{ margin: "0 1rem ", cursor: "pointer" }}
+          onClick={() => setEdit(!enableEdit)}
+        />
+        <SearchBar placeholder="검색" enableEdit={enableEdit} />
+
         <PrimaryBtn
           label={isLogin ? "로그아웃" : "로그인"}
           onClick={() => console.log("test")}
@@ -73,4 +81,12 @@ const CustomNav = styled.nav`
     min-width: 100px;
     text-align: center;
   }
+`;
+
+const SearchBar = styled.input<{ enableEdit: boolean }>`
+  width: ${({ enableEdit }) => (enableEdit ? "15rem" : 0)};
+  height: 28px;
+  opacity: ${({ enableEdit }) => (enableEdit ? 1 : 0)};
+  transition: 0.3s all ease;
+  margin-right: 1rem;
 `;
