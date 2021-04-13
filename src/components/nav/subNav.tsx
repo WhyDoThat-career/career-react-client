@@ -16,7 +16,7 @@ function SubNav() {
 const Cover = styled.div`
   display: flex;
   width: 80vw;
-  height: 5rem;
+  height: 3rem;
   background-color: #efefef;
   justify-content: space-around;
   align-items: center;
