@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import GoogleLogo from 'assets/g-normal.png';
-import { useRecoilState } from 'recoil';
-import { useForm } from 'react-hook-form';
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import GoogleLogo from "assets/g-normal.png";
+import { useRecoilState } from "recoil";
+import { useForm } from "react-hook-form";
 
-import { PrimaryBtn } from 'components/button';
-import { PrimeInput } from 'components/input';
-import { userState } from 'shared/store';
-import { postCheckemail, postCheckloginpassword } from 'api/userRepo';
+import { PrimaryBtn } from "components/button";
+import { PrimeInput } from "components/input";
+import { userState } from "shared/store";
+import { postCheckemail, postCheckloginpassword } from "api/userRepo";
 
 function LoginContainter() {
   const [userInfo, setUserInfo] = useRecoilState(userState);
@@ -27,9 +27,9 @@ function LoginContainter() {
         data.password,
       );
 
-      console.log('====================================');
-      console.log('checkmail', checkmail, checkLogin);
-      console.log('====================================');
+      console.log("====================================");
+      console.log("checkmail", checkmail, checkLogin);
+      console.log("====================================");
     })();
   };
 
@@ -46,7 +46,7 @@ function LoginContainter() {
           label="email"
           id="email"
           wd="15vw"
-          register={{ ...register('email', { required: true }) }}
+          register={{ ...register("email", { required: true }) }}
         />
         {/* {errors.email && <span>This field is required</span>} */}
 
@@ -55,7 +55,7 @@ function LoginContainter() {
           label="pw"
           id="pw"
           wd="15vw"
-          register={{ ...register('password', { required: true }) }}
+          register={{ ...register("password", { required: true }) }}
         />
         {/* {errors.password && <span>This field is required</span>} */}
 
