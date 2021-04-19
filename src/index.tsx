@@ -1,22 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { RecoilRoot } from 'recoil';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import { RecoilRoot } from "recoil";
+import { BrowserRouter } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
 
-import App from './app/app';
-import GlobalStyle from 'shared/globalStyle';
+import App from "./app/app";
+import GlobalStyle from "shared/globalStyle";
 
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
       <BrowserRouter>
-        <GlobalStyle />
-        <App />
+        <CookiesProvider>
+          <GlobalStyle />
+          <App />
+        </CookiesProvider>
       </BrowserRouter>
     </RecoilRoot>
   </React.StrictMode>,
-  document.getElementById('root'),
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
