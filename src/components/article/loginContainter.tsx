@@ -3,6 +3,8 @@ import styled from "styled-components";
 import GoogleLogo from "assets/g-normal.png";
 import { useRecoilState } from "recoil";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
+import { Github } from "@styled-icons/boxicons-logos";
 
 import { PrimaryBtn } from "components/button";
 import { PrimeInput } from "components/input";
@@ -10,6 +12,7 @@ import { userState } from "shared/store";
 import { postCheckemail, postCheckloginpassword } from "api/userRepo";
 
 function LoginContainter() {
+  const history = useHistory();
   const [userInfo, setUserInfo] = useRecoilState(userState);
   const {
     register,
@@ -24,7 +27,7 @@ function LoginContainter() {
 
       const checkLogin = await postCheckloginpassword(
         data.email,
-        data.password,
+        data.password
       );
 
       console.log("====================================");
@@ -64,7 +67,11 @@ function LoginContainter() {
 
       <hr></hr>
 
-      <GoogleBtn>
+      <GoogleBtn
+        onClick={() =>
+          (window.location.href = `${process.env.REACT_APP_API}/google_login`)
+        }
+      >
         <img
           className="img"
           src={GoogleLogo}
@@ -75,6 +82,15 @@ function LoginContainter() {
 
         <p>구글 계정으로 로그인</p>
       </GoogleBtn>
+
+      <GitBtn
+        onClick={() =>
+          (window.location.href = `${process.env.REACT_APP_API}/github_login`)
+        }
+      >
+        <Github size="30" style={{ margin: "8px" }} />
+        <p>깃허브 계정으로 로그인</p>
+      </GitBtn>
     </Cover>
   );
 }
@@ -114,7 +130,23 @@ const Title = styled.h1`
 
 const GoogleBtn = styled.button`
   display: flex;
-  width: 200px;
+  width: 10vw;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  border-radius: 30px;
+  padding: 0 1rem;
+  font-weight: bold;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+`;
+
+const GitBtn = styled.button`
+  display: flex;
+  width: 10vw;
   height: 50px;
   justify-content: center;
   align-items: center;
