@@ -1,17 +1,28 @@
 import React from "react";
+import styled from "styled-components";
 import "./App.css";
-import Footer from "./components/footer/footer";
+import { Footer } from "./article/footer";
+import { HeaderBar } from "./article/headerBar";
+import { convertCompilerOptionsFromJson } from "typescript";
 
 function App() {
   return (
-    <div className="App">
-      <div>
-        <header />
-        <h1>hi</h1>
+    <Cover>
+      <div className="App">
+        <div>
+          <HeaderBar />
+          <h1>hi</h1>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Cover>
   );
 }
+
+const Cover = styled.div`
+  .App {
+    // margin: 0 auto;
+  }
+`;
 
 export default App;

@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <Cover>
       <footer>
-        <div className="footer-create">제작자: 정근영, 김태훈, 나두원</div>
-        <div className="footer-email">Email: whydothat.studio@gmail.com</div>
-        <div className="footer-copyright">
-          Copyrightⓒ 2021. WhyDoThat. All rights reserved.
+        <div className="inner">
+          <div className="footer-create">제작자: 정근영, 김태훈, 나두원</div>
+          <div className="footer-email">Email: whydothat.studio@gmail.com</div>
+          <div className="footer-copyright">
+            Copyrightⓒ 2021. WhyDoThat. All rights reserved.
+          </div>
         </div>
       </footer>
     </Cover>
@@ -36,5 +38,3 @@ const Cover = styled.div`
     margin: 1rem 0.5rem;
   }
 `;
-
-export default Footer;
