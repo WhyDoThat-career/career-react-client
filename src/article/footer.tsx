@@ -30,10 +30,12 @@ const Cover = styled.div`
     margin: 0.3rem 0.5rem;
   }
   .footer-email {
+    font-weight: bold;
     color: #545e6f;
     margin: 0 0.5rem;
   }
   .footer-copyright {
+    font-size: 0.8rem;
     color: #545e6f;
     margin: 1rem 0.5rem;
   }
