@@ -10,18 +10,18 @@ export function NavBar() {
             <div className="nav-brand">WhyDoThat</div>
             <ul>
               <li className="nav-bigCompany">대기업</li>
-              <li className="nav-employ">채용 공고</li>
+              <li className="nav-recruit">채용 공고</li>
             </ul>
-            <ul>
-              <li className="nav-search">
-                <SearchButton>
+            <SearchLogin>
+              <ul>
+                <li className="nav-search">
                   <button>
-                    <i className="fas fa-search search"></i>
+                    <i className="fas fa-search searchIcon"></i>
                   </button>
-                </SearchButton>
-              </li>
-              <li className="nav-login">로그인</li>
-            </ul>
+                </li>
+                <li className="nav-login">로그인</li>
+              </ul>
+            </SearchLogin>
           </div>
         </div>
       </nav>
@@ -59,13 +59,13 @@ const Cover = styled.div`
     font-size: 1.1rem;
     padding: 0 1.5rem;
   }
-  .nav-employ {
+  .nav-recruit {
     font-size: 1.1rem;
     padding: 0 1.5rem;
   }
 `;
 
-const SearchButton = styled.div`
+const SearchLogin = styled.div`
   button {
     background-color: #fff;
     border: none;
@@ -74,7 +74,14 @@ const SearchButton = styled.div`
   button:hover {
     cursor: pointer;
   }
-  .search {
+  .nav-search {
+    padding: 0 1rem;
+  }
+  .searchIcon {
     font-size: 1.2rem;
+  }
+  .nav-login {
+    border-left: 1px solid #e4e4e4;
+    padding: 0 1rem;
   }
 `;
