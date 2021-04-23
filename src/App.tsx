@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import "./App.css";
 import { Footer } from "./article/footer";
-import { HeaderBar } from "./article/headerBar";
+import { NavBar } from "./article/navBar";
 import { convertCompilerOptionsFromJson } from "typescript";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <Cover>
       <div className="App">
         <div>
-          <HeaderBar />
+          <NavBar />
           <h1>hi</h1>
         </div>
         <Footer />
