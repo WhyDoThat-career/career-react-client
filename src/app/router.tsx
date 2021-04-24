@@ -8,7 +8,7 @@ import { BigCompanyPage, MainPage } from 'page';
 import { userState } from 'shared/store';
 import LoginPage from 'page/loginPage';
 import { HeaderBar } from 'components/article';
-import Footer from 'components/footer/footer';
+import { Footer } from 'components/footer/footer';
 
 function Router() {
   const [cookies, setCookie] = useCookies(['session']);

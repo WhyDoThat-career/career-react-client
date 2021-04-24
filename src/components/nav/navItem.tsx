@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export interface NavItemProps {
   name: string;
@@ -8,7 +8,11 @@ export interface NavItemProps {
 }
 
 export function NavItem({ name, route }: NavItemProps) {
-  return <CustomNavItem to={`${route}`}>{name}</CustomNavItem>;
+  return (
+    <li>
+      <CustomNavItem to={`${route}`}>{name}</CustomNavItem>
+    </li>
+  );
 }
 
 const CustomNavItem = styled(NavLink)`
