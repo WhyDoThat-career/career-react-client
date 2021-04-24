@@ -88,7 +88,6 @@ const ButtonContainer = styled.span`
 
 const CustomNav = styled.nav`
   width: 100%;
-  height: 50px;
   top: 0;
   left: 0;
   z-index: 1000;
