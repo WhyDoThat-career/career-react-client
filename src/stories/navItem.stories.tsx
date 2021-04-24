@@ -11,7 +11,7 @@ export default {
 
 const Template: Story<NavItemProps> = (args) => (
   <MemoryRouter>
-    <NavItem {...args} />s
+    <NavItem {...args} />
   </MemoryRouter>
 );
 export const navItem = Template.bind({});

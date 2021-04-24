@@ -27,17 +27,19 @@ export function PrimeInput({
 const InputCover = styled.span`
   display: flex;
   width: fit-content;
-  min-width: 200px;
+  align-items: center;
   flex-direction: column;
 
   label {
+    margin: 0;
+    margin-right: auto;
     margin-bottom: 0.5rem;
     font-weight: bold;
   }
 `;
 
 const CustomInput = styled.input<{ wd?: string }>`
-  width: ${({ wd }) => (wd ? `${wd}` : 'fit-content')};
+  width: ${({ wd }) => (wd ? `${wd}` : '100%')};
 
   height: 28px;
   border: 1px solid #dbdbdb;

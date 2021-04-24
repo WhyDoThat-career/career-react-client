@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import GoogleLogo from "assets/g-normal.png";
-import { useRecoilState } from "recoil";
-import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
-import { Github } from "@styled-icons/boxicons-logos";
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import GoogleLogo from 'assets/g-normal.png';
+import { useRecoilState } from 'recoil';
+import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import { Github } from '@styled-icons/boxicons-logos';
 
-import { PrimaryBtn } from "components/button";
-import { PrimeInput } from "components/input";
-import { userState } from "shared/store";
-import { postCheckemail, postCheckloginpassword } from "api/userRepo";
+import { PrimaryBtn } from 'components/button';
+import { PrimeInput } from 'components/input';
+import { userState } from 'shared/store';
+import { postCheckemail, postCheckloginpassword } from 'api/userRepo';
 
 function LoginContainter() {
   const history = useHistory();
@@ -27,12 +27,12 @@ function LoginContainter() {
 
       const checkLogin = await postCheckloginpassword(
         data.email,
-        data.password
+        data.password,
       );
 
-      console.log("====================================");
-      console.log("checkmail", checkmail, checkLogin);
-      console.log("====================================");
+      console.log('====================================');
+      console.log('checkmail', checkmail, checkLogin);
+      console.log('====================================');
     })();
   };
 
@@ -49,7 +49,7 @@ function LoginContainter() {
           label="email"
           id="email"
           wd="15vw"
-          register={{ ...register("email", { required: true }) }}
+          register={{ ...register('email', { required: true }) }}
         />
         {/* {errors.email && <span>This field is required</span>} */}
 
@@ -58,7 +58,7 @@ function LoginContainter() {
           label="pw"
           id="pw"
           wd="15vw"
-          register={{ ...register("password", { required: true }) }}
+          register={{ ...register('password', { required: true }) }}
         />
         {/* {errors.password && <span>This field is required</span>} */}
 
@@ -69,7 +69,7 @@ function LoginContainter() {
 
       <GoogleBtn
         onClick={() =>
-          (window.location.href = `${process.env.REACT_APP_API}/google_login`)
+          (window.location.href = `${process.env.REACT_APP_API_URL}/google_login`)
         }
       >
         <img
@@ -88,7 +88,7 @@ function LoginContainter() {
           (window.location.href = `${process.env.REACT_APP_API}/github_login`)
         }
       >
-        <Github size="30" style={{ margin: "8px" }} />
+        <Github size="30" style={{ margin: '8px' }} />
         <p>깃허브 계정으로 로그인</p>
       </GitBtn>
     </Cover>
@@ -131,6 +131,7 @@ const Title = styled.h1`
 const GoogleBtn = styled.button`
   display: flex;
   width: 10vw;
+  min-width: 200px;
   height: 50px;
   justify-content: center;
   align-items: center;
@@ -147,6 +148,7 @@ const GoogleBtn = styled.button`
 const GitBtn = styled.button`
   display: flex;
   width: 10vw;
+  min-width: 200px;
   height: 50px;
   justify-content: center;
   align-items: center;

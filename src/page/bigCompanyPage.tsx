@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import { getSector } from 'api/bigCompRepo';
+import { getSector } from 'api/companyRepo';
 
 function BigCompanyPage() {
   const [test, setTest] = useState<{ name: string; id: number }[]>();
