@@ -1,11 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import { RecoilRoot } from "recoil";
+import { BrowserRouter } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
+
+import App from "./app/App";
+import GlobalStyle from "./shared/globalStyle";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RecoilRoot>
+      <BrowserRouter>
+        <CookiesProvider>
+          <GlobalStyle />
+          <App />
+        </CookiesProvider>
+      </BrowserRouter>
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root"),
 );

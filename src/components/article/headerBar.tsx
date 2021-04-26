@@ -1,17 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import { NavItem } from "components/nav/navItem";
 
-export function NavBar() {
+export function HeaderBar() {
   return (
     <Cover>
       <nav>
         <div className="inner">
           <div className="nav-container">
             <div className="nav-brand">WhyDoThat</div>
-            <ul>
-              <li className="nav-bigCompany">대기업</li>
-              <li className="nav-recruit">채용 공고</li>
-            </ul>
+
+            <CustomNav>
+              <ul>
+                <NavItem name="대기업" route="/대기업" />
+                <NavItem name="채용 공고" route="/채용 공고" />
+              </ul>
+            </CustomNav>
+
             <SearchLogin>
               <ul>
                 <li className="nav-search">
@@ -62,6 +67,27 @@ const Cover = styled.div`
   .nav-recruit {
     font-size: 1.1rem;
     padding: 0 1.5rem;
+  }
+`;
+
+const CustomNav = styled.nav`
+  width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  .nav-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  li {
+    min-width: 100px;
+    text-align: center;
   }
 `;
 
