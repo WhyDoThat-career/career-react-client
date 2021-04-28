@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { NavItem } from "components/nav/navItem";
+// import { onLogin } from "api/onLogin";
+import { LoginModal } from "components/modal/loginModal";
+import Modal from "@material-ui/core/Modal";
 
 export function HeaderBar() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <Cover>
       <nav>
@@ -24,7 +35,17 @@ export function HeaderBar() {
                     <i className="fas fa-search searchIcon"></i>
                   </button>
                 </li>
-                <li className="nav-login">로그인</li>
+                <li>
+                  <button onClick={openModal}>로그인</button>
+                  <Modal
+                    open={modalOpen}
+                    onClose={closeModal}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                  >
+                    <LoginModal />
+                  </Modal>
+                </li>
               </ul>
             </SearchLogin>
           </div>

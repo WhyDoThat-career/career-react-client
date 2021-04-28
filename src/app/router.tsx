@@ -6,7 +6,7 @@ import { useRecoilValue } from "recoil";
 
 import { BigCompanyPage, MainPage } from "page";
 import { userState } from "shared/store";
-// import LoginPage from "page/loginPage";
+import { LoginPage } from "page/loginPage";
 import { HeaderBar } from "components/article";
 import { Footer } from "components/article";
 
@@ -27,6 +27,7 @@ function Router() {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/big" component={BigCompanyPage} />
+          <Route exact path="/login" component={LoginPage} />
         </Switch>
       </Content>
       <Footer />
