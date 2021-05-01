@@ -1,16 +1,23 @@
 import { TagChip } from 'components/chip/tagChip';
 import React from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 export interface JobCardProps {
+  id: number;
   name: string;
   img: string;
   tagList: any[];
 }
 
-export function JobCard({ name = '없음', img, tagList }: JobCardProps) {
+export function JobCard({ id, name = '없음', img, tagList }: JobCardProps) {
+  const history = useHistory();
+  const handleCardClick = () => {
+    history.push(`/detail/${id}`);
+  };
+
   return (
-    <CardBody>
+    <CardBody onClick={handleCardClick}>
       <Title>
         <p>{name}</p>
       </Title>
@@ -28,15 +35,16 @@ export function JobCard({ name = '없음', img, tagList }: JobCardProps) {
 
 const CardBody = styled.div`
   display: flex;
-  width: 15vw;
+  width: 10vw;
   min-width: 150px;
-  height: 30vh;
+  height: 20vh;
   background-color: white;
   border: none;
   flex-direction: column;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
+  cursor: pointer;
 `;
 
 const Title = styled.div`

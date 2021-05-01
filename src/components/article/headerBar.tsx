@@ -24,8 +24,8 @@ export function HeaderBar({ isLogin }: HeaderBarProps) {
 
       <CustomNav>
         <ul>
-          <NavItem name="대기업" route="/대기업" />
-          <NavItem name="채용 공고" route="/채용 공고" />
+          <NavItem name="채용 공고" route="/notification" />
+          <NavItem name="대기업" route="/big" />
         </ul>
       </CustomNav>
 

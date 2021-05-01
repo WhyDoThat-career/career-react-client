@@ -17,11 +17,11 @@ const Cover = styled.div`
   display: flex;
   width: 70vw;
   height: 3rem;
-  background-color: #efefef;
+  /* background-color: #efefef; */
   justify-content: space-around;
   align-items: center;
-  border-radius: 5px;
   margin: 3rem 0;
+  border-bottom: 1px solid gray;
 `;
 
 export default SubNav;
