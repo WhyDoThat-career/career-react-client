@@ -1,25 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { NavItem } from "components/nav/navItem";
+import { useHistory } from "react-router-dom";
 // import { onLogin } from "api/onLogin";
 import { LoginModal } from "components/modal/loginModal";
 import Modal from "@material-ui/core/Modal";
+import { getCheckUserRepo, getLogout } from "api/userRepo";
+
+export interface HeaderProps {
+  isLogin: boolean;
+}
 
 export function HeaderBar() {
+  const history = useHistory();
   const [modalOpen, setModalOpen] = useState(false);
+  const [userState, setUserState] = useState(false);
+  const [userInfo, getUserInfo] = useState(0);
   const openModal = () => {
     setModalOpen(true);
   };
   const closeModal = () => {
     setModalOpen(false);
   };
-
+  if (userState === false) {
+    getCheckUserRepo().then(function Resp(response) {
+      setUserState(response.is_active);
+      if (response.is_active === true) {
+        getUserInfo(response.data);
+      }
+    });
+  }
+  console.log("--------------------------");
+  console.log(userState);
+  console.log(userInfo);
+  console.log("--------------------------");
   return (
     <Cover>
       <nav>
         <div className="inner">
           <div className="nav-container">
-            <div className="nav-brand">WhyDoThat</div>
+            <div className="nav-brand" onClick={() => history.push("/")}>
+              WhyDoThat
+            </div>
 
             <CustomNav>
               <ul>
@@ -36,15 +58,23 @@ export function HeaderBar() {
                   </button>
                 </li>
                 <li>
-                  <button onClick={openModal}>로그인</button>
-                  <Modal
-                    open={modalOpen}
-                    onClose={closeModal}
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                  >
-                    <LoginModal />
-                  </Modal>
+                  {userState ? (
+                    <div>
+                      <button onClick={getLogout}>로그아웃</button>
+                    </div>
+                  ) : (
+                    <div>
+                      <button onClick={openModal}>로그인</button>
+                      <Modal
+                        open={modalOpen}
+                        onClose={closeModal}
+                        aria-labelledby="simple-modal-title"
+                        aria-describedby="simple-modal-description"
+                      >
+                        <LoginModal />
+                      </Modal>
+                    </div>
+                  )}
                 </li>
               </ul>
             </SearchLogin>

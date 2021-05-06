@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosError } from 'axios';
+import axios, { AxiosRequestConfig, AxiosError } from "axios";
 
 export const AxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -14,7 +14,6 @@ AxiosInstance.interceptors.request.use(
     //       'token',
     //     )}`)
     //   : null;
-
     return response;
   },
   (error) => {
@@ -36,10 +35,10 @@ AxiosInstance.interceptors.response.use(
 
   (error) => {
     if (error.response) {
-      if (error.response.data.message === 'Signature has expired.') {
-        alert('로그인 시간이 만료되었습니다. 다시 로그인 해주세요');
+      if (error.response.data.message === "Signature has expired.") {
+        alert("로그인 시간이 만료되었습니다. 다시 로그인 해주세요");
         localStorage.clear();
-        return (window.location.href = '/');
+        return (window.location.href = "/");
       }
       console.log(error.response);
 

@@ -12,9 +12,9 @@ export function LoginModal({ open, close }: modalProps) {
       <div className={open ? "openModal modal" : "modal"}>
         {open ? (
           <section>
-            <button className="close" onClick={close}>
-              close
-            </button>
+            {/* <button className="close" onClick={close}>
+            close
+          </button> */}
             <div>hi</div>
           </section>
         ) : null}
