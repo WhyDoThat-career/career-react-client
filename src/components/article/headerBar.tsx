@@ -7,15 +7,11 @@ import { LoginModal } from "components/modal/loginModal";
 import Modal from "@material-ui/core/Modal";
 import { getCheckUserRepo, getLogout } from "api/userRepo";
 
-export interface HeaderProps {
-  isLogin: boolean;
-}
-
 export function HeaderBar() {
   const history = useHistory();
   const [modalOpen, setModalOpen] = useState(false);
   const [userState, setUserState] = useState(false);
-  const [userInfo, getUserInfo] = useState(0);
+  const [userInfo, getUserInfo]: any = useState(0);
   const openModal = () => {
     setModalOpen(true);
   };
@@ -27,6 +23,7 @@ export function HeaderBar() {
       setUserState(response.is_active);
       if (response.is_active === true) {
         getUserInfo(response.data);
+        // const userImg = userInfo.thumbnail;
       }
     });
   }
@@ -59,21 +56,27 @@ export function HeaderBar() {
                 </li>
                 <li>
                   {userState ? (
-                    <div>
-                      <button onClick={getLogout}>로그아웃</button>
-                    </div>
+                    <UserLogo>
+                      <div>
+                        <img src={userInfo.thumbnail} alt="userimage" />
+                        <div>{userInfo.nickname}</div>
+                        <button onClick={getLogout}>로그아웃</button>
+                      </div>
+                    </UserLogo>
                   ) : (
-                    <div>
-                      <button onClick={openModal}>로그인</button>
-                      <Modal
-                        open={modalOpen}
-                        onClose={closeModal}
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                      >
-                        <LoginModal />
-                      </Modal>
-                    </div>
+                    <UserLogo>
+                      <div>
+                        <button onClick={openModal}>로그인</button>
+                        <Modal
+                          open={modalOpen}
+                          onClose={closeModal}
+                          aria-labelledby="simple-modal-title"
+                          aria-describedby="simple-modal-description"
+                        >
+                          <LoginModal />
+                        </Modal>
+                      </div>
+                    </UserLogo>
                   )}
                 </li>
               </ul>
@@ -93,6 +96,10 @@ const Cover = styled.div`
     top: 0;
     left: 0;
     z-index: 1000;
+  }
+  img {
+    height: 2vh;
+    width: auto;
   }
   .nav-container {
     width: 100%;
@@ -160,5 +167,24 @@ const SearchLogin = styled.div`
   .nav-login {
     border-left: 1px solid #e4e4e4;
     padding: 0 1rem;
+  }
+`;
+
+const UserLogo = styled.div`
+  div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    align-items: center;
+  }
+  button {
+    width: 100%
+    background-color: #fff;
+    border: none;
+    outline: 0;
+  }
+  button:hover {
+    cursor: pointer;
   }
 `;
