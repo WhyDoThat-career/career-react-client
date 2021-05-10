@@ -6,6 +6,9 @@ export interface PrimeInputProps {
   id?: string;
   label?: string;
   wd?: string;
+  onInput?: (event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+
   register: any;
 }
 
@@ -15,11 +18,20 @@ export function PrimeInput({
   label,
   wd,
   register,
+  onChange,
+  onInput,
 }: PrimeInputProps) {
   return (
     <InputCover>
       <label htmlFor={id}>{label}</label>
-      <CustomInput type={type} placeholder={label} wd={wd} {...register} />
+      <CustomInput
+        type={type}
+        placeholder={label}
+        wd={wd}
+        {...register}
+        onChange={onChange}
+        onInput={onInput}
+      />
     </InputCover>
   );
 }
