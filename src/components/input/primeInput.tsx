@@ -4,6 +4,7 @@ import styled from "styled-components";
 export interface PrimeInputProps {
   type?: string;
   id?: string;
+  onchange?: (e: any) => void;
   label?: string;
   wd?: string;
   register: any;
@@ -12,6 +13,7 @@ export interface PrimeInputProps {
 export function PrimeInput({
   type = "text",
   id,
+  onchange,
   label,
   wd,
   register,
@@ -19,7 +21,13 @@ export function PrimeInput({
   return (
     <InputCover>
       <label htmlFor={id}>{label}</label>
-      <CustomInput type={type} placeholder={label} wd={wd} {...register} />
+      <CustomInput
+        type={type}
+        onchange={onchange}
+        placeholder={label}
+        wd={wd}
+        {...register}
+      />
     </InputCover>
   );
 }

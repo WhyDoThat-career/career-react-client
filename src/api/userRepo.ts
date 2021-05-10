@@ -34,6 +34,24 @@ export const postCheckloginpassword = async (
   return answer.data;
 };
 
+export const postRegister = async (
+  email: string,
+  nickname: string,
+  password: string,
+  confirmpassword: string,
+) => {
+  const answer = await AxiosInstance.post(
+    "/register",
+    JSON.stringify({
+      email: email,
+      nickname: nickname,
+      password: password,
+      confirmpassword: confirmpassword,
+    }),
+  );
+  console.log("register");
+};
+
 export const getCheckUserRepo = async () => {
   const answer = await AxiosInstance.get("/getuser").catch((err) => {
     throw err;
@@ -43,5 +61,6 @@ export const getCheckUserRepo = async () => {
 };
 
 export const getLogout = async () => {
-  AxiosInstance.get("/logout");
+  await AxiosInstance.get("/logout");
+  window.location.reload();
 };

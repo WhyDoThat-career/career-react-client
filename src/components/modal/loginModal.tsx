@@ -8,15 +8,7 @@ import WdtCon from "components/img/wdtcon.png";
 import { PrimeInput } from "components/input";
 import { PrimaryBtn } from "components/button";
 import { postCheckemail, postCheckloginpassword } from "api/userRepo";
-import { checkServerIdentity } from "tls";
-
-export interface userInfo {
-  userInputs: string;
-}
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+import { RegisterModal } from "components/modal/registerModal";
 
 function getModalStyle() {
   const top = 50;
@@ -43,10 +35,27 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+export const handleEmailCheck = (email: any) => {
+  // (async () => {
+  //   const checkmail = await postCheckemail(email);
+
+  //   console.log(checkmail);
+  // })();
+  console.log("change");
+};
+
 export function LoginModal() {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
+  const [membershipOpen, setMembershipOpen] = useState(false);
   const history = useHistory();
+
+  const openMemModal = () => {
+    setMembershipOpen(true);
+  };
+  const closeMemModal = () => {
+    setMembershipOpen(false);
+  };
 
   const {
     register,
@@ -57,15 +66,12 @@ export function LoginModal() {
 
   const handleLogin = (data: { email: string; password: string }) => {
     (async () => {
-      const checkmail = await postCheckemail(data.email);
-
       const checkLogin = await postCheckloginpassword(
         data.email,
         data.password,
       );
 
       console.log("====================================");
-      console.log(checkmail);
       console.log(checkLogin);
       console.log("====================================");
 
@@ -89,6 +95,7 @@ export function LoginModal() {
           <form onSubmit={handleSubmit(handleLogin)}>
             <PrimeInput
               type="email"
+              onchange={handleEmailCheck}
               label="email"
               id="email"
               wd="15vw"
@@ -103,13 +110,15 @@ export function LoginModal() {
             />
             <PrimaryBtn label="로그인" type="submit" />
           </form>
-          <div>회원가입</div>
-          {/* <Modal
-                    open={modalOpen}
-                    onClose={closeModal}
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                  ></Modal> */}
+          <button onClick={openMemModal}>회원가입</button>
+          <Modal
+            open={membershipOpen}
+            onClose={closeMemModal}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+          >
+            <RegisterModal />
+          </Modal>
         </section>
       </div>
     </Cover>
