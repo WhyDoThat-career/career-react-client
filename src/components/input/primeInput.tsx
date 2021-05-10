@@ -4,18 +4,21 @@ import styled from "styled-components";
 export interface PrimeInputProps {
   type?: string;
   id?: string;
-  onchange?: (e: any) => void;
   label?: string;
   wd?: string;
+  onInput?: (event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+
   register: any;
 }
 
 export function PrimeInput({
   type = "text",
   id,
-  onchange,
   label,
   wd,
+  onChange,
+  onInput,
   register,
 }: PrimeInputProps) {
   return (
@@ -23,10 +26,11 @@ export function PrimeInput({
       <label htmlFor={id}>{label}</label>
       <CustomInput
         type={type}
-        onchange={onchange}
         placeholder={label}
         wd={wd}
         {...register}
+        onChange={onChange}
+        onInput={onInput}
       />
     </InputCover>
   );

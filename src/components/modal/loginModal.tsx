@@ -14,6 +14,7 @@ import {
   getGithubLogin,
 } from "api/userRepo";
 import { RegisterModal } from "components/modal/registerModal";
+import { constSelector } from "recoil";
 
 function getModalStyle() {
   const top = 50;
@@ -40,20 +41,12 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export const handleEmailCheck = (email: any) => {
-  // (async () => {
-  //   const checkmail = await postCheckemail(email);
-
-  //   console.log(checkmail);
-  // })();
-  console.log("change");
-};
-
 export function LoginModal() {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [membershipOpen, setMembershipOpen] = useState(false);
   const history = useHistory();
+  const [checkEmail, setChekcEmail] = useState(true);
 
   const openMemModal = () => {
     setMembershipOpen(true);
@@ -87,6 +80,19 @@ export function LoginModal() {
     })();
   };
 
+  const handleEmailCheck = (e: any) => {
+    (async () => {
+      const { value, name } = e.target;
+      const answer = await postCheckemail(value);
+
+      if (answer === "Exist") {
+        setChekcEmail(true);
+      } else {
+        setChekcEmail(false);
+      }
+    })();
+  };
+
   const handleGoogleClick = () => {
     (async () => {
       await getGoogleLogin();
@@ -112,12 +118,13 @@ export function LoginModal() {
           <form onSubmit={handleSubmit(handleLogin)}>
             <PrimeInput
               type="email"
-              onchange={handleEmailCheck}
               label="email"
               id="email"
               wd="15vw"
+              onChange={handleEmailCheck}
               register={{ ...register("email", { required: true }) }}
             />
+            {checkEmail ? null : <div>없는 이메일 입니다</div>}
             <PrimeInput
               type="password"
               label="pw"
@@ -125,7 +132,7 @@ export function LoginModal() {
               wd="15vw"
               register={{ ...register("password", { required: true }) }}
             />
-            <PrimaryBtn label="로그인" type="submit" />
+            <PrimaryBtn label="로그인" type="submit" disabled={!checkEmail} />
           </form>
           <PrimaryBtn
             label="google 로 로그인 하기"

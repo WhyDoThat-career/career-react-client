@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { PrimeInput } from "components/input";
 import { PrimaryBtn } from "components/button";
-import { postRegister } from "api/userRepo";
+import { postRegister, postCheckemail } from "api/userRepo";
 
 function getModalStyle() {
   const top = 50;
@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export function RegisterModal() {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
+  const [checkEmail, setCheckEmail] = useState(true);
 
   const {
     register,
@@ -61,6 +62,19 @@ export function RegisterModal() {
     );
   };
 
+  const handle = (e: any) => {
+    (async () => {
+      const { value, name } = e.target;
+      const answer = await postCheckemail(value);
+
+      if (answer === "Exist") {
+        setCheckEmail(false);
+      } else {
+        setCheckEmail(true);
+      }
+    })();
+  };
+
   return (
     <div style={modalStyle} className={classes.paper}>
       <header>
@@ -74,8 +88,10 @@ export function RegisterModal() {
             label="email"
             id="email"
             wd="20vw"
+            onChange={handle}
             register={{ ...register("email", { required: true }) }}
           />
+          {checkEmail ? null : <div>중복된 이메일 입니다.</div>}
           <PrimeInput
             type="nickname"
             label="닉네임"
@@ -97,7 +113,7 @@ export function RegisterModal() {
             wd="10vw"
             register={{ ...register("confirmpassword", { required: true }) }}
           />
-          <PrimaryBtn label="회원가입" type="submit" />
+          <PrimaryBtn label="회원가입" type="submit" disabled={!checkEmail} />
         </form>
       </section>
     </div>
