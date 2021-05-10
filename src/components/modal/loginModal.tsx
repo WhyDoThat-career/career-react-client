@@ -7,7 +7,12 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import WdtCon from "components/img/wdtcon.png";
 import { PrimeInput } from "components/input";
 import { PrimaryBtn } from "components/button";
-import { postCheckemail, postCheckloginpassword } from "api/userRepo";
+import {
+  postCheckemail,
+  postCheckloginpassword,
+  getGoogleLogin,
+  getGithubLogin,
+} from "api/userRepo";
 import { RegisterModal } from "components/modal/registerModal";
 
 function getModalStyle() {
@@ -82,6 +87,18 @@ export function LoginModal() {
     })();
   };
 
+  const handleGoogleClick = () => {
+    (async () => {
+      await getGoogleLogin();
+    })();
+  };
+
+  const handleGithubClick = () => {
+    (async () => {
+      await getGithubLogin();
+    })();
+  };
+
   return (
     <Cover>
       <div style={modalStyle} className={classes.paper}>
@@ -110,6 +127,16 @@ export function LoginModal() {
             />
             <PrimaryBtn label="로그인" type="submit" />
           </form>
+          <PrimaryBtn
+            label="google 로 로그인 하기"
+            type="button"
+            onClick={handleGoogleClick}
+          />
+          <PrimaryBtn
+            label="github 으로 로그인 하기"
+            type="button"
+            onClick={handleGithubClick}
+          />
           <button onClick={openMemModal}>회원가입</button>
           <Modal
             open={membershipOpen}

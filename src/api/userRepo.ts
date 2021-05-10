@@ -34,6 +34,14 @@ export const postCheckloginpassword = async (
   return answer.data;
 };
 
+export const getGoogleLogin = async () => {
+  await AxiosInstance.get("/login/google");
+};
+
+export const getGithubLogin = async () => {
+  await AxiosInstance.get("/login/github");
+};
+
 export const postRegister = async (
   email: string,
   nickname: string,
