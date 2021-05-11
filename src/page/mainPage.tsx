@@ -1,28 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { getCompanyList } from "api/companyRepo";
+// import SubNav from 'components/nav/subNav';
 
 function MainPage() {
-  const [companyList, setCompanys] = useState();
-
-  useEffect(() => {
-    (async () => {
-      const result = await getCompanyList("bigcompany");
-      setCompanys(result);
-    })();
-  }, []);
-
-  useEffect(() => {
-    console.log("====================================");
-    console.log("companyList", companyList);
-    console.log("====================================");
-  }, [companyList]);
-
-  return (
-    <Cover>
-      <h1>hello</h1>
-    </Cover>
-  );
+  return <Cover>{/* <SubNav /> */}</Cover>;
 }
 
 const Cover = styled.article`

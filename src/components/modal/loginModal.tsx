@@ -137,12 +137,28 @@ export function LoginModal() {
           <PrimaryBtn
             label="google 로 로그인 하기"
             type="button"
-            onClick={handleGoogleClick}
+            onClick={(e: any) => {
+              e.preventDefault();
+              window.location.href = "/api/login/google";
+            }}
           />
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = "/api/login/github";
+            }}
+          >
+            깃헙 로그인
+          </button>
           <PrimaryBtn
             label="github 으로 로그인 하기"
             type="button"
-            onClick={handleGithubClick}
+            onClick={(e: any) => {
+              e.preventDefault();
+              window.location.href = "/api/login/github";
+            }}
           />
           <button onClick={openMemModal}>회원가입</button>
           <Modal

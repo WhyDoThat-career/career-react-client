@@ -33,11 +33,6 @@ export function HeaderBar() {
       }
     });
   }
-  console.log("--------------------------");
-  console.log(userState);
-  console.log(userInfo);
-  console.log("--------------------------");
-
   return (
     <Cover>
       <Logo onClick={() => history.push("/")}>
@@ -167,9 +162,15 @@ const UserLogo = styled.div`
 
     align-items: center;
   }
+  img {
+    width: 0.2rem;
+    height: auto;
+  }
   button {
     width: 100%
+    color: #fff;
     background-color: #fff;
+    font-size: 1.2rem;
     border: none;
     outline: 0;
   }

@@ -4,7 +4,7 @@ import styled from "styled-components";
 export interface PrimaryBtnProps {
   label: string;
   size?: "large" | "normal" | "small";
-  onClick?: () => void;
+  onClick?: any;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
 }

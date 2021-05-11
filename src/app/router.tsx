@@ -7,7 +7,7 @@ import { useRecoilValue } from "recoil";
 import { BigCompanyPage, MainPage } from "page";
 import { userState } from "shared/store";
 import { HeaderBar } from "components/article";
-import { Footer } from "components/article";
+import { Footer } from "components/article/footer";
 
 function Router() {
   const [cookies, setCookie] = useCookies(["session"]);
@@ -19,8 +19,7 @@ function Router() {
 
   return (
     <MainCover>
-      {/* <HeaderBar isLogin={userInfo.isLogin} /> */}
-      {/* <HeaderBar /> */}
+      <HeaderBar />
 
       <Content>
         <Switch>

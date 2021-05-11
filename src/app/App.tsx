@@ -1,27 +1,15 @@
 import React from "react";
-import styled from "styled-components";
-import "App.css";
-import { Footer } from "../components/article/footer";
-import { HeaderBar } from "../components/article/headerBar";
 
+import Router from "app/router";
+import { HeaderBar } from "components/article";
+import { useRecoilValue } from "recoil";
+import { userState } from "shared/store";
 function App() {
   return (
-    <Cover>
-      <div className="App">
-        <div>
-          <HeaderBar />
-          <h1>hi</h1>
-        </div>
-        <Footer />
-      </div>
-    </Cover>
+    <div className="App">
+      <Router />
+    </div>
   );
 }
-
-const Cover = styled.div`
-  .App {
-    // margin: 0 auto;
-  }
-`;
 
 export default App;
