@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://ec2-13-209-215-210.ap-northeast-2.compute.amazonaws.com",
   "dependencies": {
+    "@styled-icons/bootstrap": "^10.29.0",
     "@material-ui/core": "^4.11.4",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

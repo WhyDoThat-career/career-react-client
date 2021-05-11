@@ -1,3 +1,184 @@
+import React, { useState } from "react";
+import { PrimaryBtn } from "components/button";
+import styled from "styled-components";
+import { Search } from "@styled-icons/bootstrap";
+import { useRecoilValue } from "recoil";
+import { userState } from "shared/store";
+import { useHistory, Link } from "react-router-dom";
+import { NavItem } from "components/nav/navItem";
+import { PrimeInput } from "components/input";
+import { LoginModal } from "components/modal/loginModal";
+import Modal from "@material-ui/core/Modal";
+import { getCheckUserRepo, getLogout } from "api/userRepo";
+
+export function HeaderBar() {
+  // const user = useRecoilValue(userState);
+  const history = useHistory();
+  const [enableEdit, setEdit] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [userState, setUserState] = useState(false);
+  const [userInfo, getUserInfo]: any = useState(0);
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+  if (userState === false) {
+    getCheckUserRepo().then(function Resp(response) {
+      setUserState(response.is_active);
+      if (response.is_active === true) {
+        getUserInfo(response.data);
+        // const userImg = userInfo.thumbnail;
+      }
+    });
+  }
+  console.log("--------------------------");
+  console.log(userState);
+  console.log(userInfo);
+  console.log("--------------------------");
+
+  return (
+    <Cover>
+      <Logo onClick={() => history.push("/")}>
+        <h1>WhyDoThat</h1>
+      </Logo>
+
+      <CustomNav>
+        <ul>
+          <NavItem name="홈" route="/" />
+          <NavItem name="채용 공고" route="/notification" />
+          <NavItem name="대기업" route="/big" />
+        </ul>
+      </CustomNav>
+
+      <ButtonContainer>
+        <Search
+          size="24"
+          style={{ margin: "0 1rem ", cursor: "pointer" }}
+          onClick={() => setEdit(!enableEdit)}
+        />
+        <SearchBar placeholder="검색" enableEdit={enableEdit} />
+      </ButtonContainer>
+      {userState ? (
+        <UserLogo>
+          <div>
+            <img src={userInfo.thumbnail} alt="userimage" />
+            <div>{userInfo.nickname}</div>
+            <button onClick={getLogout}>로그아웃</button>
+          </div>
+        </UserLogo>
+      ) : (
+        <UserLogo>
+          <div>
+            <button onClick={openModal}>로그인</button>
+            <Modal
+              open={modalOpen}
+              onClose={closeModal}
+              aria-labelledby="simple-modal-title"
+              aria-describedby="simple-modal-description"
+            >
+              <LoginModal />
+            </Modal>
+          </div>
+        </UserLogo>
+      )}
+    </Cover>
+  );
+}
+
+const Cover = styled.header`
+  display: flex;
+  height: 8vh;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  /* border-bottom: 0.5px solid #e4e4e4; */
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0.6rem 0;
+    margin: 0 0;
+
+    li {
+      list-style: none;
+      font-size: 1.1rem;
+      padding: 0 1.5rem;
+    }
+  }
+`;
+
+const Logo = styled.div`
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+
+  p {
+    font-weight: bolder;
+  }
+`;
+
+const ButtonContainer = styled.span`
+  display: flex;
+  width: fit-content;
+  align-items: center;
+`;
+
+const CustomNav = styled.nav`
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  .nav-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  li {
+    min-width: 100px;
+    text-align: center;
+  }
+`;
+
+const SearchBar = styled.input<{ enableEdit: boolean }>`
+  width: ${({ enableEdit }) => (enableEdit ? "10vw" : 0)};
+  min-width: ${({ enableEdit }) => (enableEdit ? "150px" : 0)};
+  height: 28px;
+  opacity: ${({ enableEdit }) => (enableEdit ? 1 : 0)};
+  transition: 0.3s all ease;
+  margin-right: 1rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+`;
+
+const UserLogo = styled.div`
+  div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    align-items: center;
+  }
+  button {
+    width: 100%
+    background-color: #fff;
+    border: none;
+    outline: 0;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+`;
+
+/*
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { NavItem } from "components/nav/navItem";
@@ -188,3 +369,4 @@ const UserLogo = styled.div`
     cursor: pointer;
   }
 `;
+*/
