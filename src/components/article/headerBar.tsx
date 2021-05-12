@@ -42,7 +42,7 @@ export function HeaderBar() {
       <CustomNav>
         <ul>
           <NavItem name="홈" route="/" />
-          <NavItem name="채용 공고" route="/notification" />
+          <NavItem name="채용 공고" route="/small" />
           <NavItem name="대기업" route="/big" />
         </ul>
       </CustomNav>

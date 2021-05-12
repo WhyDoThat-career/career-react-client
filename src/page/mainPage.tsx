@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-// import SubNav from 'components/nav/subNav';
 
 function MainPage() {
-  return <Cover>{/* <SubNav /> */}</Cover>;
+  return <Cover></Cover>;
 }
 
 const Cover = styled.article`

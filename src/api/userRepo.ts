@@ -48,7 +48,7 @@ export const postRegister = async (
   password: string,
   confirmpassword: string,
 ) => {
-  const answer = await AxiosInstance.post(
+  await AxiosInstance.post(
     "/register",
     JSON.stringify({
       email: email,

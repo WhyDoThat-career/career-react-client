@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useCookies } from "react-cookie";
 import { useRecoilValue } from "recoil";
 
-import { BigCompanyPage, MainPage } from "page";
+import { BigCompanyPage, MainPage, SmallCompanyPage } from "page";
 import { userState } from "shared/store";
 import { HeaderBar } from "components/article";
 import { Footer } from "components/article/footer";
@@ -25,6 +25,7 @@ function Router() {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/big" component={BigCompanyPage} />
+          <Route exact path="/small" component={SmallCompanyPage} />
         </Switch>
       </Content>
       <Footer />
