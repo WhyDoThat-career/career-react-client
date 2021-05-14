@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PrimaryBtn } from "components/button";
 import styled from "styled-components";
 import { Search } from "@styled-icons/bootstrap";
@@ -10,6 +10,7 @@ import { PrimeInput } from "components/input";
 import { LoginModal } from "components/modal/loginModal";
 import Modal from "@material-ui/core/Modal";
 import { getCheckUserRepo, getLogout } from "api/userRepo";
+import { AxiosError } from "axios";
 
 export function HeaderBar() {
   // const user = useRecoilValue(userState);
@@ -17,22 +18,33 @@ export function HeaderBar() {
   const [enableEdit, setEdit] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [userState, setUserState] = useState(false);
-  const [userInfo, getUserInfo]: any = useState(0);
+  const [userInfo, setUserInfo]: any = useState(0);
   const openModal = () => {
     setModalOpen(true);
   };
   const closeModal = () => {
     setModalOpen(false);
   };
-  if (userState === false) {
-    getCheckUserRepo().then(function Resp(response) {
-      setUserState(response.is_active);
-      if (response.is_active === true) {
-        getUserInfo(response.data);
-        // const userImg = userInfo.thumbnail;
-      }
-    });
-  }
+
+  useEffect(() => {
+    (async () => {
+      const result = await getCheckUserRepo();
+
+      setUserState(result.is_active);
+      setUserInfo(result.data);
+    })();
+
+    // if (userState === false) {
+    //   getCheckUserRepo().then(function Resp(response) {
+    //     setUserState(response.is_active);
+    //     if (response.is_active === true) {
+    //       getUserInfo(response.data);
+    //       // const userImg = userInfo.thumbnail;
+    //     }
+    //   });
+    // }
+  }, []);
+
   return (
     <Cover>
       <Logo onClick={() => history.push("/")}>
@@ -167,8 +179,8 @@ const UserLogo = styled.div`
     height: auto;
   }
   button {
-    width: 100%
-    color: #fff;
+    width: 100%;
+    /* color: #fff; */
     background-color: #fff;
     font-size: 1.2rem;
     border: none;

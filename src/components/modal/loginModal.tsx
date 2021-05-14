@@ -142,16 +142,6 @@ export function LoginModal() {
               window.location.href = "/api/login/google";
             }}
           />
-
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = "/api/login/github";
-            }}
-          >
-            깃헙 로그인
-          </button>
           <PrimaryBtn
             label="github 으로 로그인 하기"
             type="button"
