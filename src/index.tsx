@@ -5,8 +5,8 @@ import { RecoilRoot } from "recoil";
 import { BrowserRouter } from "react-router-dom";
 import { CookiesProvider } from "react-cookie";
 
-import App from "./app/App";
-import GlobalStyle from "./shared/globalStyle";
+import App from "./app/app";
+import GlobalStyle from "shared/globalStyle";
 
 ReactDOM.render(
   <React.StrictMode>

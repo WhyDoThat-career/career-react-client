@@ -17,9 +17,9 @@ export function PrimeInput({
   id,
   label,
   wd,
+  register,
   onChange,
   onInput,
-  register,
 }: PrimeInputProps) {
   return (
     <InputCover>
