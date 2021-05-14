@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import useComponentVisible from 'shared/hook/useComponentVisible';
-import { ArrowDown } from '@styled-icons/evaicons-solid';
+import React, { useState } from "react";
+import styled from "styled-components";
+import useComponentVisible from "shared/hook/useComponentVisible";
+import { ArrowDown } from "@styled-icons/evaicons-solid";
 
 interface DropdownProps {
   data: { label: string; value: any }[];
@@ -73,11 +73,11 @@ const Container = styled.span`
 const Cover = styled.div<{ isOpen: boolean }>`
   display: grid;
   width: 100px;
-  height: ${(props) => (props.isOpen ? 'auto' : '0px')};
+  height: ${(props) => (props.isOpen ? "auto" : "0px")};
   position: absolute;
   background-color: white;
   right: 0;
-  opacity: ${(props) => (props.isOpen ? '1' : '0')};
+  opacity: ${(props) => (props.isOpen ? "1" : "0")};
   transition: all 0.3s ease;
   box-shadow: 0 2px 3px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.084);
 

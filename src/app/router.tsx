@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { useCookies } from "react-cookie";
 import { useRecoilValue } from "recoil";
 
-import { BigCompanyPage, MainPage } from "page";
+import { BigCompanyPage, MainPage, SmallCompanyPage } from "page";
 import { userState } from "shared/store";
 import LoginPage from "page/loginPage";
 import { HeaderBar } from "components/article";
-import { Footer } from "components/footer/footer";
+import { Footer } from "components/article/footer";
 
 function Router() {
   const [cookies, setCookie] = useCookies(["session"]);
