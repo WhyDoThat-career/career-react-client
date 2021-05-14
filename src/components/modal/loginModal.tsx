@@ -139,7 +139,7 @@ export function LoginModal() {
             type="button"
             onClick={(e: any) => {
               e.preventDefault();
-              window.location.href = "/api/login/google";
+              window.location.href = `${process.env.REACT_APP_API_URL}/login/google`;
             }}
           />
           <PrimaryBtn

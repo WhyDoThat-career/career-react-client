@@ -70,5 +70,4 @@ export const getCheckUserRepo = async () => {
 
 export const getLogout = async () => {
   await AxiosInstance.get("/logout");
-  window.location.reload();
 };

@@ -11,6 +11,7 @@ import { LoginModal } from "components/modal/loginModal";
 import Modal from "@material-ui/core/Modal";
 import { getCheckUserRepo, getLogout } from "api/userRepo";
 import { AxiosError } from "axios";
+import { tmpdir } from "os";
 
 export function HeaderBar() {
   // const user = useRecoilValue(userState);
@@ -45,6 +46,13 @@ export function HeaderBar() {
     // }
   }, []);
 
+  const handleLogout = async () => {
+    const result = await getLogout();
+    console.log("is logout", result);
+    history.push("/");
+    window.location.reload();
+  };
+
   return (
     <Cover>
       <Logo onClick={() => history.push("/")}>
@@ -72,7 +80,7 @@ export function HeaderBar() {
           <div>
             <img src={userInfo.thumbnail} alt="userimage" />
             <div>{userInfo.nickname}</div>
-            <button onClick={getLogout}>로그아웃</button>
+            <button onClick={handleLogout}>로그아웃</button>
           </div>
         </UserLogo>
       ) : (
@@ -175,7 +183,7 @@ const UserLogo = styled.div`
     align-items: center;
   }
   img {
-    width: 0.2rem;
+    width: 2rem;
     height: auto;
   }
   button {

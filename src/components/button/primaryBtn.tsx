@@ -4,8 +4,9 @@ import styled from "styled-components";
 export interface PrimaryBtnProps {
   label: string;
   size?: "large" | "normal" | "small";
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export function PrimaryBtn({

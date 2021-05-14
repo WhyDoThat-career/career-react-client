@@ -16,7 +16,7 @@ function BigCompanyPage() {
 
   useEffect(() => {
     (async () => {
-      const result = await getCompanyList("bigcompany");
+      const result = await getCompanyList("kakao");
 
       console.log("companyList", result);
       setCompanies(result.data);
@@ -33,9 +33,11 @@ function BigCompanyPage() {
           {companyList?.map((company) => (
             <JobCard
               {...company}
+              key={company.id}
               name={company.title}
               img={company.logo_image}
-              tagList={company.skill_tag}
+              sector={company.sector}
+              main_text={company.main_text}
             />
           ))}
         </CardContainer>

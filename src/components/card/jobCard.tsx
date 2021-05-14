@@ -1,19 +1,26 @@
-import { TagChip } from 'components/chip/tagChip';
-import React from 'react';
-import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
+import { TagChip } from "components/chip/tagChip";
+import React from "react";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 export interface JobCardProps {
   id: number;
   name: string;
   img: string;
-  tagList: any[];
+  sector: string;
+  main_text: string;
 }
 
-export function JobCard({ id, name = '없음', img, tagList }: JobCardProps) {
+export function JobCard({
+  id,
+  name = "없음",
+  img,
+  sector,
+  main_text,
+}: JobCardProps) {
   const history = useHistory();
   const handleCardClick = () => {
-    history.push(`/detail/${id}`);
+    history.push(`/big/detail/${id}`, { tag: main_text });
   };
 
   return (
@@ -25,9 +32,10 @@ export function JobCard({ id, name = '없음', img, tagList }: JobCardProps) {
         <Img src={img} />
       </Content>
       <Footer>
-        {tagList?.slice(0, 3).map((tag) => (
+        {/* {tagList?.slice(0, 3).map((tag) => (
           <TagChip label={tag} />
-        ))}
+        ))} */}
+        <TagChip label={sector} />
       </Footer>
     </CardBody>
   );
@@ -83,5 +91,6 @@ const Footer = styled.div`
 `;
 
 const Img = styled.img`
-  width: fit-content;
+  width: 100px;
+  height: 100px;
 `;
