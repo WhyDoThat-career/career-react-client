@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import { useCookies } from "react-cookie";
 import { useRecoilValue } from "recoil";
 
-import { BigCompanyPage, MainPage, SmallCompanyPage } from "page";
+import { BigCompanyPage, MainPage, SmallCompanyPage, NotFoundPage } from "page";
 import { userState } from "shared/store";
 import LoginPage from "page/loginPage";
 import { HeaderBar } from "components/article";
@@ -14,21 +14,30 @@ import CompanyInfoPage from "page/companyInfoPage";
 function Router() {
   const [cookies, setCookie] = useCookies(["session"]);
   const userInfo = useRecoilValue(userState);
+  const [notfound, setNotfound] = useState(true);
 
   useEffect(() => {
     console.log("session ", cookies);
   }, [cookies]);
 
+  const NoMatch = () => {
+    setNotfound(false);
+    return null;
+  };
+
   return (
     <MainCover>
-      <HeaderBar />
+      {notfound ? <HeaderBar /> : null}
 
       <Content>
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/big" component={BigCompanyPage} />
           <Route exact path="/small" component={SmallCompanyPage} />
-
+          <Route path="/notfound">
+            <NotFoundPage />
+            <NoMatch />
+          </Route>
           <Route
             key="big"
             path="/big"
@@ -46,7 +55,7 @@ function Router() {
           />
         </Switch>
       </Content>
-      <Footer />
+      {notfound ? <Footer /> : null}
     </MainCover>
   );
 }
