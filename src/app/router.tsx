@@ -53,6 +53,21 @@ function Router() {
               );
             }}
           />
+          <Route
+            key="small"
+            path="/small"
+            render={({ match: { url } }) => {
+              return (
+                <>
+                  <Route exact path={`${url}`} component={SmallCompanyPage} />
+                  <Route
+                    path={`${url}/detail/:id`}
+                    component={CompanyInfoPage}
+                  />
+                </>
+              );
+            }}
+          />
         </Switch>
       </Content>
       {notfound ? <Footer /> : null}

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 export interface jobCardInter {
+  id: number;
+  mainText: string;
   logoImg: string;
   title: string;
   sector: string;
@@ -11,6 +14,8 @@ export interface jobCardInter {
 }
 
 export function JobCard({
+  id,
+  mainText,
   logoImg,
   title,
   sector,
@@ -18,8 +23,14 @@ export function JobCard({
   companyName,
   platform,
 }: jobCardInter) {
+  const history = useHistory();
+
+  const handleCardClick = () => {
+    history.push(`/small/detail/${id}`, { tag: mainText });
+  };
+
   return (
-    <Card>
+    <Card onClick={handleCardClick}>
       <Icon src={logoImg} alt="회사 로고 이미지" />
       <CardBody>
         <Title>

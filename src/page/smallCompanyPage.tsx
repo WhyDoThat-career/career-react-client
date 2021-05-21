@@ -23,12 +23,14 @@ function SmallCompanyPage() {
           {companyList?.map((company) => (
             <JobCard
               {...company}
+              id={company.id}
               logoImg={company.logo_image}
               title={company.title}
               sector={company.sector}
               newbie={company.newbie}
               companyName={company.company_name}
               platform={company.platform}
+              mainText={company.main_text}
             />
           ))}
         </CardContainer>
