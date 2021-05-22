@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { classNames } from "react-select/src/utils";
 
 export interface jobCardInter {
   id: number;
@@ -38,8 +39,12 @@ export function JobCard({
         </Title>
         <Info>
           <div>
-            {sector}
-            <span>{newbie ? "신입 가능" : "경력"}</span>
+            <span className="sector">{sector}</span>
+            {newbie ? (
+              <span className="newbie">신입 가능</span>
+            ) : (
+              <span>경력</span>
+            )}
           </div>
           <div>{companyName}</div>
         </Info>
@@ -51,12 +56,12 @@ export function JobCard({
 
 const Card = styled.div`
   display: flex;
-  width: 25vw;
+  width: 20vw;
   height: 15vh;
-  border: none;
   /* box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); */
   border: 1px solid #e3e3e3;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 const CardBody = styled.div`
@@ -67,8 +72,17 @@ const CardBody = styled.div`
 const Title = styled.div``;
 
 const Info = styled.div`
+  .sector {
+    background-color: #ffeaa7;
+  }
+  .newbie {
+    background-color: #2ecc71;
+  }
   span {
-    margin: 0 1vw;
+    border-radius: 3px;
+    /* padding: 0.1rem; */
+    margin: 0 1vw 0 0;
+    background-color: #a29bfe;
   }
 `;
 

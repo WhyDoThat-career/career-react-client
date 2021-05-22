@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import WdtCon from "components/img/wdtcon.png";
 import { PrimeInput } from "components/input";
 import { PrimaryBtn } from "components/button";
 import {
@@ -112,7 +111,7 @@ export function LoginModal() {
           <button className="close">x</button>
         </header>
         <section>
-          <img src={WdtCon} alt="WhyDoThat logo"></img>
+          <img src="./static/img/wdticon.png" alt="WhyDoThat logo"></img>
           <div>Why Do That!</div>
           <div>지금 채용공고를 확인하세요!</div>
           <form onSubmit={handleSubmit(handleLogin)}>
