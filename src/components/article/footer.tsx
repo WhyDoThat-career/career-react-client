@@ -21,8 +21,8 @@ const Cover = styled.div`
   footer {
     border-top: 1px solid #e4e4e4;
     background-color: #f8f9fa;
-    padding: 1rem 0;
-    margin: 1rem 0;
+    padding: 0 0 1rem 0;
+    margin: 0 0 1rem 0;
   }
   .footer-create {
     font-weight: bold;
