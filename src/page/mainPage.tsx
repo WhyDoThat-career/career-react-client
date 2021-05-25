@@ -115,7 +115,7 @@ const Cover = styled.article`
     color: white;
     font-size: 3vw;
   }
-  }
+
   img {
     width: 4vw;
     height: auto;

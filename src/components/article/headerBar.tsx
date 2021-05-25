@@ -127,9 +127,12 @@ const Cover = styled.header`
 `;
 
 const Logo = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,700&display=swap");
   cursor: pointer;
+  font-family: "Rubik", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
+  text-shadow: #2ecc71 -1.5779px 1.86493px 0px, #f39c12 1.5779px 1.86493px 0px;
 
   p {
     font-weight: bolder;
