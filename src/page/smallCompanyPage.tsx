@@ -7,13 +7,13 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 function SmallCompanyPage() {
   const [companyList, setCompanyList] = useState<Company[]>([] as Company[]);
-  const [pageNum, setPageNum] = useState(40);
+  const [pageNum, setPageNum] = useState(2);
 
   const handleCompanyData = async () => {
     console.log(pageNum);
-    const data = await getCompanyData(`smallcompany?per_page=${pageNum}`);
+    const data = await getCompanyData(`smallcompany?page=${pageNum}`);
     // setCompanyList(Object.assign(companyList, data.data));
-    setCompanyList(data.data);
+    companyList.push.apply(companyList, data.data);
     console.log(companyList);
   };
 
@@ -21,7 +21,7 @@ function SmallCompanyPage() {
     (async () => {
       const result = await getCompanyData("smallcompany");
       // await handleCompanyData();
-      console.log("companyList", result);
+      // console.log("companyList", result.data);
       setCompanyList(result.data);
     })();
   }, []);
@@ -33,7 +33,7 @@ function SmallCompanyPage() {
 
   const fetchMoreData = () => {
     setTimeout(() => {
-      setPageNum(pageNum + 20);
+      setPageNum(pageNum + 1);
       handleCompanyData();
     }, 1500);
   };

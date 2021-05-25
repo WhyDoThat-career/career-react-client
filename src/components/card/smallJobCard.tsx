@@ -48,7 +48,10 @@ export function JobCard({
           </div>
           <div>{companyName}</div>
         </Info>
-        <Footer>{platform}</Footer>
+        <Footer>
+          <img src={`./static/img/icon/${platform}.png`} alt="platform img" />
+          {platform}
+        </Footer>
       </CardBody>
     </Card>
   );
@@ -88,6 +91,11 @@ const Info = styled.div`
 
 const Footer = styled.div`
   text-align: right;
+  img {
+    height: 1rem;
+    width: auto;
+    margin: 0 0.2rem 0 0;
+  }
 `;
 
 const Icon = styled.img`

@@ -5,15 +5,18 @@ import SubNav from "components/nav/subNav";
 function MainPage() {
   return (
     <Cover>
-      <SubNav />
+      <div>hi</div>
     </Cover>
   );
 }
 
 const Cover = styled.article`
-  display: flex;
+  /* display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./main_img.png");
 `;
 
 export default MainPage;
