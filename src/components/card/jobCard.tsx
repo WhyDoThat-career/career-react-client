@@ -1,5 +1,5 @@
 import { TagChip } from 'components/chip/tagChip';
-import React, { useEffect } from 'react';
+import React, { useEffect, forwardRef } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
@@ -12,14 +12,10 @@ export interface JobCardProps {
   company: 'kakao' | 'naver';
 }
 
-export function JobCard({
-  id,
-  name = '없음',
-  img,
-  sector,
-  main_text,
-  company,
-}: JobCardProps) {
+function JobCard(
+  { id, name = '없음', img, sector, main_text, company }: JobCardProps,
+  ref?: any,
+) {
   const history = useHistory();
   const handleCardClick = () => {
     history.push(`/big/detail/${company}/${id}`, {
@@ -29,11 +25,13 @@ export function JobCard({
   };
 
   useEffect(() => {
-    name.includes('SNOW') && console.log(`   isSnow:${name.includes('SNOW')},`);
-  }, []);
+    console.log('====================================');
+    console.log('name', name, ref);
+    console.log('====================================');
+  }, [ref]);
 
   return (
-    <CardBody onClick={handleCardClick}>
+    <CardBody ref={ref} onClick={handleCardClick}>
       <Title>
         <p>{name}</p>
       </Title>
@@ -103,3 +101,5 @@ const Img = styled.img`
   width: 100px;
   height: 100px;
 `;
+
+export default forwardRef(JobCard);
