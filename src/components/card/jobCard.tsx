@@ -24,12 +24,6 @@ function JobCard(
     });
   };
 
-  useEffect(() => {
-    console.log('====================================');
-    console.log('name', name, ref);
-    console.log('====================================');
-  }, [ref]);
-
   return (
     <CardBody ref={ref} onClick={handleCardClick}>
       <Title>

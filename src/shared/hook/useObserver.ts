@@ -13,12 +13,6 @@ const useObserver = (
   }, []);
 
   useEffect(() => {
-    console.log('====================================');
-    console.log('ref?', ref);
-    console.log('====================================');
-  }, [ref]);
-
-  useEffect(() => {
     let observer: IntersectionObserver;
     if (ref) {
       observer = new IntersectionObserver(isIntersect, {
