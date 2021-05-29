@@ -1,7 +1,7 @@
-import { TagChip } from "components/chip/tagChip";
-import React from "react";
-import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { TagChip } from 'components/chip/tagChip';
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 export interface JobCardProps {
   id: number;
@@ -9,19 +9,28 @@ export interface JobCardProps {
   img: string;
   sector: string;
   main_text: string;
+  company: 'kakao' | 'naver';
 }
 
 export function JobCard({
   id,
-  name = "없음",
+  name = '없음',
   img,
   sector,
   main_text,
+  company,
 }: JobCardProps) {
   const history = useHistory();
   const handleCardClick = () => {
-    history.push(`/big/detail/${id}`, { tag: main_text });
+    history.push(`/big/detail/${company}/${id}`, {
+      tag: main_text,
+      isSnow: name.includes('SNOW'),
+    });
   };
+
+  useEffect(() => {
+    name.includes('SNOW') && console.log(`   isSnow:${name.includes('SNOW')},`);
+  }, []);
 
   return (
     <CardBody onClick={handleCardClick}>

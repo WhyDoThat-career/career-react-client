@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
-import styled from "styled-components";
-import { useCookies } from "react-cookie";
-import { useRecoilValue } from "recoil";
+import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
+import { useCookies } from 'react-cookie';
+import { useRecoilValue } from 'recoil';
 
-import { BigCompanyPage, MainPage, SmallCompanyPage, NotFoundPage } from "page";
-import { userState } from "shared/store";
-import LoginPage from "page/loginPage";
-import { HeaderBar } from "components/article";
-import { Footer } from "components/article/footer";
-import CompanyInfoPage from "page/companyInfoPage";
+import { BigCompanyPage, MainPage, SmallCompanyPage, NotFoundPage } from 'page';
+import { userState } from 'shared/store';
+import LoginPage from 'page/loginPage';
+import { HeaderBar } from 'components/article';
+import { Footer } from 'components/article/footer';
+import NaverPage from 'page/largecap/naverPage';
+import KakaoPage from 'page/largecap/kakaoPage';
 
 function Router() {
-  const [cookies, setCookie] = useCookies(["session"]);
+  const [cookies, setCookie] = useCookies(['session']);
   const userInfo = useRecoilValue(userState);
   const [notfound, setNotfound] = useState(true);
 
   useEffect(() => {
-    console.log("session ", cookies);
+    console.log('session ', cookies);
   }, [cookies]);
 
   const NoMatch = () => {
@@ -46,8 +47,12 @@ function Router() {
                 <>
                   <Route exact path={`${url}`} component={BigCompanyPage} />
                   <Route
-                    path={`${url}/detail/:id`}
-                    component={CompanyInfoPage}
+                    path={`${url}/detail/naver/:id`}
+                    component={NaverPage}
+                  />
+                  <Route
+                    path={`${url}/detail/kakao/:id`}
+                    component={KakaoPage}
                   />
                 </>
               );
@@ -60,10 +65,6 @@ function Router() {
               return (
                 <>
                   <Route exact path={`${url}`} component={SmallCompanyPage} />
-                  <Route
-                    path={`${url}/detail/:id`}
-                    component={CompanyInfoPage}
-                  />
                 </>
               );
             }}

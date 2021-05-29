@@ -1,13 +1,18 @@
-import styled, { createGlobalStyle } from "styled-components";
-import reset from "styled-reset";
+import styled, { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
     ${reset};
-    
+
+    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+  
     .App{
         width:100%;
         height:100vh;
         box-sizing:border-box;
+        font-family: 'Nanum Gothic', sans-serif;
+
     }
     body {
         overflow:auto;
