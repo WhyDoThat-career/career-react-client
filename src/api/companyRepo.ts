@@ -31,3 +31,9 @@ export const getsearchData = async (type: string) => {
 
   return answer.data;
 };
+
+export const getJobPlanetData = async (type: string) => {
+  const answer = await AxiosInstance.get(`/getdata/company/${type}`);
+
+  return answer;
+};

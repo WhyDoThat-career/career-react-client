@@ -27,7 +27,12 @@ export function JobCard({
   const history = useHistory();
 
   const handleCardClick = () => {
-    history.push(`/small/detail/${id}`, { tag: mainText });
+    history.push(`/small/detail/${id}`, {
+      title: title,
+      companyName: companyName,
+      platform: platform,
+      mainText: mainText,
+    });
   };
 
   return (

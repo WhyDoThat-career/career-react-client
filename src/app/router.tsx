@@ -10,6 +10,7 @@ import LoginPage from "page/loginPage";
 import { HeaderBar } from "components/article";
 import { Footer } from "components/article/footer";
 import CompanyInfoPage from "page/companyInfoPage";
+import SmallCompanyInfoPage from "page/smallCompanyInfoPage";
 
 function Router() {
   const [cookies, setCookie] = useCookies(["session"]);
@@ -34,10 +35,6 @@ function Router() {
           <Route exact path="/" component={MainPage} />
           <Route exact path="/big" component={BigCompanyPage} />
           <Route exact path="/small" component={SmallCompanyPage} />
-          <Route path="/notfound">
-            <NotFoundPage />
-            <NoMatch />
-          </Route>
           <Route
             key="big"
             path="/big"
@@ -62,12 +59,16 @@ function Router() {
                   <Route exact path={`${url}`} component={SmallCompanyPage} />
                   <Route
                     path={`${url}/detail/:id`}
-                    component={CompanyInfoPage}
+                    component={SmallCompanyInfoPage}
                   />
                 </>
               );
             }}
           />
+          <Route path="*">
+            <NotFoundPage />
+            <NoMatch />
+          </Route>
         </Switch>
       </Content>
       {notfound ? <Footer /> : null}
