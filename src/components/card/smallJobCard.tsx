@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { classNames } from "react-select/src/utils";
@@ -14,16 +14,19 @@ export interface jobCardInter {
   platform: string;
 }
 
-export function JobCard({
-  id,
-  mainText,
-  logoImg,
-  title,
-  sector,
-  newbie,
-  companyName,
-  platform,
-}: jobCardInter) {
+function JobCard(
+  {
+    id,
+    mainText,
+    logoImg,
+    title,
+    sector,
+    newbie,
+    companyName,
+    platform,
+  }: jobCardInter,
+  ref?: any,
+) {
   const history = useHistory();
 
   const handleCardClick = () => {
@@ -36,7 +39,7 @@ export function JobCard({
   };
 
   return (
-    <Card onClick={handleCardClick}>
+    <Card ref={ref} onClick={handleCardClick}>
       <Icon src={logoImg} alt="회사 로고 이미지" />
       <CardBody>
         <Title>
@@ -109,3 +112,5 @@ const Icon = styled.img`
   //   border: solid;
   margin: 5% 1vw;
 `;
+
+export default forwardRef(JobCard);

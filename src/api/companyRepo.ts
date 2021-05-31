@@ -2,8 +2,12 @@ import { AxiosInstance } from "./_apiInstance";
 
 import { AxiosError, AxiosResponse } from "axios";
 
-export const getCompanyList = async (type: string) => {
-  const answer = await AxiosInstance.get(`/getdata/${type}`).catch((err) => {
+export const getCompanyList = async (type: string, page?: number) => {
+  const answer = await AxiosInstance.get(`/getdata/${type}`, {
+    params: {
+      page,
+    },
+  }).catch((err) => {
     throw err;
   });
 
@@ -12,14 +16,6 @@ export const getCompanyList = async (type: string) => {
 
 export const getSector = async () => {
   const answer = await AxiosInstance.get("/getsector").catch((err) => {
-    throw err;
-  });
-
-  return answer.data;
-};
-
-export const getCompanyData = async (type: string) => {
-  const answer = await AxiosInstance.get(`/getdata/${type}`).catch((err) => {
     throw err;
   });
 

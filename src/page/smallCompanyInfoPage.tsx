@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { PrimaryBtn } from "components/button";
 import { getJobPlanetData } from "api/companyRepo";
+import { PointPlanet } from "components/chip/pointChip";
 
 export interface datasProps {
   title: string;
@@ -10,8 +11,7 @@ export interface datasProps {
   platform: string;
   mainText: string;
 }
-
-export interface jj {
+export interface companyPlanet {
   crawl_date: string;
   employees: string;
   establishment_date: string;
@@ -30,8 +30,10 @@ export interface jj {
 
 function SmallCompanyInfoPage() {
   const location = useLocation<any>();
-  const [jobplanetState, setJobplanetState] = useState<boolean>(false);
-  const [asasa, setJobplanetDatas] = useState<jj[]>([] as jj[]);
+  const [planetState, setPlanetState] = useState<boolean>(false);
+  const [planetDatas, setPlanetDatas] = useState<companyPlanet[]>(
+    [] as companyPlanet[],
+  );
 
   const datas: datasProps = location.state;
 
@@ -40,11 +42,10 @@ function SmallCompanyInfoPage() {
       const result = await getJobPlanetData(datas.companyName);
       console.log("companyList", result.data.success);
       if (result.data.success) {
-        setJobplanetState(true);
-        console.log(result.data.data);
-        setJobplanetDatas(result.data.data.id);
+        setPlanetState(true);
+        setPlanetDatas(result.data.data);
       } else {
-        setJobplanetState(false);
+        setPlanetState(false);
       }
       // setCompanyList(result.data);
     })();
@@ -79,7 +80,9 @@ function SmallCompanyInfoPage() {
           <PrimaryBtn label="지원하기" type="button" />
         </span>
       </header>
-      {jobplanetState ? <div>{asasa}</div> : <div>없음</div>}
+      <hr />
+      {planetState ? <PointPlanet label={planetDatas} /> : <div>없음</div>}
+      <hr />
       <PlatformDiv />
     </Cover>
   );
@@ -87,7 +90,7 @@ function SmallCompanyInfoPage() {
 
 const Cover = styled.div`
   /* display: flex; */
-  justify-content: center;
+  /* justify-content: center; */
   margin: 5vh 0;
   header {
     display: flex;
@@ -95,6 +98,9 @@ const Cover = styled.div`
     font-size: 2rem;
     font-weight: 600;
     margin: 0 0 4vh;
+  }
+  hr {
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   }
 `;
 
