@@ -4,6 +4,7 @@ import JobCard from "components/card/smallJobCard";
 import { getCompanyList } from "api/companyRepo";
 import { Company } from "components/interface/companyInterface";
 import useObserver from "shared/hook/useObserver";
+import { getRecommend } from "api/userRepo";
 
 function SmallCompanyPage() {
   const [companyList, setCompanyList] = useState<Company[]>([] as Company[]);
@@ -33,6 +34,13 @@ function SmallCompanyPage() {
   useEffect(() => {
     callCompanies();
   }, [page]);
+
+  useEffect(() => {
+    (async () => {
+      const result = await getRecommend();
+      console.log(result.data);
+    })();
+  }, []);
 
   return (
     <Cover>

@@ -7,25 +7,18 @@ import { userState } from "shared/store";
 import { useHistory, Link } from "react-router-dom";
 import { NavItem } from "components/nav/navItem";
 import { PrimeInput } from "components/input";
-import { LoginModal } from "components/modal/loginModal";
-import Modal from "@material-ui/core/Modal";
 import { getCheckUserRepo, getLogout } from "api/userRepo";
 import { AxiosError } from "axios";
 import { tmpdir } from "os";
+import { LoginModal } from "components/modal/loginModal";
 
 export function HeaderBar() {
   // const user = useRecoilValue(userState);
   const history = useHistory();
   const [enableEdit, setEdit] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
   const [userState, setUserState] = useState(false);
   const [userInfo, setUserInfo]: any = useState(0);
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -85,17 +78,8 @@ export function HeaderBar() {
         </UserLogo>
       ) : (
         <UserLogo>
-          <div>
-            <button onClick={openModal}>로그인</button>
-            <Modal
-              open={modalOpen}
-              onClose={closeModal}
-              aria-labelledby="simple-modal-title"
-              aria-describedby="simple-modal-description"
-            >
-              <LoginModal />
-            </Modal>
-          </div>
+          <button onClick={() => setModalShow(true)}>로그인</button>
+          <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
         </UserLogo>
       )}
     </Cover>
@@ -190,9 +174,9 @@ const UserLogo = styled.div`
     height: auto;
   }
   button {
-    width: 100%;
+    /* width: 100%; */
     /* color: #fff; */
-    background-color: #fff;
+    background-color: transparent;
     font-size: 1.2rem;
     border: none;
     outline: 0;

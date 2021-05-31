@@ -71,3 +71,19 @@ export const getCheckUserRepo = async () => {
 export const getLogout = async () => {
   await AxiosInstance.get("/logout");
 };
+
+export const postActiveLog = async () => {
+  const answer = await AxiosInstance.post("/active_log").catch((err) => {
+    throw err;
+  });
+
+  return answer.data;
+};
+
+export const getRecommend = async () => {
+  const answer = await AxiosInstance.get("recommend").catch((err) => {
+    throw err;
+  });
+
+  return answer.data;
+};
