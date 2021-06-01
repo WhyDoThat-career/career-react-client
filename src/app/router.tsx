@@ -9,8 +9,9 @@ import { userState } from "shared/store";
 import LoginPage from "page/loginPage";
 import { HeaderBar } from "components/article";
 import { Footer } from "components/article/footer";
-import CompanyInfoPage from "page/companyInfoPage";
 import SmallCompanyInfoPage from "page/smallCompanyInfoPage";
+import NaverPage from "page/largecap/naverPage";
+import KakaoPage from "page/largecap/kakaoPage";
 
 function Router() {
   const [cookies, setCookie] = useCookies(["session"]);
@@ -43,8 +44,12 @@ function Router() {
                 <>
                   <Route exact path={`${url}`} component={BigCompanyPage} />
                   <Route
-                    path={`${url}/detail/:id`}
-                    component={CompanyInfoPage}
+                    path={`${url}/detail/naver/:id`}
+                    component={NaverPage}
+                  />
+                  <Route
+                    path={`${url}/detail/kakao/:id`}
+                    component={KakaoPage}
                   />
                 </>
               );
@@ -65,6 +70,7 @@ function Router() {
               );
             }}
           />
+
           <Route path="*">
             <NotFoundPage />
             <NoMatch />

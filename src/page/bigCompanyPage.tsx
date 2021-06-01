@@ -1,43 +1,63 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
 
-import { getCompanyList } from "api/companyRepo";
-import { Company } from "interface/companyInterface";
-import { getSector } from "api/companyRepo";
-import { JobCard } from "components/card/jobCard";
-import Select from "react-select";
-import { FILTER } from "shared/resource/option";
-import Dropdown from "components/dropdown/dropdown";
+import { getCompanyList } from 'api/companyRepo';
+import { Company } from 'interface/companyInterface';
+import { getSector } from 'api/companyRepo';
+import JobCard from 'components/card/jobCard';
+import Select from 'react-select';
+import { FILTER, COMPANYFILTER } from 'shared/resource/option';
+import Dropdown from 'components/dropdown/dropdown';
+import useObserver from 'shared/hook/useObserver';
 
 function BigCompanyPage() {
   const [companyList, setCompanies] = useState<Company[]>([] as Company[]);
-
+  const [key, setKey] = useState<'kakao' | 'naver'>('naver');
   const [filter, setFilter] = useState(FILTER[0].value);
+  const [page, setPage] = useState(1);
+
+  const { setRef } = useObserver(
+    async (entry: any, observer) => {
+      // observer.unobserve(entry.target);
+      observer.observe(entry.target);
+
+      setPage((prevState) => (prevState += 1));
+    },
+    { threshold: 0.7 },
+  );
+
+  const callCompanies = async () => {
+    const result = await getCompanyList(key, page);
+
+    setCompanies(page === 1 ? result.data : companyList.concat(result.data));
+  };
 
   useEffect(() => {
-    (async () => {
-      const result = await getCompanyList("kakao");
+    setPage(1);
+  }, [key]);
 
-      console.log("companyList", result);
-      setCompanies(result.data);
-    })();
-  }, []);
+  useEffect(() => {
+    callCompanies();
+  }, [page]);
 
   return (
     <Cover>
       <Content>
         <FilterContainer>
+          <Dropdown data={COMPANYFILTER} clickMethod={setKey} />
           <Dropdown data={FILTER} clickMethod={setFilter} />
         </FilterContainer>
         <CardContainer>
-          {companyList?.map((company) => (
+          {companyList?.map((company, idx) => (
             <JobCard
               {...company}
+              ref={idx === companyList.length - 1 ? setRef : null}
               key={company.id}
               name={company.title}
               img={company.logo_image}
               sector={company.sector}
               main_text={company.main_text}
+              company={key}
             />
           ))}
         </CardContainer>
