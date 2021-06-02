@@ -7,6 +7,7 @@ import { CookiesProvider } from "react-cookie";
 
 import App from "./app/app";
 import GlobalStyle from "shared/globalStyle";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <React.StrictMode>

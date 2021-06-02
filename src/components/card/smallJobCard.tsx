@@ -2,6 +2,7 @@ import React, { useState, useEffect, forwardRef } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { classNames } from "react-select/src/utils";
+import { postActiveLog } from "api/userRepo";
 
 export interface jobCardInter {
   id: number;
@@ -12,6 +13,7 @@ export interface jobCardInter {
   newbie: boolean;
   companyName: string;
   platform: string;
+  userState: boolean;
 }
 
 function JobCard(
@@ -24,12 +26,15 @@ function JobCard(
     newbie,
     companyName,
     platform,
+    userState,
   }: jobCardInter,
   ref?: any,
 ) {
   const history = useHistory();
 
   const handleCardClick = () => {
+    userState ? postActiveLog("click", id) : console.log();
+
     history.push(`/small/detail/${id}`, {
       title: title,
       companyName: companyName,
@@ -69,7 +74,7 @@ const Card = styled.div`
   display: flex;
   width: 20vw;
   height: 15vh;
-  /* box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08); */
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   border: 1px solid #e3e3e3;
   border-radius: 10px;
   cursor: pointer;

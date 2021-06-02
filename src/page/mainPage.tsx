@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { PrimaryBtn } from "components/button";
+import { LoginModal } from "components/modal/loginModal";
 
 function MainPage() {
+  const [modalShow, setModalShow] = useState(false);
+
   return (
     <Cover>
       <div className="wdt">
@@ -11,10 +14,12 @@ function MainPage() {
         <h3>THAT</h3>
       </div>
 
-      <h4>더이상</h4>
-      <h4>찾기 싫다면</h4>
-      <h4>모은거 보세요</h4>
+      <TestTxt>더이상</TestTxt>
+      <TestTxt>찾기 싫다면</TestTxt>
+      <TestTxt>모은거 보세요</TestTxt>
 
+      <button onClick={() => setModalShow(true)}>{"시작하기 ->"}</button>
+      <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
       <div>Thanks To</div>
       <div className="img">
         <img
@@ -47,7 +52,6 @@ function MainPage() {
 }
 
 const Cover = styled.article`
-  @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,700&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
   /* display: flex;
   align-items: center;
@@ -85,7 +89,7 @@ const Cover = styled.article`
       rgb(255 0 0) -4.0779px 1.86493px 0px;
 
     font-family: "Rubik", sans-serif;
-    font-size: 5vw;
+    font-size: 4.5vw;
     color: rgb(0, 0, 0);
     line-height: 0.75em;
     letter-spacing: 3px;
@@ -98,17 +102,11 @@ const Cover = styled.article`
   }
   .wdt {
     margin: 0;
-    padding: 100px 0 20px 0;
+    padding: 50px 0 20px 0;
   }
-  h4 {
-    margin: 0 0 0 30vw;
-    font-family: "Black Han Sans", sans-serif;
-    text-shadow: rgb(0 0 0 / 60%) 0px 5.25px 39.375px;
-    font-size: 7vw;
-    color: white;
-  }
+
   div {
-    margin: 0 0 0 30vw;
+    margin: 0 0 0 35vw;
     font-family: "Black Han Sans", sans-serif;
     text-shadow: rgb(255 0 0) 1.0779px -0.86493px 0px,
       rgb(0 255 255) -1.0779px 0.86493px 0px;
@@ -121,6 +119,26 @@ const Cover = styled.article`
     height: auto;
     margin: 0 0.2vw 0 0;
   }
+  button {
+    margin: 10px 0 20px 35vw;
+    width: 300px;
+    height: 50px;
+    font-size: 1.5rem;
+    background-color: #ffa502;
+    color: #fff;
+    font-family: "Black Han Sans", sans-serif;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #57606f;
+  }
+`;
+
+const TestTxt = styled.h4`
+  margin: 0 0 0 35vw;
+  font-family: "Black Han Sans", sans-serif !important;
+  text-shadow: rgb(0 0 0 / 60%) 0px 5.25px 39.375px;
+  font-size: 6.5vw !important;
+  color: white;
 `;
 
 export default MainPage;

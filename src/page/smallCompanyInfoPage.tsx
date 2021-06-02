@@ -76,9 +76,7 @@ function SmallCompanyInfoPage() {
     <Cover>
       <header>
         {datas.title} / {datas.companyName}
-        <span>
-          <PrimaryBtn label="지원하기" type="button" />
-        </span>
+        <PrimaryBtn label="지원하기" type="button" size="normal" />
       </header>
       <hr />
       {planetState ? <PointPlanet label={planetDatas} /> : <div>없음</div>}
@@ -100,7 +98,7 @@ const Cover = styled.div`
     margin: 0 0 4vh;
   }
   hr {
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    /* box-shadow:  */
   }
 `;
 

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import Modal from "react-bootstrap/Modal";
 import { PrimeInput } from "components/input";
 import { PrimaryBtn } from "components/button";
 import { postRegister, postCheckemail } from "api/userRepo";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export function RegisterModal(props: any) {
   const [checkEmail, setCheckEmail] = useState(true);
@@ -33,6 +34,8 @@ export function RegisterModal(props: any) {
       data.password,
       data.confirmpassword,
     );
+
+    window.location.reload();
   };
 
   const handle = (e: any) => {
@@ -49,21 +52,22 @@ export function RegisterModal(props: any) {
   };
 
   return (
-    <Cover>
-      <Modal
-        {...props}
-        backdrop={false}
-        animation={false}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
+    <Modal
+      {...props}
+      isOpen={props.show}
+      fade={false}
+      toggle={props.onHide}
+      backdrop={false}
+      centered
+    >
+      <Cover>
         <Header>
           <button onClick={props.onHide}>
             <i className="fas fa-times"></i>
           </button>
         </Header>
         <Content>
-          <Modal.Body>
+          <ModalBody>
             <section>
               <div>지금 당장 WhyDoThat에 참여하세요!</div>
               <form onSubmit={handleSubmit(handleRegister)}>
@@ -106,17 +110,16 @@ export function RegisterModal(props: any) {
                 />
               </form>
             </section>
-          </Modal.Body>
+          </ModalBody>
         </Content>
-        {/* <Modal.Footer>
-          <button onClick={props.onHide}>Close</button>
-        </Modal.Footer> */}
-      </Modal>
-    </Cover>
+      </Cover>
+    </Modal>
   );
 }
 
-const Cover = styled.div``;
+const Cover = styled.div`
+  height: 600px;
+`;
 
 const Header = styled.div`
   display: flex;

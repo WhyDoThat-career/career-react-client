@@ -5,11 +5,18 @@ import { getCompanyList } from "api/companyRepo";
 import { Company } from "components/interface/companyInterface";
 import useObserver from "shared/hook/useObserver";
 import { getRecommend } from "api/userRepo";
+import { RecommendCard } from "components/card/recommendCard";
+import { getCheckUserRepo } from "api/userRepo";
 
 function SmallCompanyPage() {
   const [companyList, setCompanyList] = useState<Company[]>([] as Company[]);
   const [key, setKey] = useState<string>("smallcompany");
   const [page, setPage] = useState(1);
+  const [recommendList, setRecommendList] = useState<Company[]>(
+    [] as Company[],
+  );
+  const [userName, setUserName] = useState<string>("");
+  const [recommendState, setRecommendState] = useState<boolean>(false);
 
   const { setRef } = useObserver(
     async (entry: any, observer) => {
@@ -25,6 +32,7 @@ function SmallCompanyPage() {
     const result = await getCompanyList(key, page);
 
     setCompanyList(page === 1 ? result.data : companyList.concat(result.data));
+    console.log(companyList);
   };
 
   useEffect(() => {
@@ -38,12 +46,43 @@ function SmallCompanyPage() {
   useEffect(() => {
     (async () => {
       const result = await getRecommend();
-      console.log(result.data);
+      const name = await getCheckUserRepo();
+
+      // console.log(.data);
+      setRecommendList(result.data);
+
+      if (name.data === "알 수 없는 사용자") {
+        setRecommendState(false);
+      } else {
+        setRecommendState(true);
+        setUserName(name.data.nickname);
+      }
     })();
   }, []);
 
   return (
     <Cover>
+      {recommendState ? (
+        <Recommend>
+          <h2>{userName}님에게 꼭 맞는 채용공고</h2>
+          <ReCard>
+            {recommendList?.map((recommendCom) => (
+              <RecommendCard
+                {...recommendCom}
+                id={recommendCom.id}
+                title={recommendCom.title}
+                logoImg={recommendCom.logo_image}
+                sector={recommendCom.sector}
+                mainText={recommendCom.main_text}
+                companyName={recommendCom.company_name}
+                platform={recommendCom.platform}
+                userState={recommendState}
+              />
+            ))}
+          </ReCard>
+        </Recommend>
+      ) : null}
+
       <Content>
         <CardContainer>
           {companyList?.map((company, idx) => (
@@ -58,6 +97,7 @@ function SmallCompanyPage() {
               companyName={company.company_name}
               platform={company.platform}
               mainText={company.main_text}
+              userState={recommendState}
             />
           ))}
         </CardContainer>
@@ -89,6 +129,17 @@ const CardContainer = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+`;
+
+const Recommend = styled.div``;
+
+const ReCard = styled.div`
+  display: flex;
+  width: 1000px;
+  height: 200px;
+  margin: 20px 0;
+  /* white-space:nowrap; */
+  overflow-x: scroll;
 `;
 
 export default SmallCompanyPage;

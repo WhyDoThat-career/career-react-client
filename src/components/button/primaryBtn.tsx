@@ -25,7 +25,11 @@ export function PrimaryBtn({
 
 const Primary = styled.button<{ size: "large" | "normal" | "small" }>`
   width: ${({ size }) =>
-    size === "large" ? "200px" : size === "small" ? "80px" : "152px"};
+    size === "large"
+      ? "200px"
+      : size === "small"
+      ? "80px"
+      : "152px"} !important;
   height: ${({ size }) =>
     size === "large" ? "48px" : size === "small" ? "24px" : "40px"};
   min-height: 24px;

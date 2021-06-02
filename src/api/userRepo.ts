@@ -72,12 +72,13 @@ export const getLogout = async () => {
   await AxiosInstance.get("/logout");
 };
 
-export const postActiveLog = async () => {
-  const answer = await AxiosInstance.post("/active_log").catch((err) => {
+export const postActiveLog = async (type: string, id: number) => {
+  await AxiosInstance.post(
+    "/active_log",
+    JSON.stringify({ activity: type, recruit_id: id }),
+  ).catch((err) => {
     throw err;
   });
-
-  return answer.data;
 };
 
 export const getRecommend = async () => {
