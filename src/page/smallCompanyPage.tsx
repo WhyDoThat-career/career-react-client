@@ -81,7 +81,11 @@ function SmallCompanyPage() {
             ))}
           </ReCard>
         </Recommend>
-      ) : null}
+      ) : <div className = "needLogin"><img
+      src="http://api.whydothat.net/static/img/Recommend_need_login.png"
+      alt="Recommend need login"
+    />
+    </div>}
 
       <Content>
       <h2>방금 올라온 따끈따끈한 채용공고</h2>
@@ -112,6 +116,9 @@ const Cover = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .needLogin {
+    text-align:center;
+  };
 `;
 
 const Content = styled.div`

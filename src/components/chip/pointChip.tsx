@@ -12,9 +12,13 @@ export function PointPlanet(props: any) {
 
   return (
     <section>
-      <div>{star}</div>
-      <div>{sector}</div>
-      <div>{employees}</div>
+      <div>별점 : {star}</div>
+      <br></br>
+      <div>기업 분류 : {sector}</div>
+      <br></br>
+      <div>직원 수 : {employees}</div>
+      <br></br>
     </section>
   );
 }
+

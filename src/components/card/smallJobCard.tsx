@@ -14,6 +14,7 @@ export interface jobCardInter {
   companyName: string;
   platform: string;
   userState: boolean;
+  href: string;
 }
 
 function JobCard(
@@ -27,6 +28,7 @@ function JobCard(
     companyName,
     platform,
     userState,
+    href,
   }: jobCardInter,
   ref?: any,
 ) {
@@ -40,6 +42,7 @@ function JobCard(
       companyName: companyName,
       platform: platform,
       mainText: mainText,
+      href:href,
     });
   };
 

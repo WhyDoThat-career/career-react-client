@@ -10,6 +10,7 @@ export interface datasProps {
   companyName: string;
   platform: string;
   mainText: string;
+  href: string;
 }
 export interface companyPlanet {
   crawl_date: string;
@@ -76,9 +77,15 @@ function SmallCompanyInfoPage() {
     <Cover>
       <header>
         {datas.title} / {datas.companyName}
-        <PrimaryBtn label="지원하기" type="button" size="normal" />
+        <PrimaryBtn label="지원하기" type="button" size="normal" onClick={() => {
+                  window.open(datas.href);
+                }}/>
       </header>
       <hr />
+      <div className='jobplanetSearch'>
+      <img src="http://api.whydothat.net/static/img/icon/jobplanet.png"/>
+        <h1>&nbsp;&#34;{datas.companyName}&#34; 검색 결과</h1>
+        </div>
       {planetState ? <PointPlanet label={planetDatas} /> : <div>없음</div>}
       <hr />
       <PlatformDiv />
@@ -89,7 +96,9 @@ function SmallCompanyInfoPage() {
 const Cover = styled.div`
   /* display: flex; */
   /* justify-content: center; */
-  margin: 5vh 0;
+  margin: 5vh 0 ;
+  margin-left :20vw;
+  width : 60vw;
   header {
     display: flex;
     justify-content: space-between;
@@ -100,21 +109,33 @@ const Cover = styled.div`
   hr {
     /* box-shadow:  */
   }
+  .jobplanetSearch{
+    display : flex;
+    margin-bottom : 10px;
+    img{
+      width : 130px;
+      margin-top : -6px;
+    }
+    h1 {
+      font-size : large;
+    }
+  }
 `;
 
 const WantedText = styled.div`
   h6 {
     font-size: 1.5rem;
-    font-weight: 400;
-    margin: 1vh 0 2vh;
+    font-weight: bold;
+    margin: 2vh 0 1vh;
   }
+  line-height : 160%
 `;
 
 const RoketText = styled.div`
   h4 {
     font-size: 1.5rem;
-    font-weight: 400;
-    margin: 1vh 0 2vh;
+    font-weight: bold;
+    margin: 2vh 0 1vh;
   }
   a {
     color: black;
@@ -122,14 +143,16 @@ const RoketText = styled.div`
     pointer-events: none;
     cursor: default;
   }
+  line-height : 160%
 `;
 
 const ProgrammersText = styled.div`
   h5 {
     font-size: 1.5rem;
-    font-weight: 400;
-    margin: 1vh 0 2vh;
+    font-weight: bold;
+    margin: 2vh 0 1vh;
   }
+  line-height : 160%
 `;
 
 export default SmallCompanyInfoPage;
