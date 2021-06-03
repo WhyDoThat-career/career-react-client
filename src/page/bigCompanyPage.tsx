@@ -9,9 +9,9 @@ import Select from 'react-select';
 import { FILTER, COMPANYFILTER } from 'shared/resource/option';
 import Dropdown from 'components/dropdown/dropdown';
 import useObserver from 'shared/hook/useObserver';
-import { getRecommend } from "api/userRepo";
-import { RecommendCard } from "components/card/recommendCard";
-import { getCheckUserRepo } from "api/userRepo";
+import { getRecommend } from 'api/userRepo';
+import { RecommendCard } from 'components/card/recommendCard';
+import { getCheckUserRepo } from 'api/userRepo';
 
 function BigCompanyPage() {
   const [companyList, setCompanies] = useState<Company[]>([] as Company[]);
@@ -21,7 +21,7 @@ function BigCompanyPage() {
   const [recommendList, setRecommendList] = useState<Company[]>(
     [] as Company[],
   );
-  const [userName, setUserName] = useState<string>("");
+  const [userName, setUserName] = useState<string>('');
   const [recommendState, setRecommendState] = useState<boolean>(false);
 
   const { setRef } = useObserver(
@@ -42,11 +42,9 @@ function BigCompanyPage() {
 
   useEffect(() => {
     setPage(1);
+    callCompanies();
   }, [key]);
 
-  useEffect(() => {
-    callCompanies();
-  }, [page]);
   useEffect(() => {
     (async () => {
       const result = await getRecommend();
@@ -55,7 +53,7 @@ function BigCompanyPage() {
       // console.log(.data);
       setRecommendList(result.data);
 
-      if (name.data === "알 수 없는 사용자") {
+      if (name.data === '알 수 없는 사용자') {
         setRecommendState(false);
       } else {
         setRecommendState(true);
@@ -85,11 +83,14 @@ function BigCompanyPage() {
             ))}
           </ReCard>
         </Recommend>
-      ) : <div className = "needLogin"><img
-      src="http://api.whydothat.net/static/img/Recommend_need_login.png"
-      alt="Recommend need login"
-    />
-    </div>}
+      ) : (
+        <div className="needLogin">
+          <img
+            src="http://api.whydothat.net/static/img/Recommend_need_login.png"
+            alt="Recommend need login"
+          />
+        </div>
+      )}
       <Content>
         <h2>대기업 채용공고</h2>
         <FilterContainer>
@@ -121,8 +122,8 @@ const Cover = styled.article`
   justify-content: center;
   align-items: center;
   .needLogin {
-    text-align:center;
-  };
+    text-align: center;
+  }
 `;
 
 const Content = styled.div`
@@ -132,9 +133,9 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   h2 {
-    font-size : xx-large;
+    font-size: xx-large;
     margin: 40px 0px 0px 0px;
-};
+  }
 `;
 
 const FilterContainer = styled.div`
@@ -155,9 +156,10 @@ const CardContainer = styled.div`
 `;
 const Recommend = styled.div`
   h2 {
-    font-size : xx-large;
+    font-size: xx-large;
     margin: 20px 0px 0px 6vw;
-  }`;
+  }
+`;
 
 const ReCard = styled.div`
   display: flex;
