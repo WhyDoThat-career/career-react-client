@@ -14,6 +14,7 @@ export interface RecommendCardProps {
   platform: string;
   userState: boolean;
   href:string;
+  salary:string;
 }
 
 export function RecommendCard({
@@ -26,6 +27,7 @@ export function RecommendCard({
   platform,
   userState,
   href,
+  salary,
 }: RecommendCardProps) {
   const history = useHistory();
 
@@ -39,6 +41,7 @@ export function RecommendCard({
       mainText: mainText,
       logoImg:logoImg,
       href:href,
+      salary:salary,
     });
   };
 
