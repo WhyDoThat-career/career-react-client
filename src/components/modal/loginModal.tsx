@@ -109,7 +109,7 @@ export function LoginModal(props: any) {
                   src="http://api.whydothat.net/static/img/login/google.png"
                   alt="google"
                 />{" "}
-                <div className="google">Google 로그인</div>
+                <div className="google">&nbsp;Google 로그인</div>
               </button>
               <button
                 className="githubBtn"
@@ -122,7 +122,7 @@ export function LoginModal(props: any) {
                   src="http://api.whydothat.net/static/img/login/github.png"
                   alt="github"
                 />{" "}
-                <div className="github">Github 로그인</div>
+                <div className="github">&nbsp;Github 로그인</div>
               </button>
             </SocialBtn>
           </section>
@@ -201,19 +201,29 @@ const Text = styled.div`
 `;
 
 const LoginForm = styled.div`
-text-align: center;
+display: flex;
+flex-direction:column;
+align-items:center;
+width:90%
 div {
   color:#F44848
+}
+form {
+  width:100%
 }
 `;
 
 const SocialBtn = styled.div`
+display: flex;
+flex-direction:column;
+align-items:center;
   button {
     display: flex;
-    width: 410px;
+    width:90%;
+    margin-bottom:10px;
     height: 40px;
+    justify-content:center;
     background-color: transparent;
-    margin: 10px 0px 10px 30px ;
     border: none;
     border-radius: 5px;
     align-items: center;

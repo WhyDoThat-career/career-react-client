@@ -75,6 +75,7 @@ export function RegisterModal(props: any) {
               <br></br>
               <h2>지금 당장 WhyDoThat에 참여하세요!</h2>
             </Text>
+            <RegisterForm>
               <form onSubmit={handleSubmit(handleRegister)}>
                 <PrimeInput
                   type="email"
@@ -116,6 +117,7 @@ export function RegisterModal(props: any) {
                   disabled={!checkEmail}
                 />
               </form>
+              </RegisterForm>
             </section>
           </ModalBody>
         </Content>
@@ -145,6 +147,15 @@ const Text = styled.div`
     height: 60px;
     width: auto;
   }
+`;
+
+const RegisterForm = styled.div`
+display: flex;
+flex-direction:column;
+align-items:center;
+div {
+  color:#F44848
+}
 `;
 
 const Header = styled.div`

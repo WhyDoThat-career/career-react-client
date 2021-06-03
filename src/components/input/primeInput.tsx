@@ -36,13 +36,11 @@ export function PrimeInput({
   );
 }
 
-const InputCover = styled.span`
+const InputCover = styled.div`
   display: flex;
-  width: fit-content;
   align-items: center;
   flex-direction: column;
-  margin: 10px 0px 10px 30px;
-
+  margin-bottom: 10px;
   label {
     margin:0;
     margin-right: auto;
@@ -52,8 +50,7 @@ const InputCover = styled.span`
 `;
 
 const CustomInput = styled.input<{ wd?: string }>`
-  width: 400px;
-
+  width:90%;
   height: 40px;
   border: 1px solid #dbdbdb;
   box-shadow: 0 1px 1px rgba(50, 50, 93, 0.11), 0 4px 3px rgba(0, 0, 0, 0.08);
