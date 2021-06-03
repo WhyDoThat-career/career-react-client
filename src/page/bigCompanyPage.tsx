@@ -122,8 +122,12 @@ const Cover = styled.article`
   justify-content: center;
   align-items: center;
   .needLogin {
-    text-align: center;
-  }
+    width : 100vw;
+    display : flex ;
+    justify-content: center;
+    img {
+      overflow-x:hidden;
+    }
 `;
 
 const Content = styled.div`
