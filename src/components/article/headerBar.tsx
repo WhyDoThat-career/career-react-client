@@ -162,7 +162,7 @@ const SearchBar = styled.input<{ enableEdit: boolean }>`
 
 const UserLogo = styled.div`
   div {
-    width: 100%;
+    width: 60%;
     height: 100%;
     display: flex;
 

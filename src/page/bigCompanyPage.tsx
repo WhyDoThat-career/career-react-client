@@ -43,6 +43,7 @@ function BigCompanyPage() {
   return (
     <Cover>
       <Content>
+        <h2>대기업 채용공고</h2>
         <FilterContainer>
           <Dropdown data={COMPANYFILTER} clickMethod={setKey} />
           <Dropdown data={FILTER} clickMethod={setFilter} />
@@ -79,6 +80,10 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  h2 {
+    font-size : xx-large;
+    margin: 40px 0px 0px 0px;
+};
 `;
 
 const FilterContainer = styled.div`

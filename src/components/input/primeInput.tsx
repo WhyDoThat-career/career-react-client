@@ -23,7 +23,7 @@ export function PrimeInput({
 }: PrimeInputProps) {
   return (
     <InputCover>
-      <label htmlFor={id}>{label}</label>
+      {/* <label htmlFor={id}>{label}</label> */}
       <CustomInput
         type={type}
         placeholder={label}
@@ -41,9 +41,10 @@ const InputCover = styled.span`
   width: fit-content;
   align-items: center;
   flex-direction: column;
+  margin: 10px 0px 10px 30px;
 
   label {
-    margin: 0;
+    margin:0;
     margin-right: auto;
     margin-bottom: 0.5rem;
     font-weight: bold;
@@ -51,12 +52,14 @@ const InputCover = styled.span`
 `;
 
 const CustomInput = styled.input<{ wd?: string }>`
-  width: ${({ wd }) => (wd ? `${wd}` : "100%")};
+  width: 400px;
 
-  height: 28px;
+  height: 40px;
   border: 1px solid #dbdbdb;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(50, 50, 93, 0.11), 0 4px 3px rgba(0, 0, 0, 0.08);
   border-radius: 5px;
+  font-size : large;
+  text-align : center;
 
   &:focus {
     outline: none;

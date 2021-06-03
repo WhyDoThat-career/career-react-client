@@ -2,7 +2,7 @@
   "name": "career-react-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://whydothat.duckdns.org/api",
+  "proxy": "http://api.whydothat.net",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@styled-icons/bootstrap": "^10.29.0",

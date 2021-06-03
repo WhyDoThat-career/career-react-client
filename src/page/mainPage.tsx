@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { PrimaryBtn } from "components/button";
-import { LoginModal } from "components/modal/loginModal";
+// import { LoginModal } from "components/modal/loginModal";
 
 function MainPage() {
   const [modalShow, setModalShow] = useState(false);
@@ -18,32 +18,32 @@ function MainPage() {
       <TestTxt>찾기 싫다면</TestTxt>
       <TestTxt>모은거 보세요</TestTxt>
 
-      <button onClick={() => setModalShow(true)}>{"시작하기 ->"}</button>
-      <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
+      {/* <button onClick={() => setModalShow(true)}>{"시작하기 ->"}</button>
+      <LoginModal show={modalShow} onHide={() => setModalShow(false)} /> */}
       <div>Thanks To</div>
       <div className="img">
         <img
-          src="http://whydothat.duckdns.org/static/img/icon/kakao.png"
+          src="http://api.whydothat.net/static/img/icon/kakao.png"
           alt="platform logo"
         />
         <img
-          src="http://whydothat.duckdns.org/static/img/icon/naver.png"
+          src="http://api.whydothat.net/static/img/icon/naver.png"
           alt="platform logo"
         />
         <img
-          src="http://whydothat.duckdns.org/static/img/icon/programmers.png"
+          src="http://api.whydothat.net/static/img/icon/programmers.png"
           alt="platform logo"
         />
         <img
-          src="http://whydothat.duckdns.org/static/img/icon/wanted.png"
+          src="http://api.whydothat.net/static/img/icon/wanted.png"
           alt="platform logo"
         />
         <img
-          src="http://whydothat.duckdns.org/static/img/icon/roketpunch.png"
+          src="http://api.whydothat.net/static/img/icon/roketpunch.png"
           alt="platform logo"
         />
         <img
-          src="http://whydothat.duckdns.org/static/img/icon/wdticon.png"
+          src="http://api.whydothat.net/static/img/icon/wdticon.png"
           alt="platform logo"
         />
       </div>
@@ -60,7 +60,7 @@ const Cover = styled.article`
   width: 100vw;
   height: 100vh;
   ::after {
-    background-image: url("http://whydothat.duckdns.org/static/img/background.jpg");
+    background-image: url("http://api.whydothat.net/static/img/background.jpg");
     /* background-color: rgba(255, 255, 255, 0.5);
     -webkit-background-size: cover;
     -moz-background-size: cover;

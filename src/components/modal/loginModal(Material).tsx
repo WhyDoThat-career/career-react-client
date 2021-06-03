@@ -111,7 +111,7 @@ export function LoginModal() {
           <button className="close">x</button>
         </header>
         <section>
-          <img src="./static/img/wdticon.png" alt="WhyDoThat logo"></img>
+          <img src="http://api.whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
           <div>Why Do That!</div>
           <div>지금 채용공고를 확인하세요!</div>
           <form onSubmit={handleSubmit(handleLogin)}>

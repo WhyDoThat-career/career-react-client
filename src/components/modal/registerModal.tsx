@@ -69,7 +69,12 @@ export function RegisterModal(props: any) {
         <Content>
           <ModalBody>
             <section>
-              <div>지금 당장 WhyDoThat에 참여하세요!</div>
+            <Text>
+              <img src="http://api.whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
+              <h1>WhyDoThat</h1>
+              <br></br>
+              <h2>지금 당장 WhyDoThat에 참여하세요!</h2>
+            </Text>
               <form onSubmit={handleSubmit(handleRegister)}>
                 <PrimeInput
                   type="email"
@@ -103,6 +108,8 @@ export function RegisterModal(props: any) {
                     ...register("confirmpassword", { required: true }),
                   }}
                 />
+                <br></br>
+                <br></br>
                 <PrimaryBtn
                   label="회원가입"
                   type="submit"
@@ -119,6 +126,25 @@ export function RegisterModal(props: any) {
 
 const Cover = styled.div`
   height: 600px;
+  h1 {
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: #2ecc71 -1.5779px 1.86493px 0px, #f39c12 1.5779px 1.86493px 0px;
+    cursor: pointer;
+    }
+    h2 {
+      font-weight : bold;
+      font-size:1.5rem;
+      margin : 0px 0px 20px 0px;
+    }
+`;
+
+const Text = styled.div`
+  img {
+    height: 60px;
+    width: auto;
+  }
 `;
 
 const Header = styled.div`

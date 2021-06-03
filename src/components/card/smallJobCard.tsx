@@ -51,18 +51,18 @@ function JobCard(
           <p>{title}</p>
         </Title>
         <Info>
+        <div>{companyName}</div>
           <div>
-            <span className="sector">{sector}</span>
+            <span className="sector">&nbsp;{sector}&nbsp;</span>
             {newbie ? (
-              <span className="newbie">신입 가능</span>
+              <span className="newbie">&nbsp;신입 가능&nbsp;</span>
             ) : (
-              <span>경력</span>
+              <span>&nbsp;경력&nbsp;</span>
             )}
           </div>
-          <div>{companyName}</div>
         </Info>
         <Footer>
-          <img src={`./static/img/icon/${platform}.png`} alt="platform img" />
+          <img src={`http://api.whydothat.net/static/img/icon/${platform}.png`} alt="platform img" />
           {platform}
         </Footer>
       </CardBody>
@@ -72,8 +72,8 @@ function JobCard(
 
 const Card = styled.div`
   display: flex;
-  width: 20vw;
-  height: 15vh;
+  width: 410px;
+  height: 160px;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   border: 1px solid #e3e3e3;
   border-radius: 10px;
@@ -82,28 +82,41 @@ const Card = styled.div`
 
 const CardBody = styled.div`
   display: inline-block;
-  margin: 5% 1vw;
+  margin: 5% 1vw 10px 0px;
 `;
 
-const Title = styled.div``;
+const Title = styled.div`
+box-sizing : content-box;
+height : 45px;
+font-weight : bold;
+margin-bottom : 5px;
+p{
+  margin-top : 5px;
+}
+`;
 
 const Info = styled.div`
   .sector {
-    background-color: #ffeaa7;
+    background-color: #f8ce5e;
   }
   .newbie {
-    background-color: #2ecc71;
+    background-color: #bfe85a;
   }
   span {
     border-radius: 3px;
     /* padding: 0.1rem; */
-    margin: 0 1vw 0 0;
-    background-color: #a29bfe;
+    margin: 0 10px 0 0;
+    background-color: #ebbbf5;
+  }
+  div {
+    margin-bottom : 6px
   }
 `;
 
 const Footer = styled.div`
-  text-align: right;
+  margin-top : 20px;
+  display : flex;
+  justify-content: flex-end;
   img {
     height: 1rem;
     width: auto;
@@ -112,8 +125,8 @@ const Footer = styled.div`
 `;
 
 const Icon = styled.img`
-  height: 10vh;
-  width: 10vh;
+  height: 115px;
+  width: 115px;
   //   border: solid;
   margin: 5% 1vw;
 `;

@@ -84,6 +84,7 @@ function SmallCompanyPage() {
       ) : null}
 
       <Content>
+      <h2>방금 올라온 따끈따끈한 채용공고</h2>
         <CardContainer>
           {companyList?.map((company, idx) => (
             <JobCard
@@ -119,6 +120,10 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  h2 {
+      font-size : xx-large;
+      margin: 40px 0px 0px 0px;
+  };
 `;
 
 const CardContainer = styled.div`
@@ -131,13 +136,17 @@ const CardContainer = styled.div`
   justify-content: center;
 `;
 
-const Recommend = styled.div``;
+const Recommend = styled.div`
+  h2 {
+    font-size : xx-large;
+    margin: 20px 0px 0px 6vw;
+  }`;
 
 const ReCard = styled.div`
   display: flex;
-  width: 1000px;
-  height: 200px;
-  margin: 20px 0;
+  width: 90vw;
+  height: 300px;
+  margin: 20px 0px 0px 5vw;
   /* white-space:nowrap; */
   overflow-x: scroll;
 `;

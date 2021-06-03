@@ -68,14 +68,16 @@ export function LoginModal(props: any) {
         <ModalBody>
           <section>
             <Text>
-              <img src="./static/img/wdticon.png" alt="WhyDoThat logo"></img>
-              <div>Why Do That!</div>
-              <div>지금 채용공고를 확인하세요!</div>
+              <img src="http://api.whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
+              <h1>WhyDoThat</h1>
+              <br></br>
+              <h2>지금 채용공고를 확인하세요!</h2>
             </Text>
+            <LoginForm>
             <form onSubmit={handleSubmit(handleLogin)}>
               <PrimeInput
                 type="email"
-                label="email"
+                label="이메일을 입력하세요."
                 id="email"
                 wd="15vw"
                 onChange={handleEmailCheck}
@@ -84,23 +86,16 @@ export function LoginModal(props: any) {
               {checkEmail ? null : <div>없는 이메일 입니다</div>}
               <PrimeInput
                 type="password"
-                label="pw"
+                label="비밀번호를 입력하세요."
                 id="pw"
                 wd="15vw"
                 register={{ ...register("password", { required: true }) }}
               />
-
+              <br></br>
+              <br></br>
               <PrimaryBtn label="로그인" type="submit" disabled={!checkEmail} />
             </form>
-            <PrimaryBtn
-              label="회원가입"
-              type="button"
-              onClick={() => setModalShow(true)}
-            />
-            <RegisterModal
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-            />
+            </LoginForm>
             <div className="hr-sect">or</div>
             <SocialBtn>
               <button
@@ -111,7 +106,7 @@ export function LoginModal(props: any) {
                 }}
               >
                 <img
-                  src="http://whydothat.duckdns.org/static/img/login/google.png"
+                  src="http://api.whydothat.net/static/img/login/google.png"
                   alt="google"
                 />{" "}
                 <div className="google">Google 로그인</div>
@@ -124,13 +119,21 @@ export function LoginModal(props: any) {
                 }}
               >
                 <img
-                  src="http://whydothat.duckdns.org/static/img/login/github.png"
+                  src="http://api.whydothat.net/static/img/login/github.png"
                   alt="github"
                 />{" "}
                 <div className="github">Github 로그인</div>
               </button>
             </SocialBtn>
           </section>
+          <a href='#'
+              type="button"
+              onClick={() => setModalShow(true)}
+            >지금 당장 whydothat에 참여하세요!! 회원 가입</a>
+            <RegisterModal
+              show={modalShow}
+              onHide={() => setModalShow(false)}
+            />
         </ModalBody>
       </Cover>
     </Modal>
@@ -139,6 +142,7 @@ export function LoginModal(props: any) {
 
 const Cover = styled.div`
   height: 600px;
+  text-align: center;
   .hr-sect {
     display: flex;
     flex-basis: 100%;
@@ -156,6 +160,21 @@ const Cover = styled.div`
     font-size: 0px;
     line-height: 0px;
     margin: 0px 16px;
+  }
+  a{
+    margin : 30px;
+  }
+  h1 {
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-shadow: #2ecc71 -1.5779px 1.86493px 0px, #f39c12 1.5779px 1.86493px 0px;
+  cursor: pointer;
+  }
+  h2 {
+    font-weight : bold;
+    font-size:1.5rem;
+    margin : 0px 0px 20px 0px
   }
 `;
 
@@ -181,19 +200,20 @@ const Text = styled.div`
   }
 `;
 
-const Content = styled.div`
-  height: 500px;
-  display: flex;
-  text-align: center;
+const LoginForm = styled.div`
+text-align: center;
+div {
+  color:#F44848
+}
 `;
 
 const SocialBtn = styled.div`
   button {
     display: flex;
-    width: 152px;
+    width: 410px;
     height: 40px;
     background-color: transparent;
-    margin: 0 auto;
+    margin: 10px 0px 10px 30px ;
     border: none;
     border-radius: 5px;
     align-items: center;
