@@ -21,46 +21,46 @@ function MainPage() {
           <TestTxt>찾기 싫다면</TestTxt>
           <TestTxt>모은거 보세요</TestTxt>
           <div>Thanks To</div>
-        </div>
 
-        <Row className="img-Container">
-          <Col xs="2">
-            <img
-              src="http://api.whydothat.net/static/img/icon/kakao.png"
-              alt="platform logo"
-            />
-          </Col>
-          <Col xs="2">
-            <img
-              src="http://api.whydothat.net/static/img/icon/naver.png"
-              alt="platform logo"
-            />
-          </Col>
-          <Col xs="2">
-            <img
-              src="http://api.whydothat.net/static/img/icon/programmers.png"
-              alt="platform logo"
-            />
-          </Col>
-          <Col xs="2">
-            <img
-              src="http://api.whydothat.net/static/img/icon/wanted.png"
-              alt="platform logo"
-            />
-          </Col>
-          <Col xs="2">
-            <img
-              src="http://api.whydothat.net/static/img/icon/roketpunch.png"
-              alt="platform logo"
-            />
-          </Col>
-          <Col xs="2">
-            <img
-              src="http://api.whydothat.net/static/img/icon/wdticon.png"
-              alt="platform logo"
-            />
-          </Col>
-        </Row>
+          <Row className="img-Container">
+            <Col xs="2">
+              <img
+                src="http://api.whydothat.net/static/img/icon/kakao.png"
+                alt="platform logo"
+              />
+            </Col>
+            <Col xs="2">
+              <img
+                src="http://api.whydothat.net/static/img/icon/naver.png"
+                alt="platform logo"
+              />
+            </Col>
+            <Col xs="2">
+              <img
+                src="http://api.whydothat.net/static/img/icon/programmers.png"
+                alt="platform logo"
+              />
+            </Col>
+            <Col xs="2">
+              <img
+                src="http://api.whydothat.net/static/img/icon/wanted.png"
+                alt="platform logo"
+              />
+            </Col>
+            <Col xs="2">
+              <img
+                src="http://api.whydothat.net/static/img/icon/roketpunch.png"
+                alt="platform logo"
+              />
+            </Col>
+            <Col xs="2">
+              <img
+                src="http://api.whydothat.net/static/img/icon/wdticon.png"
+                alt="platform logo"
+              />
+            </Col>
+          </Row>
+        </div>
       </Content>
 
       {/* <button onClick={() => setModalShow(true)}>{"시작하기 ->"}</button>
@@ -153,6 +153,11 @@ const Cover = styled.article`
   .img-Container {
     display: flex;
     width: 100%;
+    div {
+      width: fit-content;
+      height: fit-content;
+      padding: 0 !important;
+    }
   }
 
   button {
