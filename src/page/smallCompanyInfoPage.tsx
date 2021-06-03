@@ -11,6 +11,7 @@ export interface datasProps {
   platform: string;
   mainText: string;
   href: string;
+  logoImg:string;
 }
 export interface companyPlanet {
   crawl_date: string;
@@ -75,11 +76,14 @@ function SmallCompanyInfoPage() {
 
   return (
     <Cover>
-      <header>
-        {datas.title} / {datas.companyName}
-        <PrimaryBtn label="지원하기" type="button" size="normal" onClick={() => {
+      <Logo>
+      <img className='logo' src={datas.logoImg}/>
+      <PrimaryBtn label="지원하기" type="button" size="large" onClick={() => {
                   window.open(datas.href);
                 }}/>
+      </Logo>
+      <header>
+        {datas.title} / {datas.companyName}
       </header>
       <hr />
       <div className='jobplanetSearch'>
@@ -92,6 +96,16 @@ function SmallCompanyInfoPage() {
     </Cover>
   );
 }
+
+const Logo = styled.div`
+  display : flex;
+  justify-content: space-between;
+  .logo {
+    width : 150px;
+    height : 150px;
+    margin-bottom : 20px
+  }
+`;
 
 const Cover = styled.div`
   /* display: flex; */

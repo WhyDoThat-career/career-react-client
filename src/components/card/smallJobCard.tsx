@@ -43,6 +43,7 @@ function JobCard(
       platform: platform,
       mainText: mainText,
       href:href,
+      logoImg:logoImg,
     });
   };
 

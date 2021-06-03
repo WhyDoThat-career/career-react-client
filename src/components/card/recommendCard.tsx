@@ -13,6 +13,7 @@ export interface RecommendCardProps {
   companyName: string;
   platform: string;
   userState: boolean;
+  href:string;
 }
 
 export function RecommendCard({
@@ -24,6 +25,7 @@ export function RecommendCard({
   companyName,
   platform,
   userState,
+  href,
 }: RecommendCardProps) {
   const history = useHistory();
 
@@ -35,6 +37,8 @@ export function RecommendCard({
       companyName: companyName,
       platform: platform,
       mainText: mainText,
+      logoImg:logoImg,
+      href:href,
     });
   };
 
