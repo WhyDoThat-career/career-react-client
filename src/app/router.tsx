@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
-import styled from "styled-components";
-import { useCookies } from "react-cookie";
-import { useRecoilValue } from "recoil";
+import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
+import { useCookies } from 'react-cookie';
+import { useRecoilValue } from 'recoil';
 
-import { BigCompanyPage, MainPage, SmallCompanyPage, NotFoundPage } from "page";
-import { userState } from "shared/store";
-import LoginPage from "page/loginPage";
-import { HeaderBar } from "components/article";
-import { Footer } from "components/article/footer";
-import SmallCompanyInfoPage from "page/smallCompanyInfoPage";
-import NaverPage from "page/largecap/naverPage";
-import KakaoPage from "page/largecap/kakaoPage";
+import { BigCompanyPage, MainPage, SmallCompanyPage, NotFoundPage } from 'page';
+import { userState } from 'shared/store';
+import LoginPage from 'page/loginPage';
+import { HeaderBar } from 'components/article';
+import { Footer } from 'components/article/footer';
+import SmallCompanyInfoPage from 'page/smallCompanyInfoPage';
+import NaverPage from 'page/largecap/naverPage';
+import KakaoPage from 'page/largecap/kakaoPage';
 
 function Router() {
-  const [cookies, setCookie] = useCookies(["session"]);
+  const [cookies, setCookie] = useCookies(['session']);
   const userInfo = useRecoilValue(userState);
   const [notfound, setNotfound] = useState(true);
 
   useEffect(() => {
-    console.log("session ", cookies);
+    console.log('session ', cookies);
   }, [cookies]);
 
   const NoMatch = () => {
@@ -83,7 +83,9 @@ function Router() {
 }
 
 const MainCover = styled.div`
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 `;
 
 const Content = styled.main`

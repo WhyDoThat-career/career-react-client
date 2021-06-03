@@ -11,15 +11,14 @@ const GlobalStyle = createGlobalStyle`
         height:auto;
         box-sizing:border-box;
         font-family: 'Nanum Gothic', sans-serif;
+    height: 100%;
 
     }
     body {
         overflow:auto;
         height: 100%;
     }
-    div{
-        width:100%;
-    }
+  
     h1 {
     font-size: 35px;
     font-weight: bolder;

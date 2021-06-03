@@ -50,29 +50,25 @@ export function HeaderBar() {
   return (
     <Container fluid style={{ padding: 0 }}>
       <Cover>
-        <Col xs="2">
+        <Col xs="3" className="item">
           <Logo onClick={() => history.push('/')}>
             <h1>WhyDoThat</h1>
           </Logo>
         </Col>
 
-        <Col xs="6">
+        <Col xs="auto" className="item">
           <CustomNav>
             <ul>
-              <Col xs="1">
-                <NavItem name="홈" route="/" />
-              </Col>
-              <Col xs="1">
-                <NavItem name="채용 공고" route="/small" />
-              </Col>
-              <Col xs="1">
-                <NavItem name="대기업" route="/big" />
-              </Col>
+              {/* <NavItem name="홈" route="/" /> */}
+
+              <NavItem name="채용 공고" route="/small" />
+
+              <NavItem name="대기업" route="/big" />
             </ul>
           </CustomNav>
         </Col>
 
-        <Col xs="4" style={{ display: 'flex' }}>
+        <Col xs="3" className="item">
           <ButtonContainer>
             <Search
               size="24"
@@ -84,20 +80,18 @@ export function HeaderBar() {
 
           {userState ? (
             <UserLogo>
-              <div>
-                <img src={userInfo.thumbnail} alt="userimage" />
-                <div>{userInfo.nickname}</div>
-                <button onClick={handleLogout}>로그아웃</button>
-              </div>
+              <img src={userInfo.thumbnail} alt="userimage" />
+              <div>{userInfo.nickname}</div>
+              <button onClick={handleLogout}>로그아웃</button>
             </UserLogo>
           ) : (
             <UserLogo>
               <button onClick={() => setModalShow(true)}>로그인</button>
-              <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
             </UserLogo>
           )}
         </Col>
       </Cover>
+      <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
     </Container>
   );
 }
@@ -107,7 +101,7 @@ const Cover = styled.header`
   height: 8vh;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 
   /* border-bottom: 0.5px solid #e4e4e4; */
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -122,8 +116,14 @@ const Cover = styled.header`
     li {
       list-style: none;
       font-size: 1.1rem;
-      padding: 0 1.5rem;
     }
+  }
+
+  .item {
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
   }
 `;
 
@@ -161,12 +161,13 @@ const CustomNav = styled.nav`
 
   ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    height: 100%;
+    gap: 2rem;
   }
 
   li {
-    min-width: 100px;
     text-align: center;
   }
 `;
@@ -184,13 +185,9 @@ const SearchBar = styled.input<{ enableEdit: boolean }>`
 `;
 
 const UserLogo = styled.div`
-  div {
-    width: 60%;
-    height: 100%;
-    display: flex;
+  display: flex;
+  justify-content: space-around;
 
-    align-items: center;
-  }
   img {
     width: 2rem;
     height: auto;

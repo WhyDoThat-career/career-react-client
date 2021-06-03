@@ -1,29 +1,25 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 export const Footer = () => {
   return (
     <Cover>
-      <footer>
-        <div className="inner">
-          <div className="footer-create">제작자: 정근영, 김태훈, 나두원</div>
-          <div className="footer-email">Email: whydothat.studio@gmail.com</div>
-          <div className="footer-copyright">
-            Copyrightⓒ 2021. WhyDoThat. All rights reserved.
-          </div>
+      <div className="inner">
+        <div className="footer-create">제작자: 정근영, 김태훈, 나두원</div>
+        <div className="footer-email">Email: whydothat.studio@gmail.com</div>
+        <div className="footer-copyright">
+          Copyrightⓒ 2021. WhyDoThat. All rights reserved.
         </div>
-      </footer>
+      </div>
     </Cover>
   );
 };
 
-const Cover = styled.div`
-  footer {
-    border-top: 1px solid #e4e4e4;
-    background-color: #f8f9fa;
-    padding: 0 0 1rem 0;
-    margin: 0 0 1rem 0;
-  }
+const Cover = styled.footer`
+  height: 100%;
+  border-top: 1px solid #e4e4e4;
+  background-color: #f8f9fa;
+
   .footer-create {
     font-weight: bold;
     color: #545e6f;
