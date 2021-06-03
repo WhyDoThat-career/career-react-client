@@ -8,28 +8,36 @@ const GlobalStyle = createGlobalStyle`
 
   
     .App{
-        width:100%;
-        height:100vh;
+        height:auto;
         box-sizing:border-box;
         font-family: 'Nanum Gothic', sans-serif;
 
     }
     body {
         overflow:auto;
+        height: 100%;
     }
     div{
         width:100%;
     }
-      h1 {
+    h1 {
     font-size: 35px;
+    font-weight: bolder;
+
   }
 
   @media screen and (min-width: 768px) {
     h1 {
       font-size: 40px;
-      font-weight: bolder;
     }
   }
+
+@media only screen and (max-width: 768px){
+  h1{
+    font-size: 15px;
+  }
+}
+
     h2 {
     font-weight: bold;
     margin: 0.5rem 0;

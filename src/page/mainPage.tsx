@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { PrimaryBtn } from "components/button";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { PrimaryBtn } from 'components/button';
+import { Container, Row } from 'reactstrap';
 // import { LoginModal } from "components/modal/loginModal";
 
 function MainPage() {
@@ -8,15 +9,19 @@ function MainPage() {
 
   return (
     <Cover>
-      <div className="wdt">
-        <h3>WHY</h3>
-        <h3>DO</h3>
-        <h3>THAT</h3>
-      </div>
+      <Content fluid>
+        <Row className="wdt">
+          <h3>WHY</h3>
+          <h3>DO</h3>
+          <h3>THAT</h3>
+        </Row>
 
-      <TestTxt>더이상</TestTxt>
-      <TestTxt>찾기 싫다면</TestTxt>
-      <TestTxt>모은거 보세요</TestTxt>
+        <Row>
+          <TestTxt>더이상</TestTxt>
+          <TestTxt>찾기 싫다면</TestTxt>
+          <TestTxt>모은거 보세요</TestTxt>
+        </Row>
+      </Content>
 
       {/* <button onClick={() => setModalShow(true)}>{"시작하기 ->"}</button>
       <LoginModal show={modalShow} onHide={() => setModalShow(false)} /> */}
@@ -52,7 +57,10 @@ function MainPage() {
 }
 
 const Cover = styled.article`
-  @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
+  display: flex;
+  flex-direction: column;
+
+  @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
   /* display: flex;
   align-items: center;
   flex-direction: column; */
@@ -60,7 +68,7 @@ const Cover = styled.article`
   width: 100vw;
   height: 100vh;
   ::after {
-    background-image: url("http://api.whydothat.net/static/img/background.jpg");
+    background-image: url('http://api.whydothat.net/static/img/background.jpg');
     /* background-color: rgba(255, 255, 255, 0.5);
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -74,7 +82,7 @@ const Cover = styled.article`
     opacity: 0.6 !important;
     filter: alpha(opacity=50);
     z-index: -1;
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -88,7 +96,7 @@ const Cover = styled.article`
     text-shadow: rgb(0 255 255) 4.0779px -1.86493px 0px,
       rgb(255 0 0) -4.0779px 1.86493px 0px;
 
-    font-family: "Rubik", sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-size: 4.5vw;
     color: rgb(0, 0, 0);
     line-height: 0.75em;
@@ -106,8 +114,8 @@ const Cover = styled.article`
   }
 
   div {
-    margin: 0 0 0 35vw;
-    font-family: "Black Han Sans", sans-serif;
+    /* margin: 0 0 0 35vw; */
+    font-family: 'Black Han Sans', sans-serif;
     text-shadow: rgb(255 0 0) 1.0779px -0.86493px 0px,
       rgb(0 255 255) -1.0779px 0.86493px 0px;
     color: white;
@@ -126,16 +134,20 @@ const Cover = styled.article`
     font-size: 1.5rem;
     background-color: #ffa502;
     color: #fff;
-    font-family: "Black Han Sans", sans-serif;
+    font-family: 'Black Han Sans', sans-serif;
     border: none;
     border-radius: 20px;
     box-shadow: 5px 5px 5px #57606f;
   }
 `;
 
+const Content = styled(Container)`
+  width: 80%;
+`;
+
 const TestTxt = styled.h4`
-  margin: 0 0 0 35vw;
-  font-family: "Black Han Sans", sans-serif !important;
+  /* margin: 0 0 0 35vw; */
+  font-family: 'Black Han Sans', sans-serif !important;
   text-shadow: rgb(0 0 0 / 60%) 0px 5.25px 39.375px;
   font-size: 6.5vw !important;
   color: white;

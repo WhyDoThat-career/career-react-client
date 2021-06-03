@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { PrimaryBtn } from "components/button";
-import styled from "styled-components";
-import { Search } from "@styled-icons/bootstrap";
-import { useRecoilValue } from "recoil";
-import { userState } from "shared/store";
-import { useHistory, Link } from "react-router-dom";
-import { NavItem } from "components/nav/navItem";
-import { PrimeInput } from "components/input";
-import { getCheckUserRepo, getLogout } from "api/userRepo";
-import { AxiosError } from "axios";
-import { tmpdir } from "os";
-import { LoginModal } from "components/modal/loginModal";
+import React, { useState, useEffect } from 'react';
+import { PrimaryBtn } from 'components/button';
+import styled from 'styled-components';
+import { Search } from '@styled-icons/bootstrap';
+import { useRecoilValue } from 'recoil';
+import { userState } from 'shared/store';
+import { useHistory, Link } from 'react-router-dom';
+import { NavItem } from 'components/nav/navItem';
+import { PrimeInput } from 'components/input';
+import { getCheckUserRepo, getLogout } from 'api/userRepo';
+import { AxiosError } from 'axios';
+import { tmpdir } from 'os';
+import { LoginModal } from 'components/modal/loginModal';
+import { Col, Container, Row } from 'reactstrap';
 
 export function HeaderBar() {
   // const user = useRecoilValue(userState);
@@ -41,48 +42,63 @@ export function HeaderBar() {
 
   const handleLogout = async () => {
     const result = await getLogout();
-    console.log("is logout", result);
-    history.push("/");
+    console.log('is logout', result);
+    history.push('/');
     window.location.reload();
   };
 
   return (
-    <Cover>
-      <Logo onClick={() => history.push("/")}>
-        <h1>WhyDoThat</h1>
-      </Logo>
+    <Container fluid style={{ padding: 0 }}>
+      <Cover>
+        <Col xs="2">
+          <Logo onClick={() => history.push('/')}>
+            <h1>WhyDoThat</h1>
+          </Logo>
+        </Col>
 
-      <CustomNav>
-        <ul>
-          <NavItem name="홈" route="/" />
-          <NavItem name="채용 공고" route="/small" />
-          <NavItem name="대기업" route="/big" />
-        </ul>
-      </CustomNav>
+        <Col xs="6">
+          <CustomNav>
+            <ul>
+              <Col xs="1">
+                <NavItem name="홈" route="/" />
+              </Col>
+              <Col xs="1">
+                <NavItem name="채용 공고" route="/small" />
+              </Col>
+              <Col xs="1">
+                <NavItem name="대기업" route="/big" />
+              </Col>
+            </ul>
+          </CustomNav>
+        </Col>
 
-      <ButtonContainer>
-        <Search
-          size="24"
-          style={{ margin: "0 1rem ", cursor: "pointer" }}
-          onClick={() => setEdit(!enableEdit)}
-        />
-        <SearchBar placeholder="검색" enableEdit={enableEdit} />
-      </ButtonContainer>
-      {userState ? (
-        <UserLogo>
-          <div>
-            <img src={userInfo.thumbnail} alt="userimage" />
-            <div>{userInfo.nickname}</div>
-            <button onClick={handleLogout}>로그아웃</button>
-          </div>
-        </UserLogo>
-      ) : (
-        <UserLogo>
-          <button onClick={() => setModalShow(true)}>로그인</button>
-          <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
-        </UserLogo>
-      )}
-    </Cover>
+        <Col xs="4" style={{ display: 'flex' }}>
+          <ButtonContainer>
+            <Search
+              size="24"
+              style={{ margin: '0 1rem ', cursor: 'pointer' }}
+              onClick={() => setEdit(!enableEdit)}
+            />
+            <SearchBar placeholder="검색" enableEdit={enableEdit} />
+          </ButtonContainer>
+
+          {userState ? (
+            <UserLogo>
+              <div>
+                <img src={userInfo.thumbnail} alt="userimage" />
+                <div>{userInfo.nickname}</div>
+                <button onClick={handleLogout}>로그아웃</button>
+              </div>
+            </UserLogo>
+          ) : (
+            <UserLogo>
+              <button onClick={() => setModalShow(true)}>로그인</button>
+              <LoginModal show={modalShow} onHide={() => setModalShow(false)} />
+            </UserLogo>
+          )}
+        </Col>
+      </Cover>
+    </Container>
   );
 }
 
@@ -91,7 +107,8 @@ const Cover = styled.header`
   height: 8vh;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 1rem;
+
   /* border-bottom: 0.5px solid #e4e4e4; */
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   z-index: 1000;
@@ -111,7 +128,7 @@ const Cover = styled.header`
 `;
 
 const Logo = styled.div`
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   text-shadow: #2ecc71 -1.5779px 1.86493px 0px, #f39c12 1.5779px 1.86493px 0px;
@@ -142,6 +159,12 @@ const CustomNav = styled.nav`
     align-items: center;
   }
 
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
   li {
     min-width: 100px;
     text-align: center;
@@ -149,8 +172,8 @@ const CustomNav = styled.nav`
 `;
 
 const SearchBar = styled.input<{ enableEdit: boolean }>`
-  width: ${({ enableEdit }) => (enableEdit ? "10vw" : 0)};
-  min-width: ${({ enableEdit }) => (enableEdit ? "150px" : 0)};
+  width: ${({ enableEdit }) => (enableEdit ? '10vw' : 0)};
+  min-width: ${({ enableEdit }) => (enableEdit ? '150px' : 0)};
   height: 28px;
   opacity: ${({ enableEdit }) => (enableEdit ? 1 : 0)};
   transition: 0.3s all ease;
