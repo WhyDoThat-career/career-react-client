@@ -16,7 +16,7 @@ export const Footer = () => {
 };
 
 const Cover = styled.footer`
-  height: 100%;
+  margin-top : auto;
   border-top: 1px solid #e4e4e4;
   background-color: #f8f9fa;
 

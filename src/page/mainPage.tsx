@@ -72,6 +72,7 @@ function MainPage() {
 const Cover = styled.article`
   display: flex;
   height: 100%;
+  min-height:81vh;
   flex-direction: column;
 
   @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
@@ -153,6 +154,7 @@ const Cover = styled.article`
   .img-Container {
     display: flex;
     width: 100%;
+    margin-left:0.2vw;
     div {
       width: fit-content;
       height: fit-content;
