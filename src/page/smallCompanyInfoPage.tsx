@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { PrimaryBtn } from "components/button";
 import { getJobPlanetData } from "api/companyRepo";
 import { PointPlanet } from "components/chip/pointChip";
+import { TagChip } from 'components/chip/tagChip';
 
 export interface datasProps {
   title: string;
@@ -12,6 +13,11 @@ export interface datasProps {
   mainText: string;
   href: string;
   logoImg:string;
+  career:string;
+  salary:string;
+  sector:string;
+  newbie:boolean;
+  skill_tag:Array<string>;
 }
 export interface companyPlanet {
   crawl_date: string;
@@ -85,6 +91,21 @@ function SmallCompanyInfoPage() {
       <header>
         {datas.title} / {datas.companyName}
       </header>
+      <Info>
+          <div>
+            <span className="sector">&nbsp;{datas.sector}&nbsp;</span>
+            {datas.newbie ? (
+              <span className="newbie">&nbsp;신입 가능&nbsp;</span>
+            ) : (
+              <span>&nbsp;최소 {datas.career.split(',')[0]}년&nbsp;</span>
+            )}
+            {datas.salary!=null ? (
+              <span className="salary">&nbsp;{datas.salary.replace(',','만원~')}만원&nbsp;</span>
+            ):null}
+            <img src={`http://api.whydothat.net/static/img/icon/${datas.platform}.png`} />
+            {datas.platform}
+          </div>
+        </Info>
       <hr />
       <div className='jobplanetSearch'>
       <img src="http://api.whydothat.net/static/img/icon/jobplanet.png"/>
@@ -92,10 +113,33 @@ function SmallCompanyInfoPage() {
         </div>
       {planetState ? <PointPlanet label={planetDatas} /> : <div>없음</div>}
       <hr />
+      <SkillStack>
+        <h1>언급된 기술 스택</h1>
+        <div>
+        {datas.skill_tag?.map((tag) => (
+          <TagChip label={tag} />
+        ))}</div>
+      </SkillStack>
       <PlatformDiv />
     </Cover>
   );
 }
+
+const SkillStack = styled.div`
+  h1{
+    font-size : 1.4rem;
+    font-weight:bold;
+    margin-bottom:10px;
+  }
+  div {
+    display: flex;
+    height: 20%;
+    gap: 0.3rem;
+    margin: 0.03rem;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+`;
 
 const Logo = styled.div`
   display : flex;
@@ -105,6 +149,27 @@ const Logo = styled.div`
     height : 150px;
     margin-bottom : 20px
   }
+`;
+const Info = styled.div`
+font-size : 1.3rem;
+.sector {
+  background-color: #f8ce5e;
+}
+.newbie {
+  background-color: #bfe85a;
+}
+.salary {
+  background-color: #A9E2F3;
+}
+span {
+  margin-right : 10px;
+  background-color: #ebbbf5;
+  border-radius: 3px;
+}
+img {
+  width : 20px;
+  margin-bottom : -3px;
+}
 `;
 
 const Cover = styled.div`

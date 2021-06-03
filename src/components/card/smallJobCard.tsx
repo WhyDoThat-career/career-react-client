@@ -15,6 +15,9 @@ export interface jobCardInter {
   platform: string;
   userState: boolean;
   href: string;
+  salary:string;
+  career:string;
+  skill_tag: Array<string>;
 }
 
 function JobCard(
@@ -29,6 +32,9 @@ function JobCard(
     platform,
     userState,
     href,
+    salary,
+    career,
+    skill_tag,
   }: jobCardInter,
   ref?: any,
 ) {
@@ -44,6 +50,11 @@ function JobCard(
       mainText: mainText,
       href:href,
       logoImg:logoImg,
+      salary:salary,
+      career:career,
+      sector:sector,
+      newbie:newbie,
+      skill_tag:skill_tag,
     });
   };
 
@@ -61,8 +72,13 @@ function JobCard(
             {newbie ? (
               <span className="newbie">&nbsp;신입 가능&nbsp;</span>
             ) : (
-              <span>&nbsp;경력&nbsp;</span>
+              <span>&nbsp;최소 {career.split(',')[0]}년&nbsp;</span>
             )}
+            {salary!=null ? (
+              <p>
+              <span className="salary">&nbsp;{salary.replace(',','만원~')}만원&nbsp;</span>
+              </p>
+            ):null}
           </div>
         </Info>
         <Footer>
@@ -106,6 +122,9 @@ const Info = styled.div`
   .newbie {
     background-color: #bfe85a;
   }
+  .salary {
+    background-color: #A9E2F3;
+  }
   span {
     border-radius: 3px;
     /* padding: 0.1rem; */
@@ -113,8 +132,12 @@ const Info = styled.div`
     background-color: #ebbbf5;
   }
   div {
-    margin-bottom : 6px
+    margin-bottom : 2px
   }
+  p {
+    margin-bottom : -20px
+  }
+  line-height : 130%
 `;
 
 const Footer = styled.div`
