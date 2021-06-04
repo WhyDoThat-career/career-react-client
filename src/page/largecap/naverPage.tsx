@@ -11,14 +11,14 @@ function NaverPage() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log('test', location.state);
+    // console.log('test', location.state);
 
     location.state.isSnow &&
-      console.log(
-        'naver header',
-        location.state.tag.includes('n_career_header'),
-        location.state.tag,
-      );
+      // console.log(
+      //   'naver header',
+      //   location.state.tag.includes('n_career_header'),
+      //   location.state.tag,
+      // );
     setHeaderState(location.state.tag.includes('n_career_header'));
     setDatas(location.state.tag);
   }, []);

@@ -44,11 +44,11 @@ function SmallCompanyInfoPage() {
   );
 
   const datas: datasProps = location.state;
-
+  window.scrollTo(0, 0);
   useEffect(() => {
     (async () => {
       const result = await getJobPlanetData(datas.companyName);
-      console.log("companyList", result.data.success);
+      // console.log("companyList", result.data.success);
       if (result.data.success) {
         setPlanetState(true);
         setPlanetDatas(result.data.data);
@@ -82,6 +82,7 @@ function SmallCompanyInfoPage() {
 
   return (
     <Cover>
+      <div className='covercontainer'>
       <Logo>
       <img className='logo' src={datas.logoImg}/>
       <PrimaryBtn label="지원하기" type="button" size="large" onClick={() => {
@@ -102,13 +103,13 @@ function SmallCompanyInfoPage() {
             {datas.salary!=null ? (
               <span className="salary">&nbsp;{datas.salary.replace(',','만원~')}만원&nbsp;</span>
             ):null}
-            <img src={`http://api.whydothat.net/static/img/icon/${datas.platform}.png`} />
+            <img src={`https://whydothat.net/static/img/icon/${datas.platform}.png`} />
             {datas.platform}
           </div>
         </Info>
       <hr />
       <div className='jobplanetSearch'>
-      <img src="http://api.whydothat.net/static/img/icon/jobplanet.png"/>
+      <img src="https://whydothat.net/static/img/icon/jobplanet.png"/>
         <h1>&nbsp;&#34;{datas.companyName}&#34; 검색 결과</h1>
         </div>
       {planetState ? <PointPlanet label={planetDatas} /> : <div>없음</div>}
@@ -121,6 +122,7 @@ function SmallCompanyInfoPage() {
         ))}</div>
       </SkillStack>
       <PlatformDiv />
+      </div>
     </Cover>
   );
 }
@@ -173,11 +175,13 @@ img {
 `;
 
 const Cover = styled.div`
-  /* display: flex; */
-  /* justify-content: center; */
-  margin: 5vh 0 ;
-  margin-left :20vw;
-  width : 60vw;
+  display: flex;
+  justify-content: center;
+  .covercontainer {
+    margin: 5vh 0 ;
+    width : 60vw;
+    min-width:350px;
+  }
   header {
     display: flex;
     justify-content: space-between;

@@ -15,6 +15,10 @@ export interface RecommendCardProps {
   userState: boolean;
   href:string;
   salary:string;
+  career:string;
+  newbie:string;
+  skill_tag:string;
+
 }
 
 export function RecommendCard({
@@ -28,6 +32,9 @@ export function RecommendCard({
   userState,
   href,
   salary,
+  career,
+  newbie,
+  skill_tag,
 }: RecommendCardProps) {
   const history = useHistory();
 
@@ -42,6 +49,10 @@ export function RecommendCard({
       logoImg:logoImg,
       href:href,
       salary:salary,
+      career:career,
+      sector:sector,
+      newbie:newbie,
+      skill_tag:skill_tag,
     });
   };
 
@@ -67,7 +78,7 @@ const CardBody = styled.div`
   display: flex;
   width: 12vw;
   min-width: 200px;
-  height: 20vh;
+  height: 22vh;
   background-color: white;
   border: none;
   flex-direction: column;
@@ -81,12 +92,11 @@ const CardBody = styled.div`
 const Title = styled.div`
   display: flex;
   padding: 0.5rem;
-  height: 20%;
+  height: 30%;
   padding: 0 0.5rem;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  border-bottom: 1px solid #f3f3f4;
   font-weight: bold;
   box-sizing: border-box;
   width: 100%;

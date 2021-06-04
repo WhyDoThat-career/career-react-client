@@ -70,7 +70,7 @@ export function RegisterModal(props: any) {
           <ModalBody>
             <section>
             <Text>
-              <img src="http://api.whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
+              <img src="https://whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
               <h1>WhyDoThat</h1>
               <br></br>
               <h2>지금 당장 WhyDoThat에 참여하세요!</h2>

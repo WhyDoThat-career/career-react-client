@@ -19,13 +19,13 @@ function Router() {
   const [notfound, setNotfound] = useState(true);
 
   useEffect(() => {
-    console.log('session ', cookies);
+    // console.log('session ', cookies);
   }, [cookies]);
 
-  const NoMatch = () => {
-    setNotfound(false);
-    return null;
-  };
+  // const NoMatch = () => {
+  //   setNotfound(false);
+  //   return null;
+  // };
 
   return (
     <MainCover>
@@ -71,10 +71,10 @@ function Router() {
             }}
           />
 
-          <Route path="*">
+          {/* <Route path="*">
             <NotFoundPage />
-            <NoMatch />
-          </Route>
+            <NoMatch /> */}
+          {/* </Route> */}
         </Switch>
       </Content>
       {notfound ? <Footer /> : null}

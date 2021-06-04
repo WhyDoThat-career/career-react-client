@@ -57,7 +57,7 @@ export const postRegister = async (
       confirmpassword: confirmpassword,
     }),
   );
-  console.log("register");
+  // console.log("register");
 };
 
 export const getCheckUserRepo = async () => {

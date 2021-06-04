@@ -68,13 +68,13 @@ export function LoginModal() {
         data.password,
       );
 
-      console.log("====================================");
-      console.log(checkLogin);
-      console.log("====================================");
+      // console.log("====================================");
+      // console.log(checkLogin);
+      // console.log("====================================");
 
       if (checkLogin === true) {
         window.location.reload();
-        console.log("replace");
+        // console.log("replace");
       }
     })();
   };
@@ -111,7 +111,7 @@ export function LoginModal() {
           <button className="close">x</button>
         </header>
         <section>
-          <img src="http://api.whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
+          <img src="https://whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
           <div>Why Do That!</div>
           <div>지금 채용공고를 확인하세요!</div>
           <form onSubmit={handleSubmit(handleLogin)}>

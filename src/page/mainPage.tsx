@@ -25,37 +25,37 @@ function MainPage() {
           <Row className="img-Container">
             <Col xs="2">
               <img
-                src="http://api.whydothat.net/static/img/icon/kakao.png"
+                src="https://whydothat.net/static/img/icon/kakao.png"
                 alt="platform logo"
               />
             </Col>
             <Col xs="2">
               <img
-                src="http://api.whydothat.net/static/img/icon/naver.png"
+                src="https://whydothat.net/static/img/icon/naver.png"
                 alt="platform logo"
               />
             </Col>
             <Col xs="2">
               <img
-                src="http://api.whydothat.net/static/img/icon/programmers.png"
+                src="https://whydothat.net/static/img/icon/programmers.png"
                 alt="platform logo"
               />
             </Col>
             <Col xs="2">
               <img
-                src="http://api.whydothat.net/static/img/icon/wanted.png"
+                src="https://whydothat.net/static/img/icon/wanted.png"
                 alt="platform logo"
               />
             </Col>
             <Col xs="2">
               <img
-                src="http://api.whydothat.net/static/img/icon/roketpunch.png"
+                src="https://whydothat.net/static/img/icon/roketpunch.png"
                 alt="platform logo"
               />
             </Col>
             <Col xs="2">
               <img
-                src="http://api.whydothat.net/static/img/icon/wdticon.png"
+                src="https://whydothat.net/static/img/icon/wdticon.png"
                 alt="platform logo"
               />
             </Col>
@@ -84,7 +84,7 @@ const Cover = styled.article`
   position: relative;
   /* height: 100vh; */
   ::after {
-    background-image: url('http://api.whydothat.net/static/img/background.jpg');
+    background-image: url('https://whydothat.net/static/img/background.jpg');
     /* background-color: rgba(255, 255, 255, 0.5);
     -webkit-background-size: cover;
     -moz-background-size: cover;

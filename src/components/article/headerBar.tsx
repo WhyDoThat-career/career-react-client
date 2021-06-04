@@ -42,7 +42,7 @@ export function HeaderBar() {
 
   const handleLogout = async () => {
     const result = await getLogout();
-    console.log('is logout', result);
+    // console.log('is logout', result);
     history.push('/');
     window.location.reload();
   };
@@ -187,10 +187,11 @@ const SearchBar = styled.input<{ enableEdit: boolean }>`
 const UserLogo = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items:center;
 
   img {
     width: 2rem;
-    height: auto;
+    height: 2rem;
   }
   button {
     /* width: 100%; */

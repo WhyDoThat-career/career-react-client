@@ -68,12 +68,14 @@ function JobCard(
         <Info>
         <div>{companyName}</div>
           <div>
+            <div className="tags">
             <span className="sector">&nbsp;{sector}&nbsp;</span>
             {newbie ? (
               <span className="newbie">&nbsp;신입 가능&nbsp;</span>
             ) : (
               <span>&nbsp;최소 {career.split(',')[0]}년&nbsp;</span>
             )}
+            </div>
             {salary!=null ? (
               <p>
               <span className="salary">&nbsp;{salary.replace(',','만원~')}만원&nbsp;</span>
@@ -82,7 +84,7 @@ function JobCard(
           </div>
         </Info>
         <Footer>
-          <img src={`http://api.whydothat.net/static/img/icon/${platform}.png`} alt="platform img" />
+          <img src={`https://whydothat.net/static/img/icon/${platform}.png`} alt="platform img" />
           {platform}
         </Footer>
       </CardBody>
@@ -101,17 +103,19 @@ const Card = styled.div`
 `;
 
 const CardBody = styled.div`
+  width : 100%;
   display: inline-block;
   margin: 5% 1vw 10px 0px;
 `;
 
 const Title = styled.div`
 box-sizing : content-box;
-height : 45px;
+height : 50px;
+overflow : hidden;
 font-weight : bold;
 margin-bottom : 5px;
 p{
-  margin-top : 5px;
+  margin-top : 2px;
 }
 `;
 
@@ -125,6 +129,10 @@ const Info = styled.div`
   .salary {
     background-color: #A9E2F3;
   }
+  .tags {
+    height:40px;
+    overflow:hidden;
+  }
   span {
     border-radius: 3px;
     /* padding: 0.1rem; */
@@ -132,16 +140,17 @@ const Info = styled.div`
     background-color: #ebbbf5;
   }
   div {
-    margin-bottom : 2px
+    margin-bottom : 2px;
   }
   p {
-    margin-bottom : -20px
+    margin-top : -20px;
+    height:20px;
+    overflow:hidden;
   }
   line-height : 130%
 `;
 
 const Footer = styled.div`
-  margin-top : 20px;
   display : flex;
   justify-content: flex-end;
   img {
@@ -152,8 +161,10 @@ const Footer = styled.div`
 `;
 
 const Icon = styled.img`
-  height: 115px;
-  width: 115px;
+  width : 20vw;
+  height : 20vh;
+  max-height: 115px;
+  max-width: 115px;
   //   border: solid;
   margin: 5% 1vw;
 `;

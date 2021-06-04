@@ -30,9 +30,9 @@ function LoginContainter() {
         data.password,
       );
 
-      console.log('====================================');
-      console.log('checkmail', checkmail, checkLogin);
-      console.log('====================================');
+      // console.log('====================================');
+      // console.log('checkmail', checkmail, checkLogin);
+      // console.log('====================================');
     })();
   };
 

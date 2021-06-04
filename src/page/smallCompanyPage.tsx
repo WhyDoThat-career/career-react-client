@@ -32,7 +32,7 @@ function SmallCompanyPage() {
     const result = await getCompanyList(key, page);
 
     setCompanyList(page === 1 ? result.data : companyList.concat(result.data));
-    console.log(companyList);
+    // console.log(companyList);
   };
 
   useEffect(() => {
@@ -82,7 +82,7 @@ function SmallCompanyPage() {
           </ReCard>
         </Recommend>
       ) : <div className = "needLogin"><img
-      src="http://api.whydothat.net/static/img/Recommend_need_login.png"
+      src="https://whydothat.net/static/img/Recommend_need_login.png"
       alt="Recommend need login"
     />
     </div>}
@@ -151,14 +151,15 @@ const CardContainer = styled.div`
 const Recommend = styled.div`
   h2 {
     font-size : xx-large;
-    margin: 20px 0px 0px 6vw;
+    margin: 20px 0px 0px 2vw;
   }`;
 
 const ReCard = styled.div`
+  align-items:center;
   display: flex;
   width: 90vw;
-  height: 300px;
-  margin: 20px 0px 0px 5vw;
+  height: 25vh;
+  margin: 20px 0px 0px 0vw;
   /* white-space:nowrap; */
   overflow-x: scroll;
 `;

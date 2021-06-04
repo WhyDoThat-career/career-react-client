@@ -86,7 +86,7 @@ function BigCompanyPage() {
       ) : (
         <div className="needLogin">
           <img
-            src="http://api.whydothat.net/static/img/Recommend_need_login.png"
+            src="https://whydothat.net/static/img/Recommend_need_login.png"
             alt="Recommend need login"
           />
         </div>

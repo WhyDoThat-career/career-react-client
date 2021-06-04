@@ -33,13 +33,13 @@ export function LoginModal(props: any) {
         data.password,
       );
 
-      console.log("====================================");
-      console.log(checkLogin);
-      console.log("====================================");
+      // console.log("====================================");
+      // console.log(checkLogin);
+      // console.log("====================================");
 
       if (checkLogin === true) {
         window.location.reload();
-        console.log("replace");
+        // console.log("replace");
       }
     })();
   };
@@ -68,7 +68,7 @@ export function LoginModal(props: any) {
         <ModalBody>
           <section>
             <Text>
-              <img src="http://api.whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
+              <img src="https://whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
               <h1>WhyDoThat</h1>
               <br></br>
               <h2>지금 채용공고를 확인하세요!</h2>
@@ -106,7 +106,7 @@ export function LoginModal(props: any) {
                 }}
               >
                 <img
-                  src="http://api.whydothat.net/static/img/login/google.png"
+                  src="https://whydothat.net/static/img/login/google.png"
                   alt="google"
                 />{" "}
                 <div className="google">&nbsp;Google 로그인</div>
@@ -119,7 +119,7 @@ export function LoginModal(props: any) {
                 }}
               >
                 <img
-                  src="http://api.whydothat.net/static/img/login/github.png"
+                  src="https://whydothat.net/static/img/login/github.png"
                   alt="github"
                 />{" "}
                 <div className="github">&nbsp;Github 로그인</div>
