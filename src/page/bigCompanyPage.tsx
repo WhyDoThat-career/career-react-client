@@ -42,8 +42,12 @@ function BigCompanyPage() {
 
   useEffect(() => {
     setPage(1);
-    callCompanies();
   }, [key]);
+  
+  useEffect(() => {
+    callCompanies();
+  }, [page]);
+
 
   useEffect(() => {
     (async () => {

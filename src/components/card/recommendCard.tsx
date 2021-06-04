@@ -16,8 +16,8 @@ export interface RecommendCardProps {
   href:string;
   salary:string;
   career:string;
-  newbie:string;
-  skill_tag:string;
+  newbie:boolean;
+  skill_tag:Array<string>;
 
 }
 

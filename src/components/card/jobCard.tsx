@@ -10,10 +10,15 @@ export interface JobCardProps {
   sector: string;
   main_text: string;
   company: 'kakao' | 'naver';
+  href: string;
+  career:string;
+  newbie:boolean;
+  skill_tag: Array<string>;
+  title: string;
 }
 
 function JobCard(
-  { id, name = '없음', img, sector, main_text, company }: JobCardProps,
+  { id, name = '없음', img, sector, main_text, company, title,href,career,newbie,skill_tag }: JobCardProps,
   ref?: any,
 ) {
   const history = useHistory();
@@ -21,6 +26,13 @@ function JobCard(
     history.push(`/big/detail/${company}/${id}`, {
       tag: main_text,
       isSnow: name.includes('SNOW'),
+      title: title,
+      img:img,
+      href:href,
+      career:career,
+      sector:sector,
+      newbie:newbie,
+      skill_tag:skill_tag,
     });
   };
 
