@@ -113,7 +113,8 @@ const Cover = styled.article`
       rgb(255 0 0) -4.0779px 1.86493px 0px;
 
     font-family: 'Rubik', sans-serif;
-    font-size: 4.5vw;
+    font-size: calc(30px + 4vw);
+    
     color: rgb(0, 0, 0);
     line-height: 0.75em;
     letter-spacing: 3px;
@@ -142,11 +143,12 @@ const Cover = styled.article`
     text-shadow: rgb(255 0 0) 1.0779px -0.86493px 0px,
       rgb(0 255 255) -1.0779px 0.86493px 0px;
     color: white;
-    font-size: 3vw;
+    font-size: calc(30px + 3vw);
   }
 
   img {
     width: 4vw;
+    min-width : 40px;
     height: auto;
     margin: 0 0.2vw 0 0;
   }
@@ -178,7 +180,8 @@ const Cover = styled.article`
 
 const Content = styled(Container)`
   display: flex;
-  width: 50vw;
+  width: 100vw;
+  min widt : 500px;
   margin-top: 2rem;
   flex-direction: column;
   justify-content: center;
@@ -190,7 +193,7 @@ const TestTxt = styled.h4`
   /* margin: 0 0 0 35vw; */
   font-family: 'Black Han Sans', sans-serif !important;
   text-shadow: rgb(0 0 0 / 60%) 0px 5.25px 39.375px;
-  font-size: 6.5vw !important;
+  font-size: calc(40px + 4vw);
   color: white;
 `;
 
