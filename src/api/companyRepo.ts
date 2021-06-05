@@ -1,6 +1,6 @@
-import { AxiosInstance } from './_apiInstance';
+import { AxiosInstance } from "./_apiInstance";
 
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from "axios";
 
 export const getCompanyList = async (type: string, page?: number) => {
   const answer = await AxiosInstance.get(`/getdata/${type}`, {
@@ -15,7 +15,7 @@ export const getCompanyList = async (type: string, page?: number) => {
 };
 
 export const getSector = async () => {
-  const answer = await AxiosInstance.get('/getsector').catch((err) => {
+  const answer = await AxiosInstance.get("/getdata/sector").catch((err) => {
     throw err;
   });
 

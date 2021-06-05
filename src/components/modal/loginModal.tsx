@@ -11,7 +11,7 @@ import {
   getGithubLogin,
 } from "api/userRepo";
 import { RegisterModal } from "components/modal/registerModal";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalBody } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export function LoginModal(props: any) {
@@ -68,33 +68,40 @@ export function LoginModal(props: any) {
         <ModalBody>
           <section>
             <Text>
-              <img src="https://whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
+              <img
+                src="https://whydothat.net/static/img/wdticon.png"
+                alt="WhyDoThat logo"
+              ></img>
               <h1>WhyDoThat</h1>
               <br></br>
               <h2>지금 채용공고를 확인하세요!</h2>
             </Text>
             <LoginForm>
-            <form onSubmit={handleSubmit(handleLogin)}>
-              <PrimeInput
-                type="email"
-                label="이메일을 입력하세요."
-                id="email"
-                wd="15vw"
-                onChange={handleEmailCheck}
-                register={{ ...register("email", { required: true }) }}
-              />
-              {checkEmail ? null : <div>없는 이메일 입니다</div>}
-              <PrimeInput
-                type="password"
-                label="비밀번호를 입력하세요."
-                id="pw"
-                wd="15vw"
-                register={{ ...register("password", { required: true }) }}
-              />
-              <br></br>
-              <br></br>
-              <PrimaryBtn label="로그인" type="submit" disabled={!checkEmail} />
-            </form>
+              <form onSubmit={handleSubmit(handleLogin)}>
+                <PrimeInput
+                  type="email"
+                  label="이메일을 입력하세요."
+                  id="email"
+                  wd="15vw"
+                  onChange={handleEmailCheck}
+                  register={{ ...register("email", { required: true }) }}
+                />
+                {checkEmail ? null : <div>없는 이메일 입니다</div>}
+                <PrimeInput
+                  type="password"
+                  label="비밀번호를 입력하세요."
+                  id="pw"
+                  wd="15vw"
+                  register={{ ...register("password", { required: true }) }}
+                />
+                <br></br>
+                <br></br>
+                <PrimaryBtn
+                  label="로그인"
+                  type="submit"
+                  disabled={!checkEmail}
+                />
+              </form>
             </LoginForm>
             <div className="hr-sect">or</div>
             <SocialBtn>
@@ -126,14 +133,10 @@ export function LoginModal(props: any) {
               </button>
             </SocialBtn>
           </section>
-          <a href='#'
-              type="button"
-              onClick={() => setModalShow(true)}
-            >지금 당장 whydothat에 참여하세요!! 회원 가입</a>
-            <RegisterModal
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-            />
+          <a href="#" type="button" onClick={() => setModalShow(true)}>
+            지금 당장 whydothat에 참여하세요!! 회원 가입
+          </a>
+          <RegisterModal show={modalShow} onHide={() => setModalShow(false)} />
         </ModalBody>
       </Cover>
     </Modal>
@@ -161,20 +164,20 @@ const Cover = styled.div`
     line-height: 0px;
     margin: 0px 16px;
   }
-  a{
-    margin : 30px;
+  a {
+    margin: 30px;
   }
   h1 {
-  font-family: "Rubik", sans-serif;
-  font-weight: bold;
-  font-size: 1.5rem;
-  text-shadow: #2ecc71 -1.5779px 1.86493px 0px, #f39c12 1.5779px 1.86493px 0px;
-  cursor: pointer;
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: #2ecc71 -1.5779px 1.86493px 0px, #f39c12 1.5779px 1.86493px 0px;
+    cursor: pointer;
   }
   h2 {
-    font-weight : bold;
-    font-size:1.5rem;
-    margin : 0px 0px 20px 0px
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0px 0px 20px 0px;
   }
 `;
 
@@ -201,28 +204,27 @@ const Text = styled.div`
 `;
 
 const LoginForm = styled.div`
-display: flex;
-flex-direction:column;
-align-items:center;
-width:90%
-div {
-  color:#F44848
-}
-form {
-  width:100%
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90% div {
+    color: #f44848;
+  }
+  form {
+    width: 100%;
+  }
 `;
 
 const SocialBtn = styled.div`
-display: flex;
-flex-direction:column;
-align-items:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   button {
     display: flex;
-    width:90%;
-    margin-bottom:10px;
+    width: 90%;
+    margin-bottom: 10px;
     height: 40px;
-    justify-content:center;
+    justify-content: center;
     background-color: transparent;
     border: none;
     border-radius: 5px;
