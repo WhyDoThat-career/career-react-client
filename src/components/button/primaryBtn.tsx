@@ -33,7 +33,7 @@ const Primary = styled.button<{ size: "large" | "normal" | "small" }>`
   height: ${({ size }) =>
     size === "large" ? "48px" : size === "small" ? "24px" : "40px"};
   min-height: 24px;
-  background-color: #304ffe;
+  background-color: #31B404;
   color: white;
   border-radius: 5px;
   border: none;
@@ -41,14 +41,14 @@ const Primary = styled.button<{ size: "large" | "normal" | "small" }>`
   text-overflow: ellipsis;
 
   &:disabled {
-    border: 1px solid #304ffe;
-    color: #304ffe;
+    border: 1px solid #31B404;
+    color: #31B404;
     background-color: white;
   }
 
   &:hover {
-    border: 1px solid #304ffe;
-    color: #304ffe;
+    border: 1px solid #31B404;
+    color: #31B404;
     background-color: white;
   }
 `;

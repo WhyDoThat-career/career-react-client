@@ -57,7 +57,7 @@ function JobCard(
 const CardBody = styled.div`
   display: flex;
   width: 10vw;
-  min-width: 180px;
+  min-width: 135px;
   height: 20vh;
   background-color: white;
   border: none;
@@ -78,6 +78,7 @@ const Title = styled.div`
   flex-direction: column;
   font-weight: bold;
   box-sizing: border-box;
+  font-size : 0.8rem;
 
   p {
     margin: 0;
@@ -94,10 +95,10 @@ const Content = styled.div`
 
 const Footer = styled.div`
   display: flex;
-  width: 100%;
+  width: 80%;
   height: 20%;
   gap: 0.5rem;
-  margin: 0.5rem 1rem;
+  margin: 0.5rem 0.5rem;
   flex-wrap: wrap;
   box-sizing: border-box;
 `;

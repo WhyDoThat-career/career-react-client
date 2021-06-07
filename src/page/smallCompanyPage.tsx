@@ -8,6 +8,7 @@ import { getRecommend } from "api/userRepo";
 import { RecommendCard } from "components/card/recommendCard";
 import { getCheckUserRepo } from "api/userRepo";
 import { FilterModal } from "components/modal/filterModal";
+import { PrimaryBtn } from "components/button";
 
 function SmallCompanyPage() {
   const [companyList, setCompanyList] = useState<Company[]>([] as Company[]);
@@ -92,16 +93,16 @@ function SmallCompanyPage() {
           />
         </div>
       )}
-      <FilterBtn>
-        <button onClick={() => setModalShow(true)}>filter</button>
-        <FilterModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-          clickMethod={(data: string) => setKey(data)}
-        />
-      </FilterBtn>
       <Content>
         <h2>방금 올라온 따끈따끈한 채용공고</h2>
+        <FilterBtn>
+        <PrimaryBtn label="원하는 것만 보기" type="button" size="large" onClick={() => setModalShow(true)}/>
+          <FilterModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            clickMethod={(data: string) => setKey(data)}
+          />
+        </FilterBtn>
         <CardContainer>
           {companyList?.map((company, idx) => (
             <JobCard
@@ -142,23 +143,14 @@ const Cover = styled.article`
 const FilterBtn = styled.div`
   button {
     align-items: center;
-    display: -webkit-inline-box;
-    height: 40px;
-    padding: 0 39px 0 15px !important;
-    margin: 5vh 0 0 0;
-    border-radius: 5px;
-    border: 1px solid #ececec;
-    position: relative;
-
-    background: #fff;
-    color: #333;
-    font-weight: 400;
+    margin-top : 4vh;
   }
 `;
 
 const Content = styled.div`
   display: flex;
   width: 80vw;
+  min-width : 350px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

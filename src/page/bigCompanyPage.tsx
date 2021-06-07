@@ -137,6 +137,7 @@ const Cover = styled.article`
 const Content = styled.div`
   display: flex;
   width: 80vw;
+  min-width : 360px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -156,7 +157,7 @@ const FilterContainer = styled.div`
 
 const CardContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 90%;
   height: 100%;
   flex-wrap: wrap;
   gap: 1rem;
