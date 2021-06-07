@@ -1,27 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
 
-import { getCompanyList } from 'api/companyRepo';
-import { Company } from 'interface/companyInterface';
-import { getSector } from 'api/companyRepo';
-import JobCard from 'components/card/jobCard';
-import Select from 'react-select';
-import { FILTER, COMPANYFILTER } from 'shared/resource/option';
-import Dropdown from 'components/dropdown/dropdown';
-import useObserver from 'shared/hook/useObserver';
-import { getRecommend } from 'api/userRepo';
-import { RecommendCard } from 'components/card/recommendCard';
-import { getCheckUserRepo } from 'api/userRepo';
+import { getCompanyList } from "api/companyRepo";
+import { Company } from "interface/companyInterface";
+import { getSector } from "api/companyRepo";
+import JobCard from "components/card/jobCard";
+import Select from "react-select";
+import { FILTER, COMPANYFILTER, NEWBIE } from "shared/resource/option";
+import Dropdown from "components/dropdown/dropdown";
+import useObserver from "shared/hook/useObserver";
+import { getRecommend } from "api/userRepo";
+import { RecommendCard } from "components/card/recommendCard";
+import { getCheckUserRepo } from "api/userRepo";
 
 function BigCompanyPage() {
   const [companyList, setCompanies] = useState<Company[]>([] as Company[]);
-  const [key, setKey] = useState<'kakao' | 'naver'>('naver');
+  const [key, setKey] = useState<"kakao" | "naver">("naver");
   const [filter, setFilter] = useState(FILTER[0].value);
+  const [newbie, setNewbie] = useState(NEWBIE[0].value);
   const [page, setPage] = useState(1);
   const [recommendList, setRecommendList] = useState<Company[]>(
     [] as Company[],
   );
-  const [userName, setUserName] = useState<string>('');
+  const [userName, setUserName] = useState<string>("");
   const [recommendState, setRecommendState] = useState<boolean>(false);
 
   const { setRef } = useObserver(
@@ -35,7 +36,7 @@ function BigCompanyPage() {
   );
 
   const callCompanies = async () => {
-    const result = await getCompanyList(key, page);
+    const result = await getCompanyList(key, newbie, page);
 
     setCompanies(page === 1 ? result.data : companyList.concat(result.data));
   };
@@ -43,11 +44,10 @@ function BigCompanyPage() {
   useEffect(() => {
     setPage(1);
   }, [key]);
-  
+
   useEffect(() => {
     callCompanies();
   }, [page]);
-
 
   useEffect(() => {
     (async () => {
@@ -57,7 +57,7 @@ function BigCompanyPage() {
       // console.log(.data);
       setRecommendList(result.data);
 
-      if (name.data === '알 수 없는 사용자') {
+      if (name.data === "알 수 없는 사용자") {
         setRecommendState(false);
       } else {
         setRecommendState(true);
@@ -126,12 +126,13 @@ const Cover = styled.article`
   justify-content: center;
   align-items: center;
   .needLogin {
-    width : 100vw;
-    display : flex ;
+    width: 100vw;
+    display: flex;
     justify-content: center;
     img {
-      overflow-x:hidden;
+      overflow-x: hidden;
     }
+  }
 `;
 
 const Content = styled.div`
