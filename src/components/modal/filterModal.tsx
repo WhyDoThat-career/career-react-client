@@ -115,63 +115,65 @@ export function FilterModal({
           </button>
         </Header>
         <ModalBody>
-          <SelectFilter>
-            <h3>1. 필터 선택</h3>
-            <ul>
-              <FilterChip
-                label="sector"
-                name="sector"
-                click={"sector" === filterState}
+          <FilterContainer>
+            <SelectFilter>
+              <h3>1. 필터 선택</h3>
+              <ul>
+                <FilterChip
+                  label="sector"
+                  name="sector"
+                  click={"sector" === filterState}
+                  onClick={() => {
+                    setSelector("sector");
+                    setFilterState("sector");
+                  }}
+                />
+                <FilterChip
+                  label="platform"
+                  name="platform"
+                  click={"platform" === filterState}
+                  onClick={() => {
+                    setSelector("platform");
+                    setFilterState("platform");
+                  }}
+                />
+              </ul>
+            </SelectFilter>
+            <SectorFilter>
+              <h3>2. 상세 선택</h3>
+              <SelectorFilter />
+            </SectorFilter>
+            <NewbieFilter>
+              <h3>3. 신입 선택</h3>
+              <DetailChip
+                label="선택 안함"
+                name="nofilter"
+                click={"nofilter" === newbieState}
                 onClick={() => {
-                  setSelector("sector");
-                  setFilterState("sector");
+                  setNewbie("");
+                  setNewbieState("nofilter");
                 }}
               />
-              <FilterChip
-                label="platform"
-                name="platform"
-                click={"platform" === filterState}
+              <DetailChip
+                label="신입"
+                name="newbie"
+                click={"newbie" === newbieState}
                 onClick={() => {
-                  setSelector("platform");
-                  setFilterState("platform");
+                  setNewbie("1");
+                  setNewbieState("newbie");
                 }}
               />
-            </ul>
-          </SelectFilter>
-          <SectorFilter>
-            <h3>2. 상세 선택</h3>
-            <SelectorFilter />
-          </SectorFilter>
-          <NewbieFilter>
-            <h3>3. 신입 선택</h3>
-            <DetailChip
-              label="선택 안함"
-              name="nofilter"
-              click={"nofilter" === newbieState}
-              onClick={() => {
-                setNewbie("");
-                setNewbieState("nofilter");
-              }}
-            />
-            <DetailChip
-              label="신입"
-              name="newbie"
-              click={"newbie" === newbieState}
-              onClick={() => {
-                setNewbie("1");
-                setNewbieState("newbie");
-              }}
-            />
-            <DetailChip
-              label="경력"
-              name="notNewbie"
-              click={"notNewbie" === newbieState}
-              onClick={() => {
-                setNewbie("0");
-                setNewbieState("notNewbie");
-              }}
-            />
-          </NewbieFilter>
+              <DetailChip
+                label="경력"
+                name="notNewbie"
+                click={"notNewbie" === newbieState}
+                onClick={() => {
+                  setNewbie("0");
+                  setNewbieState("notNewbie");
+                }}
+              />
+            </NewbieFilter>
+          </FilterContainer>
           <FooterBtn>
             {console.log(key)}
             <ButtonSwitch />
@@ -207,6 +209,10 @@ const Header = styled.div`
     }
   }
 `;
+const FilterContainer = styled.div`
+  max-height : 55vh;
+  overflow-y: scroll;
+`;
 
 const SelectFilter = styled.div`
   .sector {
@@ -217,7 +223,7 @@ const SelectFilter = styled.div`
   }
 
   .click {
-    border: 1px solid #304ffe;
+    border: 2px solid #31B404;
   }
 `;
 
@@ -230,24 +236,25 @@ const SectorFilter = styled.div`
     padding: 10px;
     margin: 10px 0;
     .click {
-      border: 1px solid #304ffe;
+      border: 2px solid #31B404;
     }
   }
 `;
 
 const NewbieFilter = styled.div`
   .click {
-    border: 1px solid #304ffe;
+    border: 2px solid #31B404;
   }
 `;
 
 const FooterBtn = styled.div`
   button {
+    margin-top : 3vh;
     color: #fff;
     width: 100%;
     height: 50px;
 
-    background-color: #36f;
+    background-color: #31B404;
     border: none;
     border-radius: 25px;
     font-size: 16px;
@@ -258,8 +265,13 @@ const FooterBtn = styled.div`
 
     &:disabled {
       background-color: #fff;
-      color: #36f;
-      border: 1px solid #36f;
+      color: #31B404;
+      border: 1px solid #31B404;
+    }
+    &:hover {
+      border: 1px solid #31B404;
+      color: #31B404;
+      background-color: white;
     }
   }
 `;

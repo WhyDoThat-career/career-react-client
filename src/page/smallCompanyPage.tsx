@@ -97,28 +97,20 @@ function SmallCompanyPage() {
           />
         </div>
       )}
-      <FilterContainer>
-        <FilterBtn>
-          <button onClick={() => setModalShow(true)}>filter</button>
-          <FilterModal
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            clickMethod={(data: string) => setKey(data)}
-            newbieMethod={(data: string) => setNewbieKey(data)}
-          />
-        </FilterBtn>
-        {/* <Dropdown data={NEWBIE} clickMethod={setNewbieKey} /> */}
-      </FilterContainer>
       <Content>
         <h2>방금 올라온 따끈따끈한 채용공고</h2>
-        <FilterBtn>
-        <PrimaryBtn label="원하는 것만 보기" type="button" size="large" onClick={() => setModalShow(true)}/>
-          {/* <FilterModal
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            clickMethod={(data: string) => setKey(data)}
-          /> */}
-        </FilterBtn>
+        <FilterContainer>
+          <FilterBtn>
+          <PrimaryBtn label="원하는 것만 보기" type="button" size="large" onClick={() => setModalShow(true)}/>
+            <FilterModal
+              show={modalShow}
+              onHide={() => setModalShow(false)}
+              clickMethod={(data: string) => setKey(data)}
+              newbieMethod={(data: string) => setNewbieKey(data)}
+            />
+          </FilterBtn>
+          {/* <Dropdown data={NEWBIE} clickMethod={setNewbieKey} /> */}
+        </FilterContainer>
         <CardContainer>
           {companyList?.map((company, idx) => (
             <JobCard
@@ -158,24 +150,12 @@ const Cover = styled.article`
 
 const FilterContainer = styled.div`
   display: flex;
-  margin: 5vh 0 0 0;
+  margin: 4vh 0 0 0;
 `;
 
 const FilterBtn = styled.div`
   button {
-    align-items: center;
-    margin-top : 4vh;
-    display: -webkit-inline-box;
-    height: 40px;
-    padding: 0 39px 0 15px !important;
-
-    border-radius: 5px;
-    border: 1px solid #ececec;
-    position: relative;
-
-    background: #fff;
-    color: #333;
-    font-weight: 400;
+    margin-top : 0vh;
   }
 `;
 
