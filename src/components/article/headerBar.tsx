@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { PrimaryBtn } from 'components/button';
-import styled from 'styled-components';
-import { Search } from '@styled-icons/bootstrap';
-import { useRecoilValue } from 'recoil';
-import { userState } from 'shared/store';
-import { useHistory, Link } from 'react-router-dom';
-import { NavItem } from 'components/nav/navItem';
-import { PrimeInput } from 'components/input';
-import { getCheckUserRepo, getLogout } from 'api/userRepo';
-import { AxiosError } from 'axios';
-import { tmpdir } from 'os';
-import { LoginModal } from 'components/modal/loginModal';
-import { Col, Container, Row } from 'reactstrap';
+import React, { useState, useEffect } from "react";
+import { PrimaryBtn } from "components/button";
+import styled from "styled-components";
+import { Search } from "@styled-icons/bootstrap";
+import { useRecoilValue } from "recoil";
+import { userState } from "shared/store";
+import { useHistory, Link } from "react-router-dom";
+import { NavItem } from "components/nav/navItem";
+import { PrimeInput } from "components/input";
+import { getCheckUserRepo, getLogout } from "api/userRepo";
+import { AxiosError } from "axios";
+import { tmpdir } from "os";
+import { LoginModal } from "components/modal/loginModal";
+import { Col, Container, Row } from "reactstrap";
 
 export function HeaderBar() {
   // const user = useRecoilValue(userState);
@@ -43,7 +43,7 @@ export function HeaderBar() {
   const handleLogout = async () => {
     const result = await getLogout();
     // console.log('is logout', result);
-    history.push('/');
+    history.push("/");
     window.location.reload();
   };
 
@@ -51,7 +51,7 @@ export function HeaderBar() {
     <Container fluid style={{ padding: 0 }}>
       <Cover>
         <Col xs="3" className="item">
-          <Logo onClick={() => history.push('/')}>
+          <Logo onClick={() => history.push("/")}>
             <h1>WhyDoThat</h1>
           </Logo>
         </Col>
@@ -70,12 +70,12 @@ export function HeaderBar() {
 
         <Col xs="3" className="item">
           <ButtonContainer>
+            <SearchBar placeholder="검색" enableEdit={enableEdit} />
             <Search
               size="24"
-              style={{ margin: '0 1rem ', cursor: 'pointer' }}
+              style={{ margin: "0 1rem ", cursor: "pointer" }}
               onClick={() => setEdit(!enableEdit)}
             />
-            <SearchBar placeholder="검색" enableEdit={enableEdit} />
           </ButtonContainer>
 
           {userState ? (
@@ -128,7 +128,7 @@ const Cover = styled.header`
 `;
 
 const Logo = styled.div`
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   text-shadow: #2ecc71 -1.5779px 1.86493px 0px, #f39c12 1.5779px 1.86493px 0px;
@@ -173,8 +173,8 @@ const CustomNav = styled.nav`
 `;
 
 const SearchBar = styled.input<{ enableEdit: boolean }>`
-  width: ${({ enableEdit }) => (enableEdit ? '10vw' : 0)};
-  min-width: ${({ enableEdit }) => (enableEdit ? '150px' : 0)};
+  width: ${({ enableEdit }) => (enableEdit ? "10vw" : 0)};
+  min-width: ${({ enableEdit }) => (enableEdit ? "150px" : 0)};
   height: 28px;
   opacity: ${({ enableEdit }) => (enableEdit ? 1 : 0)};
   transition: 0.3s all ease;
@@ -187,7 +187,7 @@ const SearchBar = styled.input<{ enableEdit: boolean }>`
 const UserLogo = styled.div`
   display: flex;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
 
   img {
     width: 2rem;
