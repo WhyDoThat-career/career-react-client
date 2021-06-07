@@ -9,6 +9,8 @@ import { RecommendCard } from "components/card/recommendCard";
 import { getCheckUserRepo } from "api/userRepo";
 import { FilterModal } from "components/modal/filterModal";
 import { PrimaryBtn } from "components/button";
+import { NEWBIE } from "shared/resource/option";
+import Dropdown from "components/dropdown/dropdown";
 
 function SmallCompanyPage() {
   const [companyList, setCompanyList] = useState<Company[]>([] as Company[]);
@@ -20,6 +22,7 @@ function SmallCompanyPage() {
   const [userName, setUserName] = useState<string>("");
   const [recommendState, setRecommendState] = useState<boolean>(false);
   const [modalShow, setModalShow] = useState(false);
+  const [newbieKey, setNewbieKey] = useState(NEWBIE[0].value);
 
   const { setRef } = useObserver(
     async (entry: any, observer) => {
@@ -32,7 +35,7 @@ function SmallCompanyPage() {
   );
 
   const callCompanies = async () => {
-    const result = await getCompanyList(key, page);
+    const result = await getCompanyList(key, newbieKey, page);
 
     setCompanyList(page === 1 ? result.data : companyList.concat(result.data));
     // console.log(companyList);
@@ -41,8 +44,9 @@ function SmallCompanyPage() {
   useEffect(() => {
     setPage(1);
     console.log("success", key);
+
     callCompanies();
-  }, [key]);
+  }, [key, newbieKey]);
 
   useEffect(() => {
     callCompanies();
@@ -93,15 +97,27 @@ function SmallCompanyPage() {
           />
         </div>
       )}
-      <Content>
-        <h2>방금 올라온 따끈따끈한 채용공고</h2>
+      <FilterContainer>
         <FilterBtn>
-        <PrimaryBtn label="원하는 것만 보기" type="button" size="large" onClick={() => setModalShow(true)}/>
+          <button onClick={() => setModalShow(true)}>filter</button>
           <FilterModal
             show={modalShow}
             onHide={() => setModalShow(false)}
             clickMethod={(data: string) => setKey(data)}
+            newbieMethod={(data: string) => setNewbieKey(data)}
           />
+        </FilterBtn>
+        {/* <Dropdown data={NEWBIE} clickMethod={setNewbieKey} /> */}
+      </FilterContainer>
+      <Content>
+        <h2>방금 올라온 따끈따끈한 채용공고</h2>
+        <FilterBtn>
+        <PrimaryBtn label="원하는 것만 보기" type="button" size="large" onClick={() => setModalShow(true)}/>
+          {/* <FilterModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            clickMethod={(data: string) => setKey(data)}
+          /> */}
         </FilterBtn>
         <CardContainer>
           {companyList?.map((company, idx) => (
@@ -140,10 +156,26 @@ const Cover = styled.article`
   }
 `;
 
+const FilterContainer = styled.div`
+  display: flex;
+  margin: 5vh 0 0 0;
+`;
+
 const FilterBtn = styled.div`
   button {
     align-items: center;
     margin-top : 4vh;
+    display: -webkit-inline-box;
+    height: 40px;
+    padding: 0 39px 0 15px !important;
+
+    border-radius: 5px;
+    border: 1px solid #ececec;
+    position: relative;
+
+    background: #fff;
+    color: #333;
+    font-weight: 400;
   }
 `;
 

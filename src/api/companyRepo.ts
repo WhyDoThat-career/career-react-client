@@ -2,9 +2,14 @@ import { AxiosInstance } from "./_apiInstance";
 
 import { AxiosError, AxiosResponse } from "axios";
 
-export const getCompanyList = async (type: string, page?: number) => {
+export const getCompanyList = async (
+  type: string,
+  newbie?: string,
+  page?: number,
+) => {
   const answer = await AxiosInstance.get(`/getdata/${type}`, {
     params: {
+      newbie,
       page,
     },
   }).catch((err) => {

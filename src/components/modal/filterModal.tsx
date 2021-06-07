@@ -10,18 +10,26 @@ export interface FilterModalProps {
   show: boolean;
   onHide: () => void;
   clickMethod: (arg: string) => void;
+  newbieMethod: (arg: string) => void;
 }
 
 export interface FilterSector {
   name: string;
 }
 
-export function FilterModal({ show, onHide, clickMethod }: FilterModalProps) {
+export function FilterModal({
+  show,
+  onHide,
+  clickMethod,
+  newbieMethod,
+}: FilterModalProps) {
   const [selector, setSelector] = useState<string>();
   const [sector, setSector] = useState<FilterSector[]>([] as FilterSector[]);
-  const [key, setKey] = useState<string>("");
+  const [key, setKey] = useState<string>("smallcompany");
   const [filterState, setFilterState] = useState<string>("");
   const [detailState, setDetailState] = useState<string>("");
+  const [newbieState, setNewbieState] = useState<string>("");
+  const [newbie, setNewbie] = useState<string>("no");
 
   useEffect(() => {
     (async () => {
@@ -33,6 +41,7 @@ export function FilterModal({ show, onHide, clickMethod }: FilterModalProps) {
 
   const handleFooterBtn = () => {
     clickMethod(key);
+    newbieMethod(newbie);
     onHide();
   };
 
@@ -90,7 +99,7 @@ export function FilterModal({ show, onHide, clickMethod }: FilterModalProps) {
   };
 
   const ButtonSwitch = () => {
-    if (key === "") {
+    if (newbie === "no") {
       return <button disabled={true}>확인</button>;
     } else {
       return <button onClick={handleFooterBtn}>확인</button>;
@@ -133,6 +142,36 @@ export function FilterModal({ show, onHide, clickMethod }: FilterModalProps) {
             <h3>2. 상세 선택</h3>
             <SelectorFilter />
           </SectorFilter>
+          <NewbieFilter>
+            <h3>3. 신입 선택</h3>
+            <DetailChip
+              label="선택 안함"
+              name="nofilter"
+              click={"nofilter" === newbieState}
+              onClick={() => {
+                setNewbie("");
+                setNewbieState("nofilter");
+              }}
+            />
+            <DetailChip
+              label="신입"
+              name="newbie"
+              click={"newbie" === newbieState}
+              onClick={() => {
+                setNewbie("1");
+                setNewbieState("newbie");
+              }}
+            />
+            <DetailChip
+              label="경력"
+              name="notNewbie"
+              click={"notNewbie" === newbieState}
+              onClick={() => {
+                setNewbie("0");
+                setNewbieState("notNewbie");
+              }}
+            />
+          </NewbieFilter>
           <FooterBtn>
             {console.log(key)}
             <ButtonSwitch />
@@ -193,6 +232,12 @@ const SectorFilter = styled.div`
     .click {
       border: 1px solid #304ffe;
     }
+  }
+`;
+
+const NewbieFilter = styled.div`
+  .click {
+    border: 1px solid #304ffe;
   }
 `;
 
