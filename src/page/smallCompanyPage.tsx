@@ -7,6 +7,7 @@ import useObserver from "shared/hook/useObserver";
 import { getRecommend } from "api/userRepo";
 import { RecommendCard } from "components/card/recommendCard";
 import { getCheckUserRepo } from "api/userRepo";
+import { FilterModal } from "components/modal/filterModal";
 
 function SmallCompanyPage() {
   const [companyList, setCompanyList] = useState<Company[]>([] as Company[]);
@@ -17,6 +18,7 @@ function SmallCompanyPage() {
   );
   const [userName, setUserName] = useState<string>("");
   const [recommendState, setRecommendState] = useState<boolean>(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const { setRef } = useObserver(
     async (entry: any, observer) => {
@@ -37,6 +39,8 @@ function SmallCompanyPage() {
 
   useEffect(() => {
     setPage(1);
+    console.log("success", key);
+    callCompanies();
   }, [key]);
 
   useEffect(() => {
@@ -48,7 +52,6 @@ function SmallCompanyPage() {
       const result = await getRecommend();
       const name = await getCheckUserRepo();
 
-      // console.log(.data);
       setRecommendList(result.data);
 
       if (name.data === "알 수 없는 사용자") {
@@ -81,14 +84,24 @@ function SmallCompanyPage() {
             ))}
           </ReCard>
         </Recommend>
-      ) : <div className = "needLogin"><img
-      src="https://whydothat.net/static/img/Recommend_need_login.png"
-      alt="Recommend need login"
-    />
-    </div>}
-
+      ) : (
+        <div className="needLogin">
+          <img
+            src="https://whydothat.net/static/img/Recommend_need_login.png"
+            alt="Recommend need login"
+          />
+        </div>
+      )}
+      <FilterBtn>
+        <button onClick={() => setModalShow(true)}>filter</button>
+        <FilterModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          clickMethod={(data: string) => setKey(data)}
+        />
+      </FilterBtn>
       <Content>
-      <h2>방금 올라온 따끈따끈한 채용공고</h2>
+        <h2>방금 올라온 따끈따끈한 채용공고</h2>
         <CardContainer>
           {companyList?.map((company, idx) => (
             <JobCard
@@ -117,13 +130,30 @@ const Cover = styled.article`
   justify-content: center;
   align-items: center;
   .needLogin {
-    width : 100vw;
-    display : flex ;
+    width: 100vw;
+    display: flex;
     justify-content: center;
     img {
-      overflow-x:hidden;
+      overflow-x: hidden;
     }
-  };
+  }
+`;
+
+const FilterBtn = styled.div`
+  button {
+    align-items: center;
+    display: -webkit-inline-box;
+    height: 40px;
+    padding: 0 39px 0 15px !important;
+    margin: 5vh 0 0 0;
+    border-radius: 5px;
+    border: 1px solid #ececec;
+    position: relative;
+
+    background: #fff;
+    color: #333;
+    font-weight: 400;
+  }
 `;
 
 const Content = styled.div`
@@ -133,9 +163,9 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   h2 {
-      font-size : xx-large;
-      margin: 40px 0px 0px 0px;
-  };
+    font-size: xx-large;
+    margin: 40px 0px 0px 0px;
+  }
 `;
 
 const CardContainer = styled.div`
@@ -150,12 +180,13 @@ const CardContainer = styled.div`
 
 const Recommend = styled.div`
   h2 {
-    font-size : xx-large;
+    font-size: xx-large;
     margin: 20px 0px 0px 2vw;
-  }`;
+  }
+`;
 
 const ReCard = styled.div`
-  align-items:center;
+  align-items: center;
   display: flex;
   width: 90vw;
   height: 25vh;
