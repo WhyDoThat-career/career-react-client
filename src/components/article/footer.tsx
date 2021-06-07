@@ -5,18 +5,20 @@ export const Footer = () => {
   return (
     <Cover>
       <div className="inner">
+        <br/>
         <div className="footer-create">제작자: 정근영, 김태훈, 나두원</div>
         <div className="footer-email">Email: whydothat.studio@gmail.com</div>
         <div className="footer-copyright">
           Copyrightⓒ 2021. WhyDoThat. All rights reserved.
         </div>
+        <br/>
       </div>
     </Cover>
   );
 };
 
 const Cover = styled.footer`
-  margin-top : auto;
+  height: 10vh;
   border-top: 1px solid #e4e4e4;
   background-color: #f8f9fa;
 

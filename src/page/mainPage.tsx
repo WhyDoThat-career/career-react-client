@@ -71,7 +71,6 @@ function MainPage() {
 
 const Cover = styled.article`
   display: flex;
-  height: 100%;
   min-height:81vh;
   flex-direction: column;
 
@@ -82,7 +81,6 @@ const Cover = styled.article`
   /* position: absolute; */
   width: 100vw;
   position: relative;
-  /* height: 100vh; */
   ::after {
     background-image: url('https://whydothat.net/static/img/background.jpg');
     /* background-color: rgba(255, 255, 255, 0.5);
@@ -130,7 +128,7 @@ const Cover = styled.article`
     display: flex;
 
     flex-direction: column;
-    margin: 0;
+    margin-bottom: 3vh;
 
     &--row {
       flex-direction: row;
@@ -191,6 +189,7 @@ const Content = styled(Container)`
 const TestTxt = styled.h4`
   width: fit-content;
   /* margin: 0 0 0 35vw; */
+  margin-bottom : 0.5vh;
   font-family: 'Black Han Sans', sans-serif !important;
   text-shadow: rgb(0 0 0 / 60%) 0px 5.25px 39.375px;
   font-size: calc(40px + 4vw);

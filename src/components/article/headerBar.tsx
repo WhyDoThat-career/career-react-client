@@ -59,7 +59,7 @@ export function HeaderBar() {
         <Col xs="auto" className="item">
           <CustomNav>
             <ul>
-              {/* <NavItem name="홈" route="/" /> */}
+              <div><NavItem name="홈" route="/" /></div>
 
               <NavItem name="채용 공고" route="/small" />
 
@@ -70,12 +70,16 @@ export function HeaderBar() {
 
         <Col xs="3" className="item">
           <ButtonContainer>
+            <div>
             <SearchBar placeholder="검색" enableEdit={enableEdit} />
+            </div>
+            <div>
             <Search
               size="24"
               style={{ margin: "0 1rem ", cursor: "pointer" }}
               onClick={() => setEdit(!enableEdit)}
             />
+            </div>
           </ButtonContainer>
 
           {userState ? (
@@ -143,6 +147,12 @@ const ButtonContainer = styled.span`
   display: flex;
   width: fit-content;
   align-items: center;
+  @media only screen and (max-width: 500px) {
+    div {
+      width : 0px;
+      overflow-x : hidden;
+    }
+  }
 `;
 
 const CustomNav = styled.nav`
@@ -169,6 +179,12 @@ const CustomNav = styled.nav`
 
   li {
     text-align: center;
+  }
+  @media only screen and (max-width: 500px) {
+    div {
+      width : 0px;
+      overflow-x : hidden;
+    }
   }
 `;
 
