@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { PrimaryBtn } from "components/button";
 import styled from "styled-components";
 import { Search } from "@styled-icons/bootstrap";
+import { useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { userState } from "shared/store";
 import { useHistory, Link } from "react-router-dom";
@@ -20,6 +21,13 @@ export function HeaderBar() {
   const [userState, setUserState] = useState(false);
   const [userInfo, setUserInfo]: any = useState(0);
   const [modalShow, setModalShow] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<{ search: string }>();
 
   useEffect(() => {
     (async () => {
@@ -40,6 +48,18 @@ export function HeaderBar() {
     // }
   }, []);
 
+  const handleKeypress = (e: any) => {
+    if (e.keyCode === 13) {
+      handleSubmit(handleSearch);
+    }
+  };
+
+  const handleSearch = (e: any) => {
+    const data = e.search;
+
+    history.push(`/search?${data}`, data);
+  };
+
   const handleLogout = async () => {
     const result = await getLogout();
     // console.log('is logout', result);
@@ -59,7 +79,9 @@ export function HeaderBar() {
         <Col xs="auto" className="item">
           <CustomNav>
             <ul>
-              <div><NavItem name="홈" route="/" /></div>
+              <div>
+                <NavItem name="홈" route="/" />
+              </div>
 
               <NavItem name="채용 공고" route="/small" />
 
@@ -70,16 +92,21 @@ export function HeaderBar() {
 
         <Col xs="3" className="item">
           <ButtonContainer>
-            <div>
-            <SearchBar placeholder="검색" enableEdit={enableEdit} />
-            </div>
-            <div>
-            <Search
-              size="24"
-              style={{ margin: "0 1rem ", cursor: "pointer" }}
-              onClick={() => setEdit(!enableEdit)}
-            />
-            </div>
+            <form onSubmit={handleSubmit(handleSearch)}>
+              <div>
+                <SearchBar
+                  placeholder="검색 후 Enter"
+                  enableEdit={enableEdit}
+                  onKeyPress={handleKeypress}
+                  {...register("search", { required: true })}
+                />
+                <Search
+                  size="24"
+                  style={{ margin: "0 1rem ", cursor: "pointer" }}
+                  onClick={() => setEdit(!enableEdit)}
+                />
+              </div>
+            </form>
           </ButtonContainer>
 
           {userState ? (
@@ -149,8 +176,8 @@ const ButtonContainer = styled.span`
   align-items: center;
   @media only screen and (max-width: 500px) {
     div {
-      width : 0px;
-      overflow-x : hidden;
+      width: 0px;
+      overflow-x: hidden;
     }
   }
 `;
@@ -182,8 +209,8 @@ const CustomNav = styled.nav`
   }
   @media only screen and (max-width: 500px) {
     div {
-      width : 0px;
-      overflow-x : hidden;
+      width: 0px;
+      overflow-x: hidden;
     }
   }
 `;

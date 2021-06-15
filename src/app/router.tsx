@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import styled from 'styled-components';
-import { useCookies } from 'react-cookie';
-import { useRecoilValue } from 'recoil';
+import React, { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+import styled from "styled-components";
+import { useCookies } from "react-cookie";
+import { useRecoilValue } from "recoil";
 
-import { BigCompanyPage, MainPage, SmallCompanyPage, NotFoundPage } from 'page';
-import { userState } from 'shared/store';
-import LoginPage from 'page/loginPage';
-import { HeaderBar } from 'components/article';
-import { Footer } from 'components/article/footer';
-import SmallCompanyInfoPage from 'page/smallCompanyInfoPage';
-import NaverPage from 'page/largecap/naverPage';
-import KakaoPage from 'page/largecap/kakaoPage';
+import {
+  BigCompanyPage,
+  MainPage,
+  SmallCompanyPage,
+  searchPage,
+  NotFoundPage,
+} from "page";
+import { userState } from "shared/store";
+import { HeaderBar } from "components/article";
+import { Footer } from "components/article/footer";
+import SmallCompanyInfoPage from "page/smallCompanyInfoPage";
+import NaverPage from "page/largecap/naverPage";
+import KakaoPage from "page/largecap/kakaoPage";
+import SearchPage from "page/searchPage";
 
 function Router() {
-  const [cookies, setCookie] = useCookies(['session']);
+  const [cookies, setCookie] = useCookies(["session"]);
   const userInfo = useRecoilValue(userState);
   const [notfound, setNotfound] = useState(true);
 
@@ -22,10 +28,10 @@ function Router() {
     // console.log('session ', cookies);
   }, [cookies]);
 
-  // const NoMatch = () => {
-  //   setNotfound(false);
-  //   return null;
-  // };
+  const NoMatch = () => {
+    setNotfound(false);
+    return null;
+  };
 
   return (
     <MainCover>
@@ -36,6 +42,18 @@ function Router() {
           <Route exact path="/" component={MainPage} />
           <Route exact path="/big" component={BigCompanyPage} />
           <Route exact path="/small" component={SmallCompanyPage} />
+          <Route
+            key="search"
+            path="/search"
+            render={({ match: { url } }) => {
+              return (
+                <>
+                  <Route exact path={`${url}`} component={SearchPage} />
+                  <Route path={`${url}/:search`} component={SearchPage} />
+                </>
+              );
+            }}
+          />
           <Route
             key="big"
             path="/big"
@@ -71,10 +89,10 @@ function Router() {
             }}
           />
 
-          {/* <Route path="*">
+          <Route path="*">
             <NotFoundPage />
-            <NoMatch /> */}
-          {/* </Route> */}
+            <NoMatch />
+          </Route>
         </Switch>
       </Content>
       {notfound ? <Footer /> : null}

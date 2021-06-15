@@ -15,7 +15,6 @@ import { Modal, ModalBody } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export function LoginModal(props: any) {
-  const history = useHistory();
   const [checkEmail, setChekcEmail] = useState(true);
   const [modalShow, setModalShow] = useState(false);
 

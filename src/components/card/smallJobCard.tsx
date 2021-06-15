@@ -15,8 +15,8 @@ export interface jobCardInter {
   platform: string;
   userState: boolean;
   href: string;
-  salary:string;
-  career:string;
+  salary: string;
+  career: string;
   skill_tag: Array<string>;
 }
 
@@ -41,20 +41,20 @@ function JobCard(
   const history = useHistory();
 
   const handleCardClick = () => {
-    userState ? postActiveLog("click", id) : console.log();
+    userState && postActiveLog("click", id);
 
     history.push(`/small/detail/${id}`, {
       title: title,
       companyName: companyName,
       platform: platform,
       mainText: mainText,
-      href:href,
-      logoImg:logoImg,
-      salary:salary,
-      career:career,
-      sector:sector,
-      newbie:newbie,
-      skill_tag:skill_tag,
+      href: href,
+      logoImg: logoImg,
+      salary: salary,
+      career: career,
+      sector: sector,
+      newbie: newbie,
+      skill_tag: skill_tag,
     });
   };
 
@@ -66,25 +66,30 @@ function JobCard(
           <p>{title}</p>
         </Title>
         <Info>
-        <div>{companyName}</div>
+          <div>{companyName}</div>
           <div>
             <div className="tags">
-            <span className="sector">&nbsp;{sector}&nbsp;</span>
-            {newbie ? (
-              <span className="newbie">&nbsp;신입 가능&nbsp;</span>
-            ) : (
-              <span>&nbsp;최소 {career.split(',')[0]}년&nbsp;</span>
-            )}
+              <span className="sector">&nbsp;{sector}&nbsp;</span>
+              {newbie ? (
+                <span className="newbie">&nbsp;신입 가능&nbsp;</span>
+              ) : (
+                <span>&nbsp;최소 {career.split(",")[0]}년&nbsp;</span>
+              )}
             </div>
-            {salary!=null ? (
+            {salary != null ? (
               <p>
-              <span className="salary">&nbsp;{salary.replace(',','만원~')}만원&nbsp;</span>
+                <span className="salary">
+                  &nbsp;{salary.replace(",", "만원~")}만원&nbsp;
+                </span>
               </p>
-            ):null}
+            ) : null}
           </div>
         </Info>
         <Footer>
-          <img src={`https://whydothat.net/static/img/icon/${platform}.png`} alt="platform img" />
+          <img
+            src={`https://whydothat.net/static/img/icon/${platform}.png`}
+            alt="platform img"
+          />
           {platform}
         </Footer>
       </CardBody>
@@ -103,20 +108,20 @@ const Card = styled.div`
 `;
 
 const CardBody = styled.div`
-  width : 100%;
+  width: 100%;
   display: inline-block;
   margin: 5% 1vw 10px 0px;
 `;
 
 const Title = styled.div`
-box-sizing : content-box;
-height : 50px;
-overflow : hidden;
-font-weight : bold;
-margin-bottom : 5px;
-p{
-  margin-top : 2px;
-}
+  box-sizing: content-box;
+  height: 50px;
+  overflow: hidden;
+  font-weight: bold;
+  margin-bottom: 5px;
+  p {
+    margin-top: 2px;
+  }
 `;
 
 const Info = styled.div`
@@ -127,11 +132,11 @@ const Info = styled.div`
     background-color: #bfe85a;
   }
   .salary {
-    background-color: #A9E2F3;
+    background-color: #a9e2f3;
   }
   .tags {
-    height:40px;
-    overflow:hidden;
+    height: 40px;
+    overflow: hidden;
   }
   span {
     border-radius: 3px;
@@ -140,18 +145,18 @@ const Info = styled.div`
     background-color: #ebbbf5;
   }
   div {
-    margin-bottom : 2px;
+    margin-bottom: 2px;
   }
   p {
-    margin-top : -20px;
-    height:20px;
-    overflow:hidden;
+    margin-top: -20px;
+    height: 20px;
+    overflow: hidden;
   }
-  line-height : 130%
+  line-height: 130%;
 `;
 
 const Footer = styled.div`
-  display : flex;
+  display: flex;
   justify-content: flex-end;
   img {
     height: 1rem;
@@ -161,8 +166,8 @@ const Footer = styled.div`
 `;
 
 const Icon = styled.img`
-  width : 20vw;
-  height : 20vh;
+  width: 20vw;
+  height: 20vh;
   max-height: 115px;
   max-width: 115px;
   //   border: solid;
