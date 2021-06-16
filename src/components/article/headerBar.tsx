@@ -221,7 +221,7 @@ const SearchBar = styled.input<{ enableEdit: boolean }>`
   height: 28px;
   opacity: ${({ enableEdit }) => (enableEdit ? 1 : 0)};
   transition: 0.3s all ease;
-  margin-right: 1rem;
+  margin-left : -5vw;
   border-radius: 10px;
   border: none;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
