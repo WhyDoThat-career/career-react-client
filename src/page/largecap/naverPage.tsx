@@ -24,6 +24,7 @@ function NaverPage() {
       // );
     setHeaderState(location.state.tag.includes('n_career_header'));
     setDatas(location.state.tag);
+    document.title = `${location.state.title} / ${location.state.company}`;
   }, []);
 
   useEffect(() => {

@@ -39,9 +39,10 @@ function SmallCompanyInfoPage() {
     (async () => {
       const result = await getIdData(query.id);
       setCompanyInfo(result.data);
+      document.title = `${result.data.title} / ${result.data.company_name}`;
     })();
   }, []);
-  console.log(companyInfo);
+  // console.log(companyInfo);
 
   useEffect(() => {
     (async () => {

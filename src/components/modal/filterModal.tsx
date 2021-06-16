@@ -175,7 +175,7 @@ export function FilterModal({
             </NewbieFilter>
           </FilterContainer>
           <FooterBtn>
-            {console.log(key)}
+            {/* {console.log(key)} */}
             <ButtonSwitch />
           </FooterBtn>
         </ModalBody>

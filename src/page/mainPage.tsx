@@ -6,6 +6,7 @@ import { Col, Container, Row } from 'reactstrap';
 
 function MainPage() {
   const [modalShow, setModalShow] = useState(false);
+  document.title = `WhyDoThat - 홈`;
 
   return (
     <Cover>

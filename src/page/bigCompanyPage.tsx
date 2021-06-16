@@ -42,6 +42,7 @@ function BigCompanyPage() {
   };
 
   useEffect(() => {
+    document.title = `WhyDoThat - 대기업 페이지`;
     setPage(1);
   }, [key]);
 

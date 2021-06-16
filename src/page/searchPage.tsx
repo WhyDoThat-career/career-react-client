@@ -23,13 +23,14 @@ function SearchPage() {
       observer.observe(entry.target);
 
       setPage((prevState) => (prevState += 1));
-      console.log(page);
+      // console.log(page);
     },
     { threshold: 0.7 },
   );
 
   const callCompanies = async () => {
     const result = await getsearchData(data,page);
+    document.title = `"${data}" 검색 결과`;
 
     setSearchCompany(
       page === 1 ? result.data : searchCompany.concat(result.data),
@@ -39,7 +40,7 @@ function SearchPage() {
 
   useEffect(() => {
     setPage(1);
-    console.log("success", data);
+    // console.log("success", data);
 
     callCompanies();
   }, [data]);
@@ -48,7 +49,7 @@ function SearchPage() {
     callCompanies();
   }, [page]);
 
-  console.log(searchCompany);
+  // console.log(searchCompany);
 
   return (
     <Cover>

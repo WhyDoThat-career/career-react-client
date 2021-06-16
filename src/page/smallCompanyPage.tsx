@@ -41,8 +41,9 @@ function SmallCompanyPage() {
   };
 
   useEffect(() => {
+    document.title = `WhyDoThat - 채용공고 페이지`;
     setPage(1);
-    console.log("success", key);
+    // console.log("success", key);
 
     callCompanies();
   }, [key, newbieKey]);

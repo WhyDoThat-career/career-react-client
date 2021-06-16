@@ -12,6 +12,7 @@ function KakaoPage() {
 
   useEffect(() => {
     setDatas(location.state.tag);
+    document.title = `${location.state.title} / ${location.state.company}`;
   }, []);
 
   useEffect(() => {
