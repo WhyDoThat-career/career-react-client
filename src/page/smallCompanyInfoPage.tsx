@@ -2,23 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { PrimaryBtn } from "components/button";
-import { getJobPlanetData } from "api/companyRepo";
+import { getJobPlanetData, getIdData } from "api/companyRepo";
 import { PointPlanet } from "components/chip/pointChip";
-import { TagChip } from 'components/chip/tagChip';
+import { TagChip } from "components/chip/tagChip";
+import queryString from "query-string";
+import { Company } from "interface/companyInterface";
 
-export interface datasProps {
-  title: string;
-  companyName: string;
-  platform: string;
-  mainText: string;
-  href: string;
-  logoImg:string;
-  career:string;
-  salary:string;
-  sector:string;
-  newbie:boolean;
-  skill_tag:Array<string>;
-}
 export interface companyPlanet {
   crawl_date: string;
   employees: string;
@@ -38,16 +27,25 @@ export interface companyPlanet {
 
 function SmallCompanyInfoPage() {
   const location = useLocation<any>();
+  const query = queryString.parse(location.search);
+
+  const [companyInfo, setCompanyInfo] = useState<any>([] as Company[]);
   const [planetState, setPlanetState] = useState<boolean>(false);
   const [planetDatas, setPlanetDatas] = useState<companyPlanet[]>(
     [] as companyPlanet[],
   );
 
-  const datas: datasProps = location.state;
-  window.scrollTo(0, 0);
   useEffect(() => {
     (async () => {
-      const result = await getJobPlanetData(datas.companyName);
+      const result = await getIdData(query.id);
+      setCompanyInfo(result.data);
+    })();
+  }, []);
+  console.log(companyInfo);
+
+  useEffect(() => {
+    (async () => {
+      const result = await getJobPlanetData(companyInfo.company_name);
       // console.log("companyList", result.data.success);
       if (result.data.success) {
         setPlanetState(true);
@@ -57,22 +55,26 @@ function SmallCompanyInfoPage() {
       }
       // setCompanyList(result.data);
     })();
-  }, []);
+  }, [companyInfo]);
 
   const PlatformDiv = () => {
-    switch (datas.platform) {
+    switch (companyInfo.platform) {
       case "wanted":
         return (
-          <WantedText dangerouslySetInnerHTML={{ __html: datas.mainText }} />
+          <WantedText
+            dangerouslySetInnerHTML={{ __html: companyInfo.main_text }}
+          />
         );
       case "roketpunch":
         return (
-          <RoketText dangerouslySetInnerHTML={{ __html: datas.mainText }} />
+          <RoketText
+            dangerouslySetInnerHTML={{ __html: companyInfo.main_text }}
+          />
         );
       case "programmers":
         return (
           <ProgrammersText
-            dangerouslySetInnerHTML={{ __html: datas.mainText }}
+            dangerouslySetInnerHTML={{ __html: companyInfo.main_text }}
           />
         );
       default:
@@ -82,56 +84,72 @@ function SmallCompanyInfoPage() {
 
   return (
     <Cover>
-      <div className='covercontainer'>
-      <Logo>
-      <img className='logo' src={datas.logoImg}/>
-      <PrimaryBtn label="지원하기" type="button" size="large" onClick={() => {
-                  window.open(datas.href);
-                }}/>
-      </Logo>
-      <header>
-        {datas.title} / {datas.companyName}
-      </header>
-      <Info>
+      <div className="covercontainer">
+        <Logo>
+          <img className="logo" src={companyInfo.logo_image} alt="logo img" />
+          <PrimaryBtn
+            label="지원하기"
+            type="button"
+            size="large"
+            onClick={() => {
+              window.open(companyInfo.href);
+            }}
+          />
+        </Logo>
+        <header>
+          {companyInfo.title} / {companyInfo.company_name}
+        </header>
+        <Info>
           <div>
-            <span className="sector">&nbsp;{datas.sector}&nbsp;</span>
-            {datas.newbie ? (
+            <span className="sector">&nbsp;{companyInfo.sector}&nbsp;</span>
+            {companyInfo.newbie ? (
               <span className="newbie">&nbsp;신입 가능&nbsp;</span>
             ) : (
-              <span>&nbsp;최소 {datas.career.split(',')[0]}년&nbsp;</span>
+              <span>
+                &nbsp;최소 {companyInfo.career?.split(",")[0]}년&nbsp;
+              </span>
             )}
-            {datas.salary!=null ? (
-              <span className="salary">&nbsp;{datas.salary.replace(',','만원~')}만원&nbsp;</span>
-            ):null}
-            <img src={`https://whydothat.net/static/img/icon/${datas.platform}.png`} />
-            {datas.platform}
+            {companyInfo.salary != null ? (
+              <span className="salary">
+                &nbsp;{companyInfo.salary.replace(",", "만원~")}만원&nbsp;
+              </span>
+            ) : null}
+            <img
+              src={`https://whydothat.net/static/img/icon/${companyInfo.platform}.png`}
+              alt="platform img"
+            />
+            {companyInfo.platform}
           </div>
         </Info>
-      <hr />
-      <div className='jobplanetSearch'>
-      <img src="https://whydothat.net/static/img/icon/jobplanet.png"/>
-        <h1>&nbsp;&#34;{datas.companyName}&#34; 검색 결과</h1>
+        <hr />
+        <div className="jobplanetSearch">
+          <img
+            src="https://whydothat.net/static/img/icon/jobplanet.png"
+            alt="wdticon"
+          />
+          <h1>&nbsp;&#34;{companyInfo.company_name}&#34; 검색 결과</h1>
         </div>
-      {planetState ? <PointPlanet label={planetDatas} /> : <div>없음</div>}
-      <hr />
-      <SkillStack>
-        <h1>언급된 기술 스택</h1>
-        <div>
-        {datas.skill_tag?.map((tag) => (
-          <TagChip label={tag} />
-        ))}</div>
-      </SkillStack>
-      <PlatformDiv />
+        {planetState ? <PointPlanet label={planetDatas} /> : <div>없음</div>}
+        <hr />
+        <SkillStack>
+          <h1>언급된 기술 스택</h1>
+          <div>
+            {companyInfo.skill_tag?.map((tag: string) => (
+              <TagChip label={tag} />
+            ))}
+          </div>
+        </SkillStack>
+        <PlatformDiv />
       </div>
     </Cover>
   );
 }
 
 const SkillStack = styled.div`
-  h1{
-    font-size : 1.4rem;
-    font-weight:bold;
-    margin-bottom:10px;
+  h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
   div {
     display: flex;
@@ -144,43 +162,43 @@ const SkillStack = styled.div`
 `;
 
 const Logo = styled.div`
-  display : flex;
+  display: flex;
   justify-content: space-between;
   .logo {
-    width : 150px;
-    height : 150px;
-    margin-bottom : 20px
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
   }
 `;
 const Info = styled.div`
-font-size : 1.3rem;
-.sector {
-  background-color: #f8ce5e;
-}
-.newbie {
-  background-color: #bfe85a;
-}
-.salary {
-  background-color: #A9E2F3;
-}
-span {
-  margin-right : 10px;
-  background-color: #ebbbf5;
-  border-radius: 3px;
-}
-img {
-  width : 20px;
-  margin-bottom : -3px;
-}
+  font-size: 1.3rem;
+  .sector {
+    background-color: #f8ce5e;
+  }
+  .newbie {
+    background-color: #bfe85a;
+  }
+  .salary {
+    background-color: #a9e2f3;
+  }
+  span {
+    margin-right: 10px;
+    background-color: #ebbbf5;
+    border-radius: 3px;
+  }
+  img {
+    width: 20px;
+    margin-bottom: -3px;
+  }
 `;
 
 const Cover = styled.div`
   display: flex;
   justify-content: center;
   .covercontainer {
-    margin: 5vh 0 ;
-    width : 60vw;
-    min-width:350px;
+    margin: 5vh 0;
+    width: 60vw;
+    min-width: 350px;
   }
   header {
     display: flex;
@@ -192,15 +210,15 @@ const Cover = styled.div`
   hr {
     /* box-shadow:  */
   }
-  .jobplanetSearch{
-    display : flex;
-    margin-bottom : 10px;
-    img{
-      width : 130px;
-      margin-top : -6px;
+  .jobplanetSearch {
+    display: flex;
+    margin-bottom: 10px;
+    img {
+      width: 130px;
+      margin-top: -6px;
     }
     h1 {
-      font-size : large;
+      font-size: large;
     }
   }
 `;
@@ -211,7 +229,7 @@ const WantedText = styled.div`
     font-weight: bold;
     margin: 2vh 0 1vh;
   }
-  line-height : 160%
+  line-height: 160%;
 `;
 
 const RoketText = styled.div`
@@ -226,7 +244,7 @@ const RoketText = styled.div`
     pointer-events: none;
     cursor: default;
   }
-  line-height : 160%
+  line-height: 160%;
 `;
 
 const ProgrammersText = styled.div`
@@ -235,7 +253,7 @@ const ProgrammersText = styled.div`
     font-weight: bold;
     margin: 2vh 0 1vh;
   }
-  line-height : 160%
+  line-height: 160%;
 `;
 
 export default SmallCompanyInfoPage;

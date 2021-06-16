@@ -10,7 +10,6 @@ import { getCheckUserRepo } from "api/userRepo";
 import { FilterModal } from "components/modal/filterModal";
 import { PrimaryBtn } from "components/button";
 import { NEWBIE } from "shared/resource/option";
-import Dropdown from "components/dropdown/dropdown";
 
 function SmallCompanyPage() {
   const [companyList, setCompanyList] = useState<Company[]>([] as Company[]);
@@ -101,7 +100,12 @@ function SmallCompanyPage() {
         <h2>방금 올라온 따끈따끈한 채용공고</h2>
         <FilterContainer>
           <FilterBtn>
-          <PrimaryBtn label="원하는 것만 보기" type="button" size="large" onClick={() => setModalShow(true)}/>
+            <PrimaryBtn
+              label="원하는 것만 보기"
+              type="button"
+              size="large"
+              onClick={() => setModalShow(true)}
+            />
             <FilterModal
               show={modalShow}
               onHide={() => setModalShow(false)}
@@ -155,14 +159,14 @@ const FilterContainer = styled.div`
 
 const FilterBtn = styled.div`
   button {
-    margin-top : 0vh;
+    margin-top: 0vh;
   }
 `;
 
 const Content = styled.div`
   display: flex;
   width: 80vw;
-  min-width : 350px;
+  min-width: 350px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

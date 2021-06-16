@@ -43,18 +43,6 @@ function Router() {
           <Route exact path="/big" component={BigCompanyPage} />
           <Route exact path="/small" component={SmallCompanyPage} />
           <Route
-            key="search"
-            path="/search"
-            render={({ match: { url } }) => {
-              return (
-                <>
-                  <Route exact path={`${url}`} component={SearchPage} />
-                  <Route path={`${url}/:search`} component={SearchPage} />
-                </>
-              );
-            }}
-          />
-          <Route
             key="big"
             path="/big"
             render={({ match: { url } }) => {
@@ -73,17 +61,16 @@ function Router() {
               );
             }}
           />
+          <Route exact path="/info" component={SmallCompanyInfoPage} />
+
           <Route
-            key="small"
-            path="/small"
+            key="search"
+            path="/search"
             render={({ match: { url } }) => {
               return (
                 <>
-                  <Route exact path={`${url}`} component={SmallCompanyPage} />
-                  <Route
-                    path={`${url}/detail/:id`}
-                    component={SmallCompanyInfoPage}
-                  />
+                  <Route exact path={`${url}`} component={SearchPage} />
+                  <Route path={`${url}/:search`} component={SearchPage} />
                 </>
               );
             }}

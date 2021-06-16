@@ -23,6 +23,7 @@ function SearchPage() {
       observer.observe(entry.target);
 
       setPage((prevState) => (prevState += 1));
+      console.log(page);
     },
     { threshold: 0.7 },
   );

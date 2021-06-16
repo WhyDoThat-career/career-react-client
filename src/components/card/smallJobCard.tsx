@@ -42,20 +42,8 @@ function JobCard(
 
   const handleCardClick = () => {
     userState && postActiveLog("click", id);
-
-    history.push(`/small/detail/${id}`, {
-      title: title,
-      companyName: companyName,
-      platform: platform,
-      mainText: mainText,
-      href: href,
-      logoImg: logoImg,
-      salary: salary,
-      career: career,
-      sector: sector,
-      newbie: newbie,
-      skill_tag: skill_tag,
-    });
+    window.open(`/info?id=${id}`);
+    // history.push(`/info?id=${id}`);
   };
 
   return (

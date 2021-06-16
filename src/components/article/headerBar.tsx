@@ -5,7 +5,7 @@ import { Search } from "@styled-icons/bootstrap";
 import { useForm } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { userState } from "shared/store";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { NavItem } from "components/nav/navItem";
 import { PrimeInput } from "components/input";
 import { getCheckUserRepo, getLogout } from "api/userRepo";

@@ -19,6 +19,14 @@ export const getCompanyList = async (
   return answer.data;
 };
 
+export const getIdData = async (type?: any) => {
+  const answer = await AxiosInstance.get(`/getdata?id=${type}`).catch((err) => {
+    throw err;
+  });
+
+  return answer.data;
+};
+
 export const getSector = async () => {
   const answer = await AxiosInstance.get("/getdata/sector").catch((err) => {
     throw err;
