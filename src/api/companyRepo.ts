@@ -35,8 +35,17 @@ export const getSector = async () => {
   return answer.data;
 };
 
-export const getsearchData = async (type: string) => {
-  const answer = await AxiosInstance.get(`/search?term=${type}`);
+export const getsearchData = async (
+    type: string,
+    page?: number,
+  ) => {
+  const answer = await AxiosInstance.get(`/search?term=${type}`, {
+  params: {
+      page,
+      },
+    }).catch((err) => {
+      throw err;
+    });
 
   return answer.data;
 };

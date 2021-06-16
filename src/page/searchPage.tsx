@@ -29,7 +29,7 @@ function SearchPage() {
   );
 
   const callCompanies = async () => {
-    const result = await getsearchData(data);
+    const result = await getsearchData(data,page);
 
     setSearchCompany(
       page === 1 ? result.data : searchCompany.concat(result.data),
