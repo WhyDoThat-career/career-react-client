@@ -21,6 +21,7 @@ export function HeaderBar() {
   const [userState, setUserState] = useState(false);
   const [userInfo, setUserInfo]: any = useState(0);
   const [modalShow, setModalShow] = useState(false);
+  const [searchVisual, setSearchVisual] = useState(false);
 
   const {
     register,
@@ -100,6 +101,18 @@ export function HeaderBar() {
                   onKeyPress={handleKeypress}
                   {...register("search", { required: true })}
                 />
+                {searchVisual ? (
+                  <SearchList>
+                    <ul>
+                      <li>test</li>
+                    </ul>
+                    <hr />
+                    <ul>
+                      <li>test</li>
+                    </ul>
+                  </SearchList>
+                ) : null}
+
                 <Search
                   size="24"
                   style={{ margin: "0 1rem ", cursor: "pointer" }}
@@ -221,10 +234,18 @@ const SearchBar = styled.input<{ enableEdit: boolean }>`
   height: 28px;
   opacity: ${({ enableEdit }) => (enableEdit ? 1 : 0)};
   transition: 0.3s all ease;
-  margin-left : -5vw;
+  margin-left: -5vw;
   border-radius: 10px;
   border: none;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+`;
+
+const SearchList = styled.div`
+  position: absolute;
+  border: 1px solid #e5e6e9;
+  border-radius: 6px;
+  background-color: white;
+  width: 10vw;
 `;
 
 const UserLogo = styled.div`
