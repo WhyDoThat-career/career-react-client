@@ -35,23 +35,34 @@ export const getSector = async () => {
   return answer.data;
 };
 
-export const getsearchData = async (
-    type: string,
-    page?: number,
-  ) => {
+export const getsearchData = async (type: string, page?: number) => {
   const answer = await AxiosInstance.get(`/search?term=${type}`, {
-  params: {
+    params: {
       page,
-      },
-    }).catch((err) => {
-      throw err;
-    });
+    },
+  }).catch((err) => {
+    throw err;
+  });
 
   return answer.data;
 };
 
 export const getJobPlanetData = async (type: string) => {
-  const answer = await AxiosInstance.get(`/getdata/company/${type}`);
+  const answer = await AxiosInstance.get(`/getdata/company/${type}`).catch(
+    (err) => {
+      throw err;
+    },
+  );
 
   return answer;
+};
+
+export const getSearchTyping = async (type: string) => {
+  const answer = await AxiosInstance.get(
+    `/search/auto_typing?term=${type}`,
+  ).catch((err) => {
+    throw err;
+  });
+
+  return answer.data;
 };
