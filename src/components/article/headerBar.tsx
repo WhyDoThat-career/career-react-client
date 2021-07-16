@@ -110,16 +110,29 @@ export function HeaderBar() {
             <form onSubmit={handleSubmit(handleSearch)}>
               <div>
                 <SearchBar
-                  autoComplete="off"
+                  // autoComplete="off"
                   placeholder="검색 후 Enter"
                   enableEdit={enableEdit}
                   onKeyPress={handleKeypress}
-                  onFocus={() => setSearchVisual(true)}
                   {...register("search", { required: true })}
-                  onChange={handleSearchChange}
-                  onBlur={() => setSearchVisual(false)}
+                  // onChange={handleSearchChange}
+                  // onFocusCapture={() => setSearchVisual(false)}
+                  // onFocus={() => setSearchVisual(true)}
+                  // onBlur={(e) => setSearchVisual(false)}
                 />
-
+                <SearchList enabledEdit={searchVisual}>
+                  <ul>
+                    {skillSearch?.map((skill) => (
+                      <li onClick={() => console.log("ss")}>{skill}</li>
+                    ))}
+                  </ul>
+                  <hr />
+                  <ul>
+                    {companySearch?.map((company) => (
+                      <li>{company}</li>
+                    ))}
+                  </ul>
+                </SearchList>
                 <Search
                   size="24"
                   style={{ margin: "0 1rem ", cursor: "pointer" }}
@@ -127,19 +140,6 @@ export function HeaderBar() {
                 />
               </div>
             </form>
-            <SearchList enabledEdit={searchVisual}>
-              <ul>
-                {skillSearch.map((skill) => (
-                  <li>{skill}</li>
-                ))}
-              </ul>
-              <hr />
-              <ul>
-                {companySearch.map((company) => (
-                  <li>{company}</li>
-                ))}
-              </ul>
-            </SearchList>
           </ButtonContainer>
 
           {userState ? (
@@ -262,10 +262,11 @@ const SearchBar = styled.input<{ enableEdit: boolean }>`
 
 const SearchList = styled.div<{ enabledEdit: boolean }>`
   display: ${({ enabledEdit }) => (enabledEdit ? "" : "none")};
+  z-index: 1000;
   width: 10vw;
   min-width: 150px;
-  height: 20vh;
-  margin: 210px 0 0 -5vw;
+  height: auto;
+  margin: 0 0 0 -5vw;
   position: absolute;
   border: 1px solid #e5e6e9;
   border-radius: 6px;
