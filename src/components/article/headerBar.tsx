@@ -13,6 +13,7 @@ import { AxiosError } from "axios";
 import { tmpdir } from "os";
 import { LoginModal } from "components/modal/loginModal";
 import { Col, Container, Row } from "reactstrap";
+import { getSearchTyping } from "api/companyRepo";
 
 export function HeaderBar() {
   // const user = useRecoilValue(userState);
@@ -21,6 +22,10 @@ export function HeaderBar() {
   const [userState, setUserState] = useState(false);
   const [userInfo, setUserInfo]: any = useState(0);
   const [modalShow, setModalShow] = useState(false);
+  const [searchVisual, setSearchVisual] = useState(false);
+
+  const [skillSearch, setSkillSearch] = useState([]);
+  const [companySearch, setCompanySearch] = useState([]);
 
   const {
     register,
@@ -47,6 +52,16 @@ export function HeaderBar() {
     //   });
     // }
   }, []);
+
+  const handleSearchChange = (e: any) => {
+    (async () => {
+      const { value, name } = e.target;
+      const answer = await getSearchTyping(value);
+
+      setSkillSearch(answer.skill_result);
+      setCompanySearch(answer.company_result);
+    })();
+  };
 
   const handleKeypress = (e: any) => {
     if (e.keyCode === 13) {
@@ -95,11 +110,29 @@ export function HeaderBar() {
             <form onSubmit={handleSubmit(handleSearch)}>
               <div>
                 <SearchBar
+                  // autoComplete="off"
                   placeholder="검색 후 Enter"
                   enableEdit={enableEdit}
                   onKeyPress={handleKeypress}
                   {...register("search", { required: true })}
+                  // onChange={handleSearchChange}
+                  // onFocusCapture={() => setSearchVisual(false)}
+                  // onFocus={() => setSearchVisual(true)}
+                  // onBlur={(e) => setSearchVisual(false)}
                 />
+                <SearchList enabledEdit={searchVisual}>
+                  <ul>
+                    {skillSearch?.map((skill) => (
+                      <li onClick={() => console.log("ss")}>{skill}</li>
+                    ))}
+                  </ul>
+                  <hr />
+                  <ul>
+                    {companySearch?.map((company) => (
+                      <li>{company}</li>
+                    ))}
+                  </ul>
+                </SearchList>
                 <Search
                   size="24"
                   style={{ margin: "0 1rem ", cursor: "pointer" }}
@@ -221,10 +254,33 @@ const SearchBar = styled.input<{ enableEdit: boolean }>`
   height: 28px;
   opacity: ${({ enableEdit }) => (enableEdit ? 1 : 0)};
   transition: 0.3s all ease;
-  margin-left : -5vw;
+  margin-left: -5vw;
   border-radius: 10px;
   border: none;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+`;
+
+const SearchList = styled.div<{ enabledEdit: boolean }>`
+  display: ${({ enabledEdit }) => (enabledEdit ? "" : "none")};
+  z-index: 1000;
+  width: 10vw;
+  min-width: 150px;
+  height: auto;
+  margin: 0 0 0 -5vw;
+  position: absolute;
+  border: 1px solid #e5e6e9;
+  border-radius: 6px;
+  background-color: white;
+  ul {
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: auto;
+    li {
+      margin: 5px 0;
+    }
+  }
 `;
 
 const UserLogo = styled.div`
