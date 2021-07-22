@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { getsearchData } from "api/companyRepo";
-import { Company } from "components/interface/companyInterface";
+import { Company } from "interface/companyInterface";
 import useObserver from "shared/hook/useObserver";
 import JobCard from "components/card/smallJobCard";
 
@@ -29,7 +29,7 @@ function SearchPage() {
   );
 
   const callCompanies = async () => {
-    const result = await getsearchData(data,page);
+    const result = await getsearchData(data, page);
     document.title = `"${data}" 검색 결과`;
 
     setSearchCompany(
