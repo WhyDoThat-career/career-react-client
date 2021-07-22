@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import styled from "styled-components";
 import JobCard from "components/card/smallJobCard";
 import { getCompanyList } from "api/companyRepo";
-import { Company } from "components/interface/companyInterface";
+import { Company } from "interface/companyInterface";
 import useObserver from "shared/hook/useObserver";
 import { getRecommend } from "api/userRepo";
 import { RecommendCard } from "components/card/recommendCard";
