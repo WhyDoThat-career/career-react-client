@@ -65,35 +65,35 @@ email input을 입력 할 시, checkEmail api를 요청하여 DB와 비교.
 ```jsx
 {
 
-  salary : *연봉 정보*,
+  salary : '연봉 정보',
 
-  href : *채용 공고 페이지*,
+  href : '채용 공고 페이지',
 
-  id: *DB에서 id값*,
+  id: 'DB에서 id값',
 
-  crawl_date: *크롤링한 시간*,
+  crawl_date: '크롤링한 시간',
 
-  big_company : *대기업 여부*,
+  big_company : '대기업 여부',
 
-  company_address : *기업 주소*,
+  company_address : '기업 주소',
 
-  deadline : *마감일*,
+  deadline : '마감일',
 
-  newbie : *신입 가능 여부*,
+  newbie : '신입 가능 여부',
 
-  skill_tag : *공고에 명시된 스킬 리스트*,
+  skill_tag : '공고에 명시된 스킬 리스트',
 
-  main_text : *HTML 데이터*,
+  main_text : 'HTML 데이터',
 
-  title : *공고 제목*,
+  title : '공고 제목',
 
-  platform : *플랫폼 이름*,
+  platform : '플랫폼 이름',
 
-  logo_image : *로고이미지 url*,
+  logo_image : '로고이미지 url',
 
-  company_name : *기업명*,
+  company_name : '기업명',
 
-  career : *경력 여부*,
+  career : '경력 여부',
 
-  sector : *직군*}
+  sector : '직군'}
 ```
