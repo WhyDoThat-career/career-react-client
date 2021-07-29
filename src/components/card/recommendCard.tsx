@@ -1,5 +1,5 @@
 import { TagChip } from "components/chip/tagChip";
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { postActiveLog } from "api/userRepo";
@@ -13,12 +13,11 @@ export interface RecommendCardProps {
   companyName: string;
   platform: string;
   userState: boolean;
-  href:string;
-  salary:string;
-  career:string;
-  newbie:boolean;
-  skill_tag:Array<string>;
-
+  href: string;
+  salary: string;
+  career: string;
+  newbie: boolean;
+  skill_tag: Array<string>;
 }
 
 export function RecommendCard({
@@ -46,13 +45,13 @@ export function RecommendCard({
       companyName: companyName,
       platform: platform,
       mainText: mainText,
-      logoImg:logoImg,
-      href:href,
-      salary:salary,
-      career:career,
-      sector:sector,
-      newbie:newbie,
-      skill_tag:skill_tag,
+      logoImg: logoImg,
+      href: href,
+      salary: salary,
+      career: career,
+      sector: sector,
+      newbie: newbie,
+      skill_tag: skill_tag,
     });
   };
 

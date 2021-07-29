@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { PrimeInput } from "components/input";
 import { PrimaryBtn } from "components/button";
 import { postRegister, postCheckemail } from "api/userRepo";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalBody } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export function RegisterModal(props: any) {
@@ -69,54 +69,57 @@ export function RegisterModal(props: any) {
         <Content>
           <ModalBody>
             <section>
-            <Text>
-              <img src="https://whydothat.net/static/img/wdticon.png" alt="WhyDoThat logo"></img>
-              <h1>WhyDoThat</h1>
-              <br></br>
-              <h2>지금 당장 WhyDoThat에 참여하세요!</h2>
-            </Text>
-            <RegisterForm>
-              <form onSubmit={handleSubmit(handleRegister)}>
-                <PrimeInput
-                  type="email"
-                  label="email"
-                  id="email"
-                  wd="20vw"
-                  onChange={handle}
-                  register={{ ...register("email", { required: true }) }}
-                />
-                {checkEmail ? null : <div>중복된 이메일 입니다.</div>}
-                <PrimeInput
-                  type="nickname"
-                  label="닉네임"
-                  id="nickname"
-                  wd="20vw"
-                  register={{ ...register("nickname", { required: true }) }}
-                />
-                <PrimeInput
-                  type="password"
-                  label="비밀번호"
-                  id="pw"
-                  wd="10vw"
-                  register={{ ...register("password", { required: true }) }}
-                />
-                <PrimeInput
-                  type="password"
-                  label="비밀번호 확인"
-                  id="confirmpw"
-                  wd="10vw"
-                  register={{
-                    ...register("confirmpassword", { required: true }),
-                  }}
-                />
+              <Text>
+                <img
+                  src="https://whydothat.net/static/img/wdticon.png"
+                  alt="WhyDoThat logo"
+                ></img>
+                <h1>WhyDoThat</h1>
                 <br></br>
-                <br></br>
-                <PrimaryBtn
-                  label="회원가입"
-                  type="submit"
-                  disabled={!checkEmail}
-                />
-              </form>
+                <h2>지금 당장 WhyDoThat에 참여하세요!</h2>
+              </Text>
+              <RegisterForm>
+                <form onSubmit={handleSubmit(handleRegister)}>
+                  <PrimeInput
+                    type="email"
+                    label="email"
+                    id="email"
+                    wd="20vw"
+                    onChange={handle}
+                    register={{ ...register("email", { required: true }) }}
+                  />
+                  {checkEmail ? null : <div>중복된 이메일 입니다.</div>}
+                  <PrimeInput
+                    type="nickname"
+                    label="닉네임"
+                    id="nickname"
+                    wd="20vw"
+                    register={{ ...register("nickname", { required: true }) }}
+                  />
+                  <PrimeInput
+                    type="password"
+                    label="비밀번호"
+                    id="pw"
+                    wd="10vw"
+                    register={{ ...register("password", { required: true }) }}
+                  />
+                  <PrimeInput
+                    type="password"
+                    label="비밀번호 확인"
+                    id="confirmpw"
+                    wd="10vw"
+                    register={{
+                      ...register("confirmpassword", { required: true }),
+                    }}
+                  />
+                  <br></br>
+                  <br></br>
+                  <PrimaryBtn
+                    label="회원가입"
+                    type="submit"
+                    disabled={!checkEmail}
+                  />
+                </form>
               </RegisterForm>
             </section>
           </ModalBody>
@@ -134,12 +137,12 @@ const Cover = styled.div`
     font-size: 1.5rem;
     text-shadow: #2ecc71 -1.5779px 1.86493px 0px, #f39c12 1.5779px 1.86493px 0px;
     cursor: pointer;
-    }
-    h2 {
-      font-weight : bold;
-      font-size:1.5rem;
-      margin : 0px 0px 20px 0px;
-    }
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0px 0px 20px 0px;
+  }
 `;
 
 const Text = styled.div`
@@ -150,12 +153,12 @@ const Text = styled.div`
 `;
 
 const RegisterForm = styled.div`
-display: flex;
-flex-direction:column;
-align-items:center;
-div {
-  color:#F44848
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  div {
+    color: #f44848;
+  }
 `;
 
 const Header = styled.div`
