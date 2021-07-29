@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { PrimaryBtn } from "components/button";
 import styled from "styled-components";
 import { Search } from "@styled-icons/bootstrap";
 import { useForm } from "react-hook-form";
@@ -7,12 +6,9 @@ import { useRecoilValue } from "recoil";
 import { userState } from "shared/store";
 import { useHistory } from "react-router-dom";
 import { NavItem } from "components/nav/navItem";
-import { PrimeInput } from "components/input";
 import { getCheckUserRepo, getLogout } from "api/userRepo";
-import { AxiosError } from "axios";
-import { tmpdir } from "os";
 import { LoginModal } from "components/modal/loginModal";
-import { Col, Container, Row } from "reactstrap";
+import { Col, Container } from "reactstrap";
 import { getSearchTyping } from "api/companyRepo";
 
 export function HeaderBar() {

@@ -1,7 +1,6 @@
-import React, { useState, useEffect, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { classNames } from "react-select/src/utils";
 import { postActiveLog } from "api/userRepo";
 
 export interface jobCardInter {
@@ -101,7 +100,7 @@ const CardBody = styled.div`
   margin: 5% 1vw 10px 0px;
 `;
 
-const Title = styled.div`
+const Title = styled.p`
   box-sizing: content-box;
   height: 50px;
   overflow: hidden;

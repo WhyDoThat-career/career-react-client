@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { PrimaryBtn } from 'components/button';
-import { Col, Container, Row } from 'reactstrap';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { PrimaryBtn } from "components/button";
+import { Col, Container, Row } from "reactstrap";
 // import { LoginModal } from "components/modal/loginModal";
 
 function MainPage() {
@@ -71,32 +71,20 @@ function MainPage() {
 
 const Cover = styled.article`
   display: flex;
-  min-height:81vh;
+  min-height: 81vh;
   flex-direction: column;
-
-  @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
-  /* display: flex;
-  align-items: center;
-  flex-direction: column; */
-  /* position: absolute; */
+  @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
   width: 100vw;
   position: relative;
   ::after {
-    background-image: url('https://whydothat.net/static/img/background.jpg');
-    /* background-color: rgba(255, 255, 255, 0.5);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    opacity: 0.5; */
-    /* top: 8vh; */
+    background-image: url("https://whydothat.net/static/img/background.jpg");
     left: 0;
     position: absolute;
     background-size: cover;
     opacity: 0.6 !important;
     filter: alpha(opacity=50);
     z-index: -1;
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -109,19 +97,11 @@ const Cover = styled.article`
     text-decoration: none;
     text-shadow: rgb(0 255 255) 4.0779px -1.86493px 0px,
       rgb(255 0 0) -4.0779px 1.86493px 0px;
-
-    font-family: 'Rubik', sans-serif;
+    font-family: "Rubik", sans-serif;
     font-size: calc(30px + 4vw);
-    
     color: rgb(0, 0, 0);
     line-height: 0.75em;
     letter-spacing: 3px;
-    /* --para-spacing: 0; */
-    /* text-transform: uppercase; */
-    /* --head-indent: 0;
-    --numeric-list-marker: none; */
-    /* list-style-type: none; */
-    /* word-spacing: 100 px; */
   }
 
   .wdt {
@@ -136,8 +116,7 @@ const Cover = styled.article`
   }
 
   div {
-    /* margin: 0 0 0 35vw; */
-    font-family: 'Black Han Sans', sans-serif;
+    font-family: "Black Han Sans", sans-serif;
     text-shadow: rgb(255 0 0) 1.0779px -0.86493px 0px,
       rgb(0 255 255) -1.0779px 0.86493px 0px;
     color: white;
@@ -146,7 +125,7 @@ const Cover = styled.article`
 
   img {
     width: 4vw;
-    min-width : 40px;
+    min-width: 40px;
     height: auto;
     margin: 0 0.2vw 0 0;
   }
@@ -154,7 +133,7 @@ const Cover = styled.article`
   .img-Container {
     display: flex;
     width: 100%;
-    margin-left:0.2vw;
+    margin-left: 0.2vw;
     div {
       width: fit-content;
       height: fit-content;
@@ -169,7 +148,7 @@ const Cover = styled.article`
     font-size: 1.5rem;
     background-color: #ffa502;
     color: #fff;
-    font-family: 'Black Han Sans', sans-serif;
+    font-family: "Black Han Sans", sans-serif;
     border: none;
     border-radius: 20px;
     box-shadow: 5px 5px 5px #57606f;
@@ -179,7 +158,7 @@ const Cover = styled.article`
 const Content = styled(Container)`
   display: flex;
   width: 100vw;
-  min widt : 500px;
+  min-width: 500px;
   margin-top: 2rem;
   flex-direction: column;
   justify-content: center;
@@ -188,9 +167,8 @@ const Content = styled(Container)`
 
 const TestTxt = styled.h4`
   width: fit-content;
-  /* margin: 0 0 0 35vw; */
-  margin-bottom : 0.5vh;
-  font-family: 'Black Han Sans', sans-serif !important;
+  margin-bottom: 0.5vh;
+  font-family: "Black Han Sans", sans-serif !important;
   text-shadow: rgb(0 0 0 / 60%) 0px 5.25px 39.375px;
   font-size: calc(40px + 4vw);
   color: white;

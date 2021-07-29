@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import JobCard from "components/card/smallJobCard";
 import { getCompanyList } from "api/companyRepo";
@@ -37,7 +37,6 @@ function SmallCompanyPage() {
     const result = await getCompanyList(key, newbieKey, page);
 
     setCompanyList(page === 1 ? result.data : companyList.concat(result.data));
-    // console.log(companyList);
   };
 
   useEffect(() => {

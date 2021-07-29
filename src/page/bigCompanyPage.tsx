@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
 import { getCompanyList } from "api/companyRepo";
 import { Company } from "interface/companyInterface";
-import { getSector } from "api/companyRepo";
 import JobCard from "components/card/jobCard";
-import Select from "react-select";
 import { FILTER, COMPANYFILTER, NEWBIE } from "shared/resource/option";
 import Dropdown from "components/dropdown/dropdown";
 import useObserver from "shared/hook/useObserver";
@@ -54,7 +51,6 @@ function BigCompanyPage() {
       const result = await getRecommend();
       const name = await getCheckUserRepo();
 
-      // console.log(.data);
       setRecommendList(result.data);
 
       if (name.data === "알 수 없는 사용자") {
@@ -138,7 +134,7 @@ const Cover = styled.article`
 const Content = styled.div`
   display: flex;
   width: 80vw;
-  min-width : 360px;
+  min-width: 360px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

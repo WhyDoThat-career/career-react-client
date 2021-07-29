@@ -46,14 +46,13 @@ function SmallCompanyInfoPage() {
   useEffect(() => {
     (async () => {
       const result = await getJobPlanetData(companyInfo.company_name);
-      // console.log("companyList", result.data.success);
+
       if (result.data.success) {
         setPlanetState(true);
         setPlanetDatas(result.data.data);
       } else {
         setPlanetState(false);
       }
-      // setCompanyList(result.data);
     })();
   }, [companyInfo]);
 
