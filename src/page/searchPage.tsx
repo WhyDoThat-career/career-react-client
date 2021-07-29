@@ -35,7 +35,6 @@ function SearchPage() {
     setSearchCompany(
       page === 1 ? result.data : searchCompany.concat(result.data),
     );
-    // console.log(companyList);
   };
 
   useEffect(() => {

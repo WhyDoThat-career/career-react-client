@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { PrimeInput } from "components/input";
 import { PrimaryBtn } from "components/button";
-import {
-  postCheckemail,
-  postCheckloginpassword,
-  getGoogleLogin,
-  getGithubLogin,
-} from "api/userRepo";
+import { postCheckemail, postCheckloginpassword } from "api/userRepo";
 import { RegisterModal } from "components/modal/registerModal";
 import { Modal, ModalBody } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -32,13 +26,8 @@ export function LoginModal(props: any) {
         data.password,
       );
 
-      // console.log("====================================");
-      // console.log(checkLogin);
-      // console.log("====================================");
-
       if (checkLogin === true) {
         window.location.reload();
-        // console.log("replace");
       }
     })();
   };
