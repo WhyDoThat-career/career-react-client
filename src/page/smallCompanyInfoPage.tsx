@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { useLocation } from "react-router-dom";
-import { PrimaryBtn } from "components/button";
-import { getJobPlanetData, getIdData } from "api/companyRepo";
-import { PointPlanet } from "components/chip/pointChip";
-import { TagChip } from "components/chip/tagChip";
-import queryString from "query-string";
-import { Company } from "interface/companyInterface";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
+import { PrimaryBtn } from 'components/button';
+import { getJobPlanetData, getIdData } from 'api/companyRepo';
+import { PointPlanet } from 'components/chip/pointChip';
+import { TagChip } from 'components/chip/tagChip';
+import queryString from 'query-string';
+import { Company } from 'interface/companyInterface';
 
 export interface companyPlanet {
   crawl_date: string;
@@ -59,19 +59,19 @@ function SmallCompanyInfoPage() {
 
   const PlatformDiv = () => {
     switch (companyInfo.platform) {
-      case "wanted":
+      case 'wanted':
         return (
           <WantedText
             dangerouslySetInnerHTML={{ __html: companyInfo.main_text }}
           />
         );
-      case "roketpunch":
+      case 'roketpunch':
         return (
           <RoketText
             dangerouslySetInnerHTML={{ __html: companyInfo.main_text }}
           />
         );
-      case "programmers":
+      case 'programmers':
         return (
           <ProgrammersText
             dangerouslySetInnerHTML={{ __html: companyInfo.main_text }}
@@ -106,12 +106,12 @@ function SmallCompanyInfoPage() {
               <span className="newbie">&nbsp;신입 가능&nbsp;</span>
             ) : (
               <span>
-                &nbsp;최소 {companyInfo.career?.split(",")[0]}년&nbsp;
+                &nbsp;최소 {companyInfo.career?.split(',')[0]}년&nbsp;
               </span>
             )}
             {companyInfo.salary != null ? (
               <span className="salary">
-                &nbsp;{companyInfo.salary.replace(",", "만원~")}만원&nbsp;
+                &nbsp;{companyInfo.salary.replace(',', '만원~')}만원&nbsp;
               </span>
             ) : null}
             <img
